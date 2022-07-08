@@ -14,11 +14,6 @@ select opt in "${options[@]}"
 do
     case $opt in
 	"Configurar sistema base en entorno chroot")
-	  echo  -=Configurando base del SO en entorno chroot=-
-	  echo Se aconseja usar esta opción solo una vez despúes de instalar $NAME
-	  echo ya que luego los Hooks de Pacman automáticamente regeneran y firman los
-	  echo archivos .efi para Secure Boot
-	  #
 	  #Configurar la zona horaria en CDMX:
 	  ln -sf /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 	  #
