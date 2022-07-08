@@ -695,7 +695,7 @@ do
 	  sudo pacman -Syu --noconfirm
 	  sudo pacman -Scc
 	  yay -Sc
-	  screenfetch
+	  screenfetch-dev
 	  df -hT
 	  uptime
 	  echo ---=[El sistema operativo basado en $NAME está listo]=---
