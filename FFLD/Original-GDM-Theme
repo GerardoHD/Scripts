@@ -1,6 +1,0 @@
-#!/bin/bash
-echo	------==Script Creado por GerardoHD==------
-#
-sudo mv -v /usr/share/gnome-shell/gnome-shell-theme.gresource{~,}
-#sudo mv -f /usr/share/gnome-shell/gnome-shell-theme.gresource~ /usr/share/gnome-shell/gnome-shell-theme.gresource
-echo Restart GNOME Shell by pressing Alt+F2, then type r

@@ -14,4 +14,4 @@ sleep 3s
 #sudo mount /dev/sda3 /home/chronos/u-/MyFiles/Fedora
 #sudo mount /dev/sda4 /home/chronos/u-/MyFiles/Datos
 df -hT
-screenfetch
+screenfetch-dev
