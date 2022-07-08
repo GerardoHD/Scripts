@@ -50,7 +50,6 @@ do
 	  echo No hay comandos disponibles por el momento
 	  echo falta investigación
 	  #sudo rm /var/lib/dnf/history
-	  screenfetch
 	  #
 	fi
 	;;
@@ -171,4 +170,4 @@ do
     esac
 done
 #
-screenfetch
+screenfetch-dev

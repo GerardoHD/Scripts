@@ -11,7 +11,7 @@ exit
 fi
 #
 PS3='Elige la acción a realizar: '
-options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Configurar tipografías en GNOME" "Descargar iconos en .png" "Automatizar instalación de paquetes en Arch-Setup" "Salir")
+options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Configurar tipografías en GNOME" "Descargar iconos en .png" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -129,24 +129,12 @@ do
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
 	  sudo rm org.gnome.Software.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
-	  sudo rm org.gnome.Terminal.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
 	  sudo rm org.gnome.Yelp.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
 	  #
 	  cd ~
 	  else
 	  echo Esta opción solo es útil en Crostini, saliendo
-	  fi
-	  break
-	  ;;
-	"Automatizar instalación de paquetes en Arch-Setup")
-	  if [ ! -e "$FILE" ]; then
-	  echo Esta opción solo es válida en instalaciones en hardware, saliendo
-	  else
-	  echo Automatizando la instalación de paquetes de software
-	  sudo sed -i 's/sudo pacman -S /sudo pacman -S --noconfirm /g'	/usr/local/bin/Distro-Setup
-	  sudo sed -i 's/yay -S /yay -S --noconfirm /g' /usr/local/bin/Distro-Setup
 	  fi
 	  break
 	  ;;
