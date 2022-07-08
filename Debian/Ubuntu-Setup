@@ -5,7 +5,7 @@ echo	------==Script Creado por GerardoHD==------
 echo https://www.github.com/GerardoHD/Linux
 echo Script creado para configurar un sistema $NAME 20.04
 echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
-sleep 1s
+sleep 3s
 #
 	sudo apt install ubuntu-restricted-extras -y
 	sudo apt install chrome-gnome-shell -y
