@@ -1,0 +1,161 @@
+#!/bin/bash
+source /etc/os-release
+FILE=/boot/vmlinuz-linux
+#
+echo	------==Script Creado por GerardoHD==------
+#
+if [ "$(id -u)" -eq 0 ] ; then
+echo " Este script usará sudo cuando sea necesario. Deteniendo. "
+echo " Simplemente ejecute este script desde su usuario. "
+exit
+fi
+#
+PS3='Elige la acción a realizar: '
+options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Configurar tipografías en GNOME" "Descargar iconos en .png" "Automatizar instalación de paquetes en Arch-Setup" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Aplicar modificaciones a gsettings")
+	  echo Reconfigurando Cantarell como tipografía de las aplicaciones
+	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  echo Configurando botones de la barra de título
+	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  echo Configurando tap-to-click en GNOME Shell
+	  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+	  echo Configurando el botón de Apagado a interactivo
+	  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+	  echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
+	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
+	  break
+	  ;;
+	"Actualizar carpetas de usuario")
+	  xdg-user-dirs-update
+	  break
+	  ;;
+	"Esconder entradas .desktop")
+	  mkdir -p ~/.local/share/applications/
+	  #
+	  rm ~/.local/share/applications/avahi-discover.desktop
+	  cp /usr/share/applications/avahi-discover.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/avahi-discover.desktop
+	  #
+	  rm ~/.local/share/applications/bvnc.desktop
+	  cp /usr/share/applications/bvnc.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bvnc.desktop
+	  #
+	  rm ~/.local/share/applications/bssh.desktop
+	  cp /usr/share/applications/bssh.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bssh.desktop
+	  #
+	  rm ~/.local/share/applications/calibre-ebook-edit.desktop
+	  cp /usr/share/applications/calibre-ebook-edit.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-ebook-edit.desktop
+	  #
+	  rm ~/.local/share/applications/calibre-ebook-viewer.desktop
+	  cp /usr/share/applications/calibre-ebook-viewer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-ebook-viewer.desktop
+	  #
+	  rm ~/.local/share/applications/calibre-lrfviewer.desktop
+	  cp /usr/share/applications/calibre-lrfviewer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-lrfviewer.desktop
+	  #
+	  rm ~/.local/share/applications/cmake-gui.desktop
+	  cp /usr/share/applications/cmake-gui.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/cmake-gui.desktop
+	  #
+	  sudo rm ~/.local/share/applications/cups.desktop
+	  cp /usr/share/applications/cups.desktop ~/.local/share/applications/cups.desktop
+	  echo Para esconder el acceso a la Interfaz Web de CUPS:
+	  echo Añadir "NoDisplay=true" a ~/.local/share/applications/cups.desktop
+	  sleep 3s
+	  #
+	  rm ~/.local/share/applications/lstopo.desktop
+	  cp /usr/share/applications/lstopo.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/lstopo.desktop
+	  #
+	  rm ~/.local/share/applications/nm-connection-editor.desktop
+	  cp /usr/share/applications/nm-connection-editor.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/nm-connection-editor.desktop
+	  #
+	  rm ~/.local/share/applications/org.freedesktop.MalcontentControl.desktop
+	  cp /usr/share/applications/org.freedesktop.MalcontentControl.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/org.freedesktop.MalcontentControl.desktop
+	  #
+	  rm ~/.local/share/applications/qv4l2.desktop
+	  cp /usr/share/applications/qv4l2.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qv4l2.desktop
+	  #
+	  rm ~/.local/share/applications/qvidcap.desktop
+	  cp /usr/share/applications/qvidcap.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qvidcap.desktop
+	  #
+	  rm ~/.local/share/applications/system-config-printer.desktop
+	  cp /usr/share/applications/system-config-printer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/system-config-printer.desktop
+	  #
+	  rm ~/.local/share/applications/vim.desktop
+	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #
+	  break
+	  ;;
+	  "Configurar tipografías en GNOME")
+	  GNOME-Fonts-Setup
+	  break
+	  ;;
+	  "Descargar iconos en .png")
+	  if [ ! -e "$FILE" ]; then
+	  echo Actualizando iconos en .png para aplicaciones de GNOME
+	  cd /usr/share/icons/hicolor/128x128/apps
+	  #
+	  sudo rm org.gnome.ArchiveManager.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.ArchiveManager.png
+	  sudo rm org.gnome.baobab.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.baobab.png
+	  sudo rm  org.gnome.Evince.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Evince.png
+	  sudo rm org.gnome.font-viewer.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.font-viewer.png
+	  sudo rm org.gnome.gedit.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.gedit.png
+	  sudo rm org.gnome.Lollypop.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Lollypop.png
+	  sudo rm org.gnome.Nautilus.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
+	  sudo rm org.gnome.Software.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
+	  sudo rm org.gnome.Terminal.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
+	  sudo rm org.gnome.Totem.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Totem.png
+	  sudo rm org.gnome.Yelp.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
+	  #
+	  cd ~
+	  else
+	  echo Esta opción solo es útil en Crostini, saliendo
+	  fi
+	  break
+	  ;;
+	"Automatizar instalación de paquetes en Arch-Setup")
+	  if [ ! -e "$FILE" ]; then
+	  echo Esta opción solo es válida en instalaciones en hardware, saliendo
+	  else
+	  echo Automatizando la instalación de paquetes de software
+	  sudo sed -i 's/sudo pacman -S /sudo pacman -S --noconfirm /g'	/usr/local/bin/Distro-Setup
+	  sudo sed -i 's/yay -S /yay -S --noconfirm /g' /usr/local/bin/Distro-Setup
+	  fi
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#

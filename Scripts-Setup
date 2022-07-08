@@ -1,0 +1,98 @@
+#!/bin/bash
+source /etc/os-release
+FILE=/boot/vmlinuz-linux
+#
+echo	------==Script creado por GerardoHD==------
+echo  -=Descargando Scripts=-
+#
+cd /usr/local/bin
+echo Intentando identificar el gestor de paquetes de la distribución instalada
+sleep 2s 
+#
+if [ `which pacman` ]; then
+	  echo Descargando scripts adecuados para $NAME
+	  sleep 3s
+	  #
+	  if [ ! -e "$FILE" ]; then
+	  echo $NAME parece estar instalado en Crostini, o en un contenedor
+	  sudo rm -rf Distro-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Arch/Arch-Crostini-Setup -O /usr/local/bin/Distro-Setup
+	  sudo chmod +x Distro-Setup
+	  sudo rm -rf AUR-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/AUR-Crostini -O /usr/local/bin/AUR-Updater
+	  sudo chmod +x /usr/local/bin/AUR-Updater
+	  else
+	  echo $NAME parece estar instalado en hardware
+	  sudo rm -rf Distro-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Arch/Arch-Setup -O /usr/local/bin/Distro-Setup
+	  sudo chmod +x Distro-Setup
+	  sudo rm -rf Arch-UKI
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Arch/Arch-UKI
+	  sudo chmod +x Arch-UKI
+	  sudo rm -rf AUR-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/AUR-Arch -O /usr/local/bin/AUR-Updater
+	  sudo chmod +x /usr/local/bin/AUR-Updater
+	  fi
+	  #
+elif [ `which apt` ]; then
+	  echo Descargando scripts adecuados para $NAME
+	  sleep 3s
+	  if [ ! -e "$FILE" ]; then
+	  echo $NAME parece estar instalado en Crostini, o en un contenedor
+	  sudo rm -rf Distro-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Setup
+	  sudo chmod +x Distro-Setup
+	  else
+	  echo $NAME parece estar instalado en hardware
+	  sudo rm -rf Distro-Setup-Ubuntu
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Debian/Ubuntu-Setup -O /usr/local/bin/Distro-Setup-Ubuntu
+	  sudo chmod +x Distro-Setup-Ubuntu
+	  fi
+	  #
+elif [ `which dnf` ]; then
+	  echo Descargando scripts adecuados para $NAME
+	  sleep 3s
+	  sudo rm -rf Distro-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
+	  #
+fi
+	  #
+	  #sudo rm -rf CrOS-Mount-Partitions
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/CrOS-Mount-Partitions
+	  #sudo chmod +x CrOS-Mount-Partitions
+	  sudo rm -rf Distros-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/Distros-Updater
+	  sudo chmod +x Distros-Updater
+	  sudo rm -rf GNOME-Fonts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/GNOME-Fonts-Setup
+	  sudo chmod +x GNOME-Fonts-Setup
+	  #sudo rm -rf Materia-GDM-Theme
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/Materia-GDM-Theme
+	  #sudo chmod +x Materia-GDM-Theme
+	  #sudo rm -rf Original-GDM-Theme
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/Original-GDM-Theme
+	  #sudo chmod +x Original-GDM-Theme
+	  sudo rm -rf Tweaks
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/Tweaks
+	  sudo chmod +x Tweaks
+	  sudo rm -rf Scripts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Scripts-Setup
+	  sudo chmod +x Scripts-Setup
+	  #sudo rm -rf Descargar-Scripts
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/Descargar-Scripts
+	  #sudo chmod +x Descargar-Scripts
+	  #echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	  #sudo mkdir -p /etc/polkit-1/rules.d/
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
+	  sudo rm -rf screenfetch
+	  sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch
+	  sudo chmod +x screenfetch
+#
+cd ~/
+sleep 1s
+screenfetch
+echo Se aconseja editar/revisar alguno de los scripts ubicados en /usr/local/bin/
+ls /usr/local/bin/
+echo Ejecuta el script elegido
+#

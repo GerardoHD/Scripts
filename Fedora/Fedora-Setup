@@ -1,0 +1,135 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD/Linux
+echo Script creado para configurar $NAME $VERSION
+echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
+echo ***No repetir la ejecución de las etapas***
+sleep 3s
+#
+PS3='Elige la etapa de configuración: '
+options=("Instalar software" "Aplicar modificaciones a gsettings" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Instalar software")
+	  if [ "$(id -u)" -eq 0 ]; then
+	   #Usuario root
+	   echo Configurando dnf y usuario
+	   sudo echo fastestmirror=True >> /etc/dnf/dnf.conf
+	   sudo echo max_parallel_downloads=10 >> /etc/dnf/dnf.conf
+	   sudo echo defaultyes=True >> /etc/dnf/dnf.conf
+	   sudo echo deltarpm=true >> /etc/dnf/dnf.conf
+	   #
+	   sudo groupadd storage
+	   sudo usermod -aG storage gerardohd
+	   sudo usermod -aG power gerardohd
+	   sudo usermod -aG lp gerardohd
+	   #
+	   sudo dnf update
+	   sudo dnf -y upgrade --refresh
+	   #
+	   #Repositorios adicionales
+	   sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+	   sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	   sudo dnf groupupdate core
+	   sudo dnf install -y rpmfusion-free-release-tainted
+	   sudo dnf install -y rpmfusion-nonfree-release-tainted
+	   sudo dnf install -y dnf-plugins-core
+	   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	   flatpak update
+	   #
+	   #Plugins para audio y video
+	   sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+	   sudo dnf install -y flac 
+	   sudo dnf install -y lame\* --exclude=lame-devel
+	   sudo dnf group upgrade --with-optional Multimedia
+	   #
+	   sudo dnf install -y linux-libertine-fonts
+	   sudo dnf install -y lzip minizip unace arj ncompress p7zip libunrar unrar unarj
+	   sudo dnf install -y sshfs
+	   sudo dnf install -y android-tools
+	   sudo dnf install -y pv vboot-utils
+	   sudo dnf install -y man-pages-es
+	   sudo dnf install -y gnome-extensions-app
+	   #
+	   sudo dnf install -y vim-enhanced
+	   sudo dnf install -y dialog
+	   #
+	   sudo dnf install -y sbsigntools
+	   sudo dnf install -y google-noto-sans-mono-fonts
+	   #
+	   sudo dnf install -y menulibre
+	   sudo dnf install -y gnome-epub-thumbnailer calibre foliate
+	   sudo dnf install -y gedit-plugins geary
+	   sudo dnf install -y lollypop fragments gthumb gparted
+	   sudo dnf install -y gnome-tweaks
+	   #
+	   sudo dnf install -y google-chrome-stable
+	   #
+	   sudo dnf install -y file-roller
+	   sudo dnf install -y dconf-editor
+	   sudo dnf install -y gnome-console
+	   sudo dnf install -y bubblemail
+	   #
+	   echo Instalando aplicaciones flatpak
+	   flatpak install com.mattjakeman.ExtensionManager
+	   flatpak install com.github.tchx84.Flatseal
+	   flatpak install io.bassi.Amberol
+	   flatpak install de.haeckerfelix.Shortwave
+	   flatpak install com.github.hugolabe.Wike
+	   flatpak install com.github.huluti.Curtail
+	   flatpak install org.gnome.gitlab.YaLTeR.Identity
+	   flatpak install com.github.neithern.g4music.Locale
+	   #flatpak install im.bernard.Nostalgia
+	   #flatpak install org.nickvision.tagger
+	   #flatpak install io.github.realmazharhusain.GdmSettings
+   	   flatpak install re.sonny.Commit
+	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	   #
+	   echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	   #
+	   echo  -=Activando Servicio SSHD "sshd"=-
+	   sudo systemctl enable sshd.service
+	  else
+	   #Usuario normal
+	   echo " Ejecutar este script con el usuario root. Deteniendo. "
+	   exit
+	  fi
+	  break
+	  ;;
+	"Aplicar modificaciones a gsettings")
+	  echo Reconfigurando Cantarell como tipografía de las aplicaciones
+	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  #
+	  echo Configurando botones de la barra de título
+	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  #
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  #
+	  echo Configurando tap-to-click en GNOME Shell
+	  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+	  #
+	  echo Configurando el botón de Apagado a interactivo
+	  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+	  #
+	  echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
+	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
+	  #
+	  echo Configurando GNOME Software para que prefiera paquetes nativos
+	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#

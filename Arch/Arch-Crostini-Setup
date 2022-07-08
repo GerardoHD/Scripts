@@ -1,0 +1,185 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD/Linux
+echo Script creado para configurar $NAME en Crostini
+echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
+echo ***No repetir la ejecución de las etapas***
+sleep 3s
+#
+PS3='Elige la etapa de configuración: '
+options=("Configurar usuario y locale" "Instalar integración con ChromeOS" "Instalar software" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Configurar usuario y locale")
+	if [ `uname -m` = 'x86_64' ]; then
+	#x86_64
+	  echo "Arquitectura x86_64 detectada"
+	  ip -4 a show dev eth0
+	  grep 1000:1000 /etc/passwd|cut -d':' -f1
+	  useradd -m -g users -G audio,games,input,lp,optical,power,scanner,storage,sys,video,wheel -s /bin/bash gerardohd
+	  sudo pacman-key --populate archlinux
+	elif [ `uname -m` = 'aarch64' ]; then
+	#aarch64
+	  echo "Arquitectura aarch64 detectada"
+	  ip -4 a show dev eth0
+	  grep 1000:1000 /etc/passwd|cut -d':' -f1
+	  pkill -9 -u alarm
+	  groupmod -n gerardohd alarm
+	  usermod -d /home/gerardohd -l gerardohd -m -c gerardohd alarm
+	  usermod -aG wheel gerardohd
+	  usermod -aG storage gerardohd
+	  usermod -aG power gerardohd
+	  sudo pacman-key --populate archlinuxarm
+	fi
+	  sudo pacman-key --init
+	  passwd gerardohd
+	  sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
+	  sudo sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf
+	  sudo sed -i 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
+	  sudo sed -i 's/#ParallelDownloads/ParallelDownloads/g' /etc/pacman.conf
+	  echo ***Eliminar el “#” de “ %wheel ALL= ALL ALL:***
+	  sleep 3s
+	  sudo vim /etc/sudoers
+	  #
+	  #sudo rm /etc/locale.conf
+	  sudo rm /etc/locale.gen
+	  echo LANG=es_MX.UTF-8 >> locale.conf
+          sudo mv locale.conf  /etc/locale.conf
+	  echo es_MX.UTF-8 UTF-8 >> locale.gen
+          sudo mv locale.gen  /etc/locale.gen
+	  sudo locale-gen
+	  #
+	  echo Etapa 1 ha terminado de ejecutarse
+	  echo Se recomienda ejecutar: "sudo poweroff"
+	  break
+	  ;;
+	"Instalar integración con ChromeOS")
+	  sudo pacman -S --noconfirm usbutils
+	  sudo pacman -S --noconfirm exfat-utils f2fs-tools jfsutils erofs-utils nilfs-utils xfsdump btrfs-progs xfsprogs ntfs-3g reiserfsprogs
+	  sudo pacman -S --noconfirm lsb-release pacman-contrib gvfs mtpfs gvfs-mtp #posix #mtools
+	  #
+	  echo  -=Instalando paquetes desde Arch User Repository=-
+	  mkdir ~/AUR/
+	  cd ~/AUR/
+	  git clone https://aur.archlinux.org/cros-container-guest-tools-git.git
+	  #git clone https://aur.archlinux.org/menulibre.git
+	  cd cros-container-guest-tools-git && makepkg -si --noconfirm
+	  #cd ../menulibre/ && makepkg -si --noconfirm
+	  cd .. && rm -rf cros-container-guest-tools-git #menulibre
+	  #
+	  git clone https://aur.archlinux.org/yay-bin.git
+	  cd yay-bin/ && makepkg -si --noconfirm
+	  cd .. && rm -rf yay-bin
+	  cd ~
+	  #
+	  systemctl --user enable --now sommelier@0 sommelier-x@0 sommelier@1 sommelier-x@1
+	  #
+	  echo Etapa 2 ha terminado de ejecutarse
+	  echo Se recomienda ejecutar: "sudo poweroff"
+	  break
+	  ;;
+	"Instalar software")
+	  systemctl --failed
+	  systemctl --user --failed
+	  sleep 5s
+	  echo Copiando carpetas de pulse
+	  cp -r /etc/skel/.config/pulse ~/.config/pulse
+	  #
+	  sudo pacman -S --noconfirm bash-completion man-pages-es
+	  sudo pacman -S --noconfirm lzip minizip unace arj ncompress p7zip libunrar unrar unarj lrzip unarchiver zip squashfs-tools lzop
+	  sudo pacman -S --noconfirm gst-libav gst-plugin-gtk gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly ffmpegthumbnailer youtube-dl
+	  sudo pacman -S --noconfirm android-tools xdg-user-dirs
+	  #
+	  sudo pacman -S --noconfirm libotf
+	  #
+	  sudo pacman -S --noconfirm gnome-epub-thumbnailer
+	  sudo pacman -S --noconfirm gedit-plugins libgit2-glib vte3
+	  sudo pacman -S --noconfirm lollypop gthumb
+	  sudo pacman -S --noconfirm baobab file-roller gnome-font-viewer gnome-keyring
+	  sudo pacman -S --noconfirm gnome-terminal gnome-themes-extra nautilus yelp
+	  sudo pacman -S --noconfirm dconf-editor
+	  #
+	  sudo pacman -S --noconfirm gnome-software gnome-software-packagekit-plugin flatpak
+	  echo  -=Instalando repositorio Flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #
+	  echo Descargando reglas de polkit para realizar actividades del sistema sin que pida autenticación
+	  #sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
+	  echo -=Aplicando modificaciones a gsettings=-
+	  sleep 2s
+	  echo Reconfigurando Cantarell como tipografía en GNOME Shell
+	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  echo Configurando botones de la barra de título
+	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  echo Activando CSD en GNOME Terminal
+	  gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
+	  #
+	  echo Actualizando carpetas de usuario
+	  xdg-user-dirs-update
+	  #
+	  echo Escondiendo entradas .desktop
+	  mkdir -p ~/.local/share/applications/
+	  #
+	  cp /usr/share/applications/avahi-discover.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/avahi-discover.desktop
+	  #
+	  cp /usr/share/applications/bvnc.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bvnc.desktop
+	  #
+	  cp /usr/share/applications/bssh.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bssh.desktop
+	  #
+	  #cp /usr/share/applications/lstopo.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/lstopo.desktop
+	  #
+	  cp /usr/share/applications/qv4l2.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qv4l2.desktop
+	  #
+	  cp /usr/share/applications/qvidcap.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qvidcap.desktop
+	  #
+	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #
+	  echo Descargando iconos en .png para aplicaciones de GNOME
+	  cd /usr/share/icons/hicolor/128x128/apps
+	  #
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.ArchiveManager.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.baobab.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Evince.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.font-viewer.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.gedit.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Lollypop.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Totem.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
+	  #
+	  cd ~
+	  #
+	  echo  -=Actualizando y limpiando $NAME=-
+	  sudo pacman -Syu --noconfirm
+	  sudo pacman -Scc
+	  #
+	  echo Etapa 3 ha terminado de ejecutarse
+	  echo Se recomienda ejecutar: "sudo poweroff"
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#

@@ -1,0 +1,65 @@
+#!/bin/bash
+echo	------==Script Creado por GerardoHD==------
+#Usando Platform Key Infrastructure
+echo Limpiando archivos antiguos
+rm /root/Arch-UKI/initramfs.img
+#rm /root/Arch-UKI/initramfs-lts.img
+rm /efi/efi/Linux/Arch.efi
+#rm /efi/efi/Linux/Arch-LTS.efi
+rm /efi/efi/UEFI/Shell*
+#Uniendo ucode e initramfs
+cat /boot/intel-ucode.img /boot/initramfs-linux.img 	>> /root/Arch-UKI/initramfs.img
+#cat /boot/intel-ucode.img /boot/initramfs-linux-lts.img >> /root/Arch-UKI/initramfs-lts.img
+#cat /boot/amd-ucode.img /boot/initramfs-linux.img >> /root/Arch-UKI/initramfs.img
+#cat /boot/amd-ucode.img /boot/initramfs-linux-lts.img >> /root/Arch-UKI/initramfs-lts.img
+#Imagen unificada de Kernel Estable
+objcopy \
+    --add-section .osrel="/etc/os-release"                              --change-section-vma .osrel=0x20000    \
+    --add-section .cmdline="/root/Arch-UKI/cmdline.txt"                 --change-section-vma .cmdline=0x30000  \
+    --add-section .splash="/usr/share/systemd/bootctl/splash-arch.bmp"  --change-section-vma .splash=0x40000   \
+    --add-section .linux="/boot/vmlinuz-linux"                          --change-section-vma .linux=0x2000000  \
+    --add-section .initrd="/root/Arch-UKI/initramfs.img"                --change-section-vma .initrd=0x3000000 \
+    /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch.efi
+#Imagen unificada de Kernel LTS
+#objcopy \
+#    --add-section .osrel="/etc/os-release"                              --change-section-vma .osrel=0x20000    \
+#    --add-section .cmdline="/root/Arch-UKI/cmdline.txt"                 --change-section-vma .cmdline=0x30000  \
+#    --add-section .splash="/usr/share/systemd/bootctl/splash-arch.bmp"  --change-section-vma .splash=0x40000   \
+#    --add-section .linux="/boot/vmlinuz-linux-lts"                      --change-section-vma .linux=0x2000000  \
+#    --add-section .initrd="/root/Arch-UKI/initramfs-lts.img"            --change-section-vma .initrd=0x3000000 \
+#    /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch-LTS.efi
+#
+#echo Actualizando Systemd-boot
+#bootctl update --path=/efi
+#
+echo Copiando EFI Shell a ESP
+cp /usr/share/edk2-shell/x64/Shell* /efi/efi/UEFI/
+#
+echo Firmando archivos para Secure Boot...
+sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi	/efi/efi/Linux/Arch.efi
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi	/efi/efi/Linux/Arch-LTS.efi
+sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/UEFI/Shell.efi	/efi/efi/UEFI/Shell.efi
+sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/UEFI/Shell_Full.efi	/efi/efi/UEFI/Shell_Full.efi
+sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /boot/vmlinuz-linux		/boot/vmlinuz-linux
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /boot/vmlinuz-linux-lts	/boot/vmlinuz-linux-lts
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/boot/bootx64.efi 	/efi/efi/boot/bootx64.efi
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/systemd/systemd-bootx64.efi /efi/efi/systemd/systemd-bootx64.efi
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi//grub/grubx64.efi 	      /efi/efi/grub/grubx64.efi
+#
+#Usando MOK
+#cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/BOOT/grubx64.efi
+#cp /usr/share/shim-signed/shimx64.efi /boot/EFI/BOOT/BOOTX64.efi
+#cp /usr/share/shim-signed/mmx64.efi /boot/EFI/BOOT/
+#
+#echo Firmando archivos para Secure Boot...
+#sbsign --key /etc/efi-keys/MOK.key --cert /etc/efi-keys/MOK.crt --output /boot/EFI/BOOT/grubx64.efi /boot/EFI/BOOT/grubx64.efi
+#sbsign --key /etc/efi-keys/MOK.key --cert /etc/efi-keys/MOK.crt --output /boot/EFI/grub/grubx64.efi /boot/EFI/grub/grubx64.efi
+#sbsign --key /etc/efi-keys/MOK.key --cert /etc/efi-keys/MOK.crt --output /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/systemd-bootx64.efi
+#sbsign --key /etc/efi-keys/MOK.key --cert /etc/efi-keys/MOK.crt --output /boot/vmlinuz-linux /boot/vmlinuz-linux
+#
+#echo -Verificando firmas-
+#sbverify --cert /etc/efi-keys/MOK.crt /boot/EFI/BOOT/grubx64.efi
+#sbverify --cert /etc/efi-keys/MOK.crt /boot/EFI/grub/grubx64.efi
+#sbverify --cert /etc/efi-keys/MOK.crt /boot/EFI/systemd/systemd-bootx64.efi
+#sbverify --cert /etc/efi-keys/MOK.crt /boot/vmlinuz-linux
+#

@@ -1,0 +1,6 @@
+#!/bin/bash
+echo	------==Script Creado por GerardoHD==------
+#
+yay -Syu --noconfirm
+yay -Sc --noconfirm
+#

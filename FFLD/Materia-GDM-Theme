@@ -1,0 +1,9 @@
+#!/bin/bash
+echo	------==Script Creado por GerardoHD==------
+#
+#Activar la siguiente linea si se va a usar Fira como fuente del sistema
+#sudo sed -i 's/font-family: "M+ 1c", Roboto, Cantarell, Sans-Serif;/font-family: Fira Sans;/g' /usr/share/themes/Materia-light/gnome-shell/gnome-shell.css
+sudo cp /usr/share/gnome-shell/gnome-shell-theme.gresource /usr/share/gnome-shell/gnome-shell-theme.gresource~
+sudo cp -av /usr/share/gnome-shell/gnome-shell-theme.gresource{,~}
+cd /usr/share/themes/Materia-light/gnome-shell
+sudo glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml

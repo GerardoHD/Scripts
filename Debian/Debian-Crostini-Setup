@@ -1,0 +1,182 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD/Linux
+echo Script creado para configurar $NAME $VERSION en Crostini
+echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
+echo ***No repetir la ejecución de las etapas***
+sleep 3s
+#
+PS3='Elige la etapa de configuración: '
+options=("Configurar usuario y locale" "Instalar software" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Configurar usuario y locale")
+	  echo Introduzca contraseña de su usuario
+	  sudo addgroup wheel
+	  sudo usermod -aG wheel gerardohd
+	  sudo addgroup storage
+	  sudo usermod -aG storage gerardohd
+	  sudo usermod -aG lp gerardohd
+	  sudo addgroup power
+	  sudo usermod -aG power gerardohd
+	  sudo passwd gerardohd
+	  #
+	  sudo sed -i 's/LANG=en_US.UTF-8/LANG=es_MX.UTF-8/g' /etc/default/locale
+	  sudo sed -i 's/en_US.UTF-8/#en_US.UTF-8/g' /etc/locale.gen
+	  sudo sed -i 's/# es_MX.UTF-8/es_MX.UTF-8/g' /etc/locale.gen
+	  sudo locale-gen
+	  sudo poweroff
+	  break
+	  ;;
+	"Instalar software")
+	  #
+	  sudo apt update --allow-releaseinfo-change
+	  sudo apt dist-upgrade -y
+	  sudo apt install apt-utils debconf pv tar cgpt -y
+	  sudo apt install binutils acl attr -y
+	  #
+	  sudo apt install fonts-cantarell -y
+	  sudo apt install bash-completion manpages-es -y
+	  sudo apt install ffmpegthumbnailer youtube-dl -y
+	  sudo apt install btrfs-progs exfat-utils f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump -y
+	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop -y
+	  sudo apt install adb fastboot -y
+	  #
+	  sudo apt install gedit-plugins -y
+	  sudo apt install lollypop gthumb -y
+	  sudo apt install baobab file-roller gnome-font-viewer -y
+	  sudo apt install gnome-themes-extra nautilus -y
+	  #sudo apt install gnome-themes-extra nautilus gnome-terminal -y
+	  #sudo apt install dconf-editor -y
+	  #
+	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
+	  #
+	  echo  -=LibreOffice e Impresión=-
+	  cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
+	  options=(1 "Software común" on    # any option can be set to default to "on"
+	           2 "LibreOffice" off
+	           3 "LibreOffice Base" off
+	           4 "LibreOffice Calc" on
+	           5 "LibreOffice Draw" off
+	           6 "LibreOffice Impress" on
+	           7 "LibreOffice Math" off
+	           8 "LibreOffice Writer" on)
+	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+	  clear
+	  for choice in $choices
+	  do
+	      case $choice in
+	  	1)
+	  	  sudo apt install libreoffice-gtk3 -y
+	  	  sudo apt install libreoffice-l10n-es -y
+	  	  #sudo apt install libreoffice-style-elementary -y
+	  	  #sudo apt install libreoffice-style-sifr -y
+	  	  sudo apt install libreoffice-java-common -y
+	  	  sudo apt install hunspell-es -y
+	  	  sudo apt install mythes-es -y
+	  	  sudo apt install liblibreofficekitgtk -y
+		  sudo apt install fonts-liberation fonts-linuxlibertine -y
+	  	  sudo apt install cups system-config-printer -y
+	  	  sudo apt install printer-driver-cups-pdf -y
+	  	  sudo apt install printer-driver-escpr -y
+	  	  ;;
+	  	2)
+	  	  sudo apt install libreoffice -y
+	  	  ;;
+	  	3)
+	  	  sudo apt install libreoffice-base -y
+	  	  sudo apt install libreoffice-base-core -y
+	  	  ;;
+	  	4)
+	  	  sudo apt install libreoffice-calc -y 
+	  	  ;;
+	  	5)
+	  	  sudo apt install libreoffice-draw -y
+	  	  ;;
+	  	6)
+	  	  sudo apt install libreoffice-impress -y
+	  	  ;;
+	  	7)
+	  	  sudo apt install libreoffice-math -y
+	  	  ;;
+	  	8)
+	  	  sudo apt install libreoffice-writer -y 
+	  	  ;;
+	      esac
+	  done
+	  #
+	  echo iniciando configuración de impresora
+	  xhost +
+	  sudo system-config-printer
+	  #
+	  echo  -=Instalando repositorio Flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  echo Descargando flathub.flatpakrepo
+	  echo Si no se instala el archivo mediante gnome-software, este no mostrará los flatpak
+	  sleep 5s
+	  wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #
+	  echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
+	  echo -=Aplicando modificaciones a gsettings=-
+	  sleep 2s
+	  echo Reconfigurando Cantarell como tipografía en GNOME Shell
+	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  echo Configurando botones de la barra de título
+	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  #echo Activando CSD en GNOME Terminal
+	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
+	  #
+	  echo Actualizando carpetas de usuario
+	  xdg-user-dirs-update
+	  #
+	  echo Escondiendo entradas .desktop
+	  mkdir -p ~/.local/share/applications/
+	  #
+	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #
+	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
+	  #
+	  echo Descargando iconos en .png para aplicaciones de GNOME
+	  cd /usr/share/icons/hicolor/128x128/apps
+	  #
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.ArchiveManager.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.baobab.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Evince.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.font-viewer.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.gedit.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Lollypop.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
+	  #
+	  cd ~
+	  #
+	  echo  -=Actualizando y limpiando $NAME $VERSION=-
+	  sudo apt update
+	  sudo apt upgrade -y
+	  sudo apt clean
+	  sudo apt autoclean
+	  sudo apt autoremove -y
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#

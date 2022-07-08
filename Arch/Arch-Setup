@@ -1,0 +1,720 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD/Linux
+echo Script creado para instalar un sistema basado en $NAME
+echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
+echo ***No repetir la ejecución de las etapas***
+sleep 5s
+#
+PS3='Elige la etapa de configuración: '
+options=("Configurar sistema base en entorno chroot" "Instalar software y entorno de escritorio" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Configurar sistema base en entorno chroot")
+	  echo  -=Configurando base del SO en entorno chroot=-
+	  echo Se aconseja usar esta opción solo una vez despúes de instalar $NAME
+	  echo ya que luego los Hooks de Pacman automáticamente regeneran y firman los
+	  echo archivos .efi para Secure Boot
+	  #
+	  #Configurar la zona horaria en CDMX:
+	  ln -sf /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+	  #
+	  #Activar ntp para sincronizar el reloj del sistema:
+	  timedatectl set-ntp true
+	  #
+	  #Generar /etc/adjtime (este comando asume que el reloj del hardware esta en UTC):
+	  hwclock --systohc
+	  #
+	  #Establecer el nombre de sistema:
+	  echo Arch >> /etc/hostname
+	  #
+	  #Establecer la distribución del teclado:
+	  echo KEYMAP=la-latin1 >> /etc/vconsole.conf
+	  #
+	  #Establecer la localización:
+	  echo LANG=es_MX.UTF-8 >> /etc/locale.conf
+	  #
+	  #Activar la localización:
+	  sed -i 's/#es_MX.UTF-8/es_MX.UTF-8/g' /etc/locale.gen
+	  #
+	  #Generar la localización:
+	  echo Generando localización:
+	  locale-gen
+	  #
+	  #Configurar systemd-fsck
+	  sudo cp /usr/lib/systemd/system/systemd-fsck-root.service /etc/systemd/system/systemd-fsck-root.service
+	  sudo echo StandardOutput=null >> /etc/systemd/system/systemd-fsck-root.service
+	  sudo echo StandardError=journal+console >> /etc/systemd/system/systemd-fsck-root.service
+	  sudo cp /usr/lib/systemd/system/systemd-fsck@.service /etc/systemd/system/systemd-fsck@.service
+	  sudo echo StandardOutput=null >> /etc/systemd/system/systemd-fsck@.service
+	  sudo echo StandardError=journal+console >> /etc/systemd/system/systemd-fsck@.service
+	  #
+	  #Configurar mkinitcpio
+	  echo ***eliminar 'fallback' en la sección PRESETS***
+	  sleep 3s
+	  vim /etc/mkinitcpio.d/linux.preset
+	  #vim /etc/mkinitcpio.d/linux-lts.preset
+	  sed -i 's/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)/HOOKS=(systemd autodetect modconf sd-vconsole block filesystems keyboard)/g' /etc/mkinitcpio.conf
+	  mkinitcpio -p linux
+	  #
+	  #Crear usuario:
+	  echo Creando un usuario:
+	  useradd -m -g users -G audio,games,input,lp,optical,power,scanner,storage,sys,video,wheel -s /bin/bash gerardohd
+	  #
+	  #Editar sudoers
+	  echo ***Eliminar el “#” de “ %wheel ALL= ALL ALL:***
+	  sleep 3s
+	  sudo vim /etc/sudoers
+	  #
+	  #NetworkManager.service
+	  echo Activando NetworkManager:
+	  systemctl enable NetworkManager.service
+	  #
+	  #echo  -=Systemd-boot=-
+	  #PS3='Quieres instalar systemd-boot?'
+	  #options=("Si" "No")
+	  #select opt in "${options[@]}"
+	  #do
+	  #    case $opt in
+	  #	"Si")
+	  #	bootctl --path=/efi install
+	  #	echo Si se instala Systemd-boot, activar sus líneas correspondientes en Arch-UKI
+	  #	;;
+	  #	#
+	  #	"No")
+	  #	break
+	  #	;;
+	  #	*) echo invalid option;;
+	  #   esac
+	  #done
+	  #
+	  #Creando carpetas y cmdline
+	  echo -=Creando imagen de Kernel Unificado=-
+	  mkdir -p /efi/efi/Linux
+	  mkdir -p /root/Arch-UKI
+	  echo root=LABEL=Arch quiet loglevel=1 vga=current rd.systemd.show_status=auto rd.udev.log_priority=3 random.trust_cpu=on > /root/Arch-UKI/cmdline.txt
+	  #
+	  #Uniendo ucode
+	  cat /boot/intel-ucode.img /boot/initramfs-linux.img >> /root/Arch-UKI/initramfs.img
+	  #cat /boot/intel-ucode.img /boot/initramfs-linux-lts.img >> /root/Arch-UKI/initramfs-lts.img
+	  #cat /boot/amd-ucode.img /boot/initramfs-linux.img >> /root/Arch-UKI/initramfs.img
+	  #cat /boot/amd-ucode.img /boot/initramfs-linux-lts.img >> /root/Arch-UKI/initramfs-lts.img
+	  #Imagen unificada de kernel estable
+	  objcopy \
+	      --add-section .osrel="/etc/os-release"                              --change-section-vma .osrel=0x20000    \
+	      --add-section .cmdline="/root/Arch-UKI/cmdline.txt"                 --change-section-vma .cmdline=0x30000  \
+	      --add-section .splash="/usr/share/systemd/bootctl/splash-arch.bmp"  --change-section-vma .splash=0x40000   \
+	      --add-section .linux="/boot/vmlinuz-linux"                          --change-section-vma .linux=0x2000000  \
+	      --add-section .initrd="/root/Arch-UKI/initramfs.img"                --change-section-vma .initrd=0x3000000 \
+	      /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch.efi
+	  #
+	  echo -=Creando entrada NVRAM de Arch.efi=-
+	  efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader "\efi\Linux\Arch.efi" --verbose
+	  #Imagen unificada de Kernel LTS
+	  #objcopy \
+	  #    --add-section .osrel="/etc/os-release"                              --change-section-vma .osrel=0x20000    \
+	  #    --add-section .cmdline="/root/Arch-UKI/cmdline.txt"                 --change-section-vma .cmdline=0x30000  \
+	  #    --add-section .splash="/usr/share/systemd/bootctl/splash-arch.bmp"  --change-section-vma .splash=0x40000   \
+	  #    --add-section .linux="/boot/vmlinuz-linux-lts"                      --change-section-vma .linux=0x2000000  \
+	  #    --add-section .initrd="/root/Arch-UKI/initramfs-lts.img"            --change-section-vma .initrd=0x3000000 \
+	  #    /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch-LTS.efi
+	  #
+	  #echo -=Creando entrada NVRAM de Arch-LTS.efi=-
+	  #efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux LTS" --loader "\efi\Linux\Arch-LTS.efi" --verbose
+	  #
+	  echo  -=Soporte Secure Boot=-
+	  PS3='¿Quieres activar el soporte de Secure Boot?'
+	  options=("Si" "No")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Si")
+	  	echo Firmando archivos para Secure Boot
+	  	sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi /efi/efi/Linux/Arch.efi
+	  	#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi /efi/efi/Linux/Arch-LTS.efi
+	  	echo Descargando hook de pacman para crear imagenes de kernel y firmarlas para secure boot
+	  	sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/92-Arch-UKI.hook -O /usr/share/libalpm/hooks/92-Arch-UKI.hook
+	  	break
+	  	;;
+	  	#
+	  	"No")
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	     esac
+	  done
+	  #
+	  #Configurar pacman
+	  echo Inicializando pacman
+	  sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
+	  sudo sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf
+	  sudo sed -i 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
+	  sudo sed -i 's/#ParallelDownloads/ParallelDownloads/g' /etc/pacman.conf
+	  sudo pacman-key --populate archlinux
+	  sudo pacman-key --init
+	  sudo pacman -Syyu --noconfirm
+	  #
+	  #Configurar contraseña root y de usuario
+	  echo introduzca contraseña root
+	  passwd
+	  echo introduzca contraseña de su usuario
+	  passwd gerardohd
+	  #
+	  echo La base del sistema operativo ha sido configurada
+	  echo No ejecute de nuevo esta sección
+	  break
+	  ;;
+	"Instalar software y entorno de escritorio")
+	  echo  -=Configurando $NAME=-
+	  sleep 1s
+	  if [ "$(id -u)" -eq 0 ] ; then
+	  	echo " ADVERTENCIA: makepkg no se ejecutará en una sesión root "
+	  	echo " Este script usará sudo cuando sea necesario. Deteniendo. "
+	  	echo " Simplemente ejecute este script desde su usuario. "
+	  	exit
+	  fi
+	  #
+	  echo Probando conexión a internet
+	  ping -c 3 www.archlinux.org
+	  #
+	  sudo mount -o remount,size=4G,noatime /tmp
+	  sudo timedatectl set-ntp true
+	  #
+	  echo -=Actualizando $NAME=-
+	  sudo pacman -Syyu --noconfirm
+	  #
+	  echo  -=Instalando software base para $NAME=-
+	  	sudo pacman -S usbutils flatpak pv fwupd efitools edk2-shell
+	  	sudo pacman -S exfat-utils f2fs-tools jfsutils erofs-utils nilfs-utils xfsdump btrfs-progs xfsprogs ntfs-3g reiserfsprogs
+	  	sudo pacman -S lsb-release posix pacman-contrib gvfs mtpfs gvfs-mtp mtools
+	  echo  -=Pulse Audio=-
+	  	sudo pacman -S pulseaudio-alsa libcanberra-pulse alsa-utils
+	  echo  -=X Window System=-
+	  	sudo pacman -S xorg-server xorg-xdriinfo xorg-xdpyinfo xorg-xprop xorg-xinit
+	  	sudo pacman -S mesa-demos
+	  #
+	  echo  -=Instalando repositorio flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #
+	  echo  -=Instalando drivers graficos=-
+	  PS3='Elige los drivers graficos de tu PC: '
+	  options=("Intel" "AMD" "Nvidia" "Nvidia --Nouveau" "Salir")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Intel")
+	  	  echo "Escogiste instalar drivers Intel"
+	  	  sudo pacman -S xf86-video-intel libva-intel-driver intel-compute-runtime
+	  	  break
+	  	  ;;
+	  	"AMD")
+	  	  echo "Escogiste instalar drivers AMD"
+	  	  sudo pacman -S xf86-video-ati opencl-mesa 
+	  	  break
+	  	  ;;
+	  	"Nvidia")
+	  	  echo "Escogiste instalar drivers Nvidia"
+	  	  sudo pacman -S nvidia nvidia-utils opencl-nvidia
+	  	  break
+	  	  ;;
+	  	"Nvidia --Nouveau")
+	  	  echo "Escogiste instalar drivers libres Nvidia"
+	  	   sudo pacman -S xf86-video-nouveau
+	  	  break
+	  	  ;;
+	   	*) echo invalid option;;
+	      esac
+	  done
+	  #
+	  echo  -=Instalando soporte del Arch User Repository=-
+	  mkdir ~/AUR/
+	  cd ~/AUR/
+	  git clone https://aur.archlinux.org/menulibre.git
+	  cd menulibre/ && makepkg -si --noconfirm
+	  cd .. && rm -rf menulibre
+	  #
+	  git clone https://aur.archlinux.org/yay-bin.git
+	  cd yay-bin/ && makepkg -si --noconfirm
+	  cd .. && rm -rf yay-bin
+	  cd ~
+	  #
+	  echo  -=Actualizando $NAME=-
+	  yay -Syyu
+	  #
+	  #echo  -=Grub=-
+	  #PS3='¿Quieres instalar GRUB?'
+	  #options=("Si" "No")
+	  #select opt in "${options[@]}"
+	  #do
+	  #    case $opt in
+	  #	"Si")
+	  #	echo Instalando os-prober, Grub y tema arch-silence
+	  #	yay -S os-prober grub arch-silence-grub-theme
+	  #	sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=grub --removable --recheck
+	  #	sudo sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT=saved/g' /etc/default/grub
+	  #	sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
+	  #	sudo sed -i 's|#GRUB_THEME="/path/to/gfxtheme"|GRUB_THEME=/boot/grub/themes/arch-silence/theme.txt|g' /etc/default/grub
+	  #	sudo sed -i 's/#GRUB_SAVEDEFAULT="true"/GRUB_SAVEDEFAULT="true"/g' /etc/default/grub
+	  #	sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=1 vga=current rd.systemd.show_status=auto rd.udev.log_priority=3 random.trust_cpu=on"/g' /etc/default/grub
+	  #	sudo mkinitcpio -p linux
+	  #	#sudo os-prober
+	  #	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	  #	break
+	  #	;;
+	  #	#
+	  #	"No")
+	  #	break
+	  #	;;
+	  #	*) echo invalid option;;
+	  #    esac
+	  #done
+	  #
+	  echo  -=Instalando software desde repositorios oficiales=-
+	  	sudo pacman -S bash-completion man-pages-es cmatrix gpart fatresize
+	  	sudo pacman -S lzip minizip unace arj ncompress p7zip libunrar unrar unarj lrzip unarchiver zip squashfs-tools lzop
+	  	sudo pacman -S gst-libav gst-plugins-ugly ffmpegthumbnailer youtube-dl
+	  	sudo pacman -S android-tools xdg-user-dirs sshfs
+	  	sudo pacman -S speedtest-cli python-pylast python-wikipedia
+	  	sudo pacman -S libappimage libmicrodns
+	  #Fuentes
+	  	sudo pacman -S libotf
+	  	sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra
+	  	sudo pacman -S ttf-fira-code ttf-fira-mono ttf-fira-sans
+	  	sudo pacman -S ttf-croscore ttf-roboto ttf-roboto-mono ttf-opensans
+	  	sudo pacman -S ttf-ibm-plex ttf-ubuntu-font-family ttf-dejavu
+	  #Motores de temas y fondos de pantalla
+	  	sudo pacman -S gtk-engine-murrine gtk-engines
+	  	sudo pacman -S kvantum-qt5
+	  	sudo pacman -S archlinux-wallpaper
+	  #
+	  #echo  -=Temas=-
+	  #PS3='¿Quieres instalar temas GTK y paquetes de iconos? '
+	  #options=("Si" "No")
+	  #select opt in "${options[@]}"
+	  #do
+	  #    case $opt in
+	  #	"Si")
+	  #	sudo pacman -S materia-gtk-theme arc-gtk-theme
+	  #	sudo pacman -S kvantum-theme-materia
+	  #	sudo pacman -S papirus-icon-theme capitaine-cursors
+	  #	flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
+	  #	flatpak install flathub org.gtk.Gtk3theme.Arc{,-Dark,-Darker,} -y
+	  #	yay -S la-capitaine-icon-theme kvantum-theme-arc
+	  #	sudo sed -i 's|Inherits=breeze,elementary,gnome,deepin|Inherits=Papirus,breeze,elementary,gnome,deepin|g' /usr/share/icons/la-capitaine-icon-theme/index.theme
+	  #	break
+	  #	;;
+	  #	#
+	  #	"No")
+	  #	break
+	  #	;;
+	  #	*) echo invalid option;;
+	  #    esac
+	  #done
+	  #
+	  #Programas
+	  	sudo pacman -S gnome-epub-thumbnailer calibre foliate dictd
+	  	sudo pacman -S gedit-plugins libgit2-glib evince gnome-disk-utility geary
+	  	sudo pacman -S lollypop fragments gthumb gparted
+	  #
+	  echo -=Soporte de impresion=-
+	  	sudo pacman -S gutenprint foomatic-db-gutenprint-ppds
+	  	sudo pacman -S system-config-printer cups-pk-helper
+	  #
+	  sleep 2s
+	  #
+	  sudo fc-cache -f -v
+	  sudo gtk-update-icon-cache
+	  xdg-user-dirs-update
+	  #
+	  #echo  -=Flatpak=-
+	  #cmd=(dialog --separate-output --checklist "Elige los flatpak a instalar"
+	  #options=(1 "Gradio" off    # any option can be set to default to "on"
+	  #         2 "Fragments" off
+	  #         3 "Spotify" off
+	  #         4 "Bitwarden" off
+	  #         5 "Shortwave Nightly" off )
+	  #choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+	  #clear
+	  #for choice in $choices
+	  #do
+	  #    case $choice in
+	  #	1)
+	  #	  flatpak install flathub de.haeckerfelix.gradio -y
+	  #	  ;;
+	  #	2)
+	  #	  flatpak install flathub de.haeckerfelix.Fragments -y
+	  #	  ;;
+	  #	3)
+	  #	  flatpak install flathub com.spotify.Client -y
+	  #	  ;;
+	  #	4)
+	  #	  flatpak install flathub com.bitwarden.desktop -y
+	  #	  ;;
+	  #	  
+	  #	5)
+	  #	  flatpak install https://haeckerfelix.de/~repo/shortwave.flatpakref
+	  #	  ;;
+	  #    esac
+	  #done
+	  #
+	  echo  -=Instalando software desde AUR=-
+	  	yay -S ttf-ms-fonts amazon-fonts
+	  	yay -S wike
+	  	yay -S google-chrome
+	  #
+	  echo  -=Software opcional=-
+	  cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
+	  options=(1 "Firefox" off    # any option can be set to default to "on"
+	           2 "KODI, mediaelch, y filebot" off
+	           3 "VLC" off
+	           4 "LibreOffice" off
+	           5 "WPS Office" off
+	           6 "PLEX" off
+	           7 "Firmware para advertencias de mknitcpio" off
+	           8 "Drivers Impresora Epson L4150" on )
+	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+	  clear
+	  for choice in $choices
+	  do
+	      case $choice in
+	  	1)
+	  	  sudo pacman -S firefox firefox-i18n-es-es firefox-i18n-es-mx
+	  	  ;;
+	  	2)
+	  	  sudo pacman -S kodi kodi-addon-audioencoder-flac kodi-addon-audioencoder-lame
+	  	  sudo pacman -S kodi-addon-audioencoder-vorbis kodi-addon-audioencoder-wav
+	  	  sudo pacman -S kodi-addon-visualization-spectrum kodi-eventclients p8-platform
+	  	  sudo pacman -S mediaelch
+	  	  yay -S kodi-addon-pvr-iptvsimple-git kodi-platform-git libplatform-legacy
+	  	  yay -S kodi-standalone-service
+	  	  yay -S filebot47 java-openjfx
+	  	  ;;
+	  	3)
+	  	  sudo pacman -S vlc
+	  	  ;;
+	  	4)
+	  	  sudo pacman -S libreoffice-fresh libreoffice-fresh-es libcdr
+	  	  ;;
+	  	5)
+	  	  yay -S wps-office wps-office-mime ttf-wps-fonts
+	  	  ;;
+	  	6)
+	  	  yay -S plex-media-server
+	  	  #yay -S plex-media-server-plexpass
+	  	  yay -S plex-media-player
+	  	  sudo systemctl enable plexmediaserver.service
+	  	  ;;
+	  	7)
+	  	  yay -S aic94xx-firmware wd719x-firmware
+	  	  ;;
+	  	8)
+	  	  yay -S epson-inkjet-printer-escpr
+	  	  ;;
+	      esac
+	  done
+	  #
+	  echo  -=Configuraciones varias=-
+	  #
+	  echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
+	  #echo Configurando SystemD para ignorar la tapa del portatil
+	  #sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf
+	  #sudo sed -i 's/#HandleLidSwitchDocked=suspend/HandleLidSwitchDocked=ignore/g' /etc/systemd/logind.conf
+	  #
+	  echo  -=Activando Servicio cups "cupsd"=-
+	  sudo systemctl enable cups.service
+	  echo  -=Activando Servicio SSHD "sshd"=-
+	  sudo systemctl enable sshd.service
+	  #
+	  sleep 2s
+	  echo  ---=Instalando entorno de escritorio=---
+	  PS3='Introduce tu elecciòn: '
+	  options=("Cinnamon" "Deepin" "GNOME" "KDE" "Mate" "Xfce" "Salir")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Cinnamon")
+	  	  echo "Escogiste instalar Cinnamon"
+	  	  sudo pacman -S cinnamon
+	  	  sleep 2s
+	  	  sudo pacman -S gnome-screenshot
+	  	  sudo pacman -S nemo-fileroller lightdm-gtk-greeter gnome-mplayer
+	  	  sudo pacman -S mate-calc gnome-system-monitor eom pluma
+	  	  sleep 2s
+	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
+	  	  sudo pacman -S qt5-styleplugins qt5ct 
+	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
+	  	  #
+	  	  yay -S cinnamon-sound-effects
+	  	  #
+	  	  echo Cambiando distribución del teclado en LightDM
+	  	  echo >> 20-keyboard.conf
+	  	  sudo sed -i '$ a\Section "InputClass"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Identifier "keyboard"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    MatchIsKeyboard "yes"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbLayout" "es"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbVariant" "nodeadkeys"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\EndSection' 20-keyboard.conf
+	  	  sudo mv  20-keyboard.conf /etc/X11/xorg.conf.d/20-keyboard.conf
+	  	  #
+	  	  echo Cambiando greeter de LightDM a GTK-Greeter
+	  	  sudo sed -i 's/#greeter-session=lightdm-yourgreeter-greeter/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+	  	  #
+	  	  echo  -=Activando LightDM=-
+	  	  sudo systemctl enable lightdm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"Deepin")
+	  	  echo "Escogiste instalar Deepin"
+	  	  sudo pacman -S deepin deepin-extra
+	  	  #
+	  	  echo Cambiando distribución del teclado en LightDM
+	  	  echo >> 20-keyboard.conf
+	  	  sudo sed -i '$ a\Section "InputClass"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Identifier "keyboard"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    MatchIsKeyboard "yes"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbLayout" "es"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbVariant" "nodeadkeys"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\EndSection' 20-keyboard.conf
+	  	  sudo mv  20-keyboard.conf /etc/X11/xorg.conf.d/20-keyboard.conf
+	  	  #
+	  	  echo Cambiando greeter de LightDM a Deepin
+	  	  sudo sed -i 's/#greeter-session=lightdm-yourgreeter-greeter/greeter-session=lightdm-deepin-greeter/g' /etc/lightdm/lightdm.conf
+	  	  #
+	  	  echo  -=Activando LightDM=-
+	  	  sudo systemctl enable lightdm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"GNOME")
+	  	  echo "Escogiste instalar el entorno de escritorio GNOME"
+	  	  sleep 1s
+	  	  sudo pacman -S baobab cheese epiphany evince file-roller gdm gedit gnome-backgrounds
+	  	  sudo pacman -S gnome-calculator gnome-calendar gnome-characters gnome-clocks
+	  	  sudo pacman -S gnome-color-manager gnome-contacts gnome-control-center gnome-disk-utility
+	  	  sudo pacman -S gnome-font-viewer gnome-keyring gnome-logs gnome-menus
+	  	  sudo pacman -S gnome-remote-desktop gnome-screenshot gnome-session gnome-settings-daemon gnome-shell
+	  	  sudo pacman -S gnome-shell-extensions gnome-software gnome-system-monitor gnome-terminal gnome-themes-extra
+	  	  sudo pacman -S gnome-user-docs gnome-user-share gnome-video-effects gnome-weather grilo-plugins
+	  	  sudo pacman -S gvfs-afc gvfs-goa gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb
+	  	  sudo pacman -S nautilus rygel sushi
+	  	  sudo pacman -S totem vino xdg-user-dirs-gtk
+	  	  sudo pacman -S simple-scan
+	  	  sleep 2s
+	  	  sudo pacman -S dconf-editor gnome-mines gnome-sound-recorder gnome-sudoku 
+	  	  sudo pacman -S gnome-taquin gnome-tetravex gnome-tweaks
+	  	  sudo pacman -S gnome-software-packagekit-plugin
+	  	  sudo pacman -S gnome-initial-setup gnome-tour gnome-firmware
+	  	  #
+	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
+	  	  yay -S qt5-styleplugins qt5ct 
+	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
+	  	  #
+	  	  sleep 2s
+	  	  yay -S chrome-gnome-shell
+	  	  yay -S gnome-shell-extension-mpris-indicator-button
+	  	  yay -S gnome-backgrounds-bitday-git gnome-backgrounds-lakeside-git
+	  	  yay -S gnome-mojave-timed-wallpaper dynamic-wallpaper-catalina-gnome-timed-git
+	  	  #
+	  	  echo -=Aplicando modificaciones a gsettings=-
+	  	  sleep 2s
+	  	  echo Reconfigurando Cantarell como tipografía en GNOME Shell
+	  	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  	  gsettings set org.gnome.totem subtitle-font 'Noto Sans Regular 12'
+	  	  echo Configurando tap-to-click en GNOME Shell
+	  	  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+	  	  echo Configurando el botón de Apagado a interactivo
+	  	  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+	  	  echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
+	  	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
+	  	  #
+	  	  sleep 2s
+	  	  #
+	  	  echo   ---=Activando Gnome Display Manager "gdm"=---
+	  	  sudo systemctl enable gdm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"KDE")
+	  	  echo "Escogiste instalar KDE"
+	  	  sleep 1s
+	  	  sudo pacman -S plasma
+	  	  sudo pacman -S akonadi-calendar-tools akonadi-import-wizard akonadiconsole 
+	  	  sudo pacman -S ark okular
+	  	  sudo pacman -S dolphin dolphin-plugins dragon ffmpegthumbs filelight gwenview konsole spectacle
+	  	  sudo pacman -S kaccounts-integration kaccounts-providers kaddressbook kamoso kate kcalc kdegraphics-mobipocket
+	  	  sudo pacman -S kcharselect kcolorchooser kmail kdenetwork-filesharing kdialog kfind khelpcenter ktorrent
+	  	  sudo pacman -S plasma-wayland-session adapta-kde materia-kde arc-kde
+	  	  sudo pacman -S redshift plasma5-applets-redshift-control
+	  	  sleep 2s
+	  	  sudo pacman -S kio-gdrive kdeconnect
+	  	  sudo pacman -S partitionmanager plasma-browser-integration
+	  	  sleep 2s
+	  	  yay -S archlinux-themes-sddm
+	  	  yay -S systemd-kcm kcm-uefi
+	  	  # 
+	  	  echo Ajustando mapa de teclas para sddm
+	  	  sudo sed -i '$ a\setxkbmap es' /usr/share/sddm/scripts/Xsetup
+	  	  #
+	  	  echo  -=Activando Simple Desktop Display Manager "sddm"=-
+	  	  sudo systemctl enable sddm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"Mate")
+	  	  echo "Escogiste instalar Mate"
+	  	  sudo pacman -S mate mate-extra
+	  	  sleep 2s
+	  	  sudo pacman -S mate-netbook mate-applet-streamer 
+	  	  sudo pacman -S lightdm-gtk-greeter gnome-mplayer
+	  	  sleep 2s
+	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
+	  	  sudo pacman -S qt5-styleplugins qt5ct 
+	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
+	  	  #
+	  	  yay -S mate-applet-lockkeys
+	  	  #
+	  	  echo Cambiando distribución del teclado en LightDM
+	  	  echo >> 20-keyboard.conf
+	  	  sudo sed -i '$ a\Section "InputClass"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Identifier "keyboard"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    MatchIsKeyboard "yes"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbLayout" "es"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbVariant" "nodeadkeys"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\EndSection' 20-keyboard.conf
+	  	  sudo mv  20-keyboard.conf /etc/X11/xorg.conf.d/20-keyboard.conf
+	  	  #
+	  	  echo Cambiando greeter de LightDM a GTK-Greeter
+	  	  sudo sed -i 's/#greeter-session=lightdm-yourgreeter-greeter/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+	  	  #
+	  	  echo  -=Activando LightDM=-
+	  	  sudo systemctl enable lightdm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"Xfce")
+	  	  echo "Escogiste instalar Xfce"
+	  	  sudo pacman -S xfce4
+	  	  sudo pacman -S ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-artwork
+	  	  sudo pacman -S xfce4-battery-plugin xfce4-datetime-plugin xfce4-diskperf-plugin
+	  	  sudo pacman -S xfce4-fsguard-plugin xfce4-mount-plugin xfce4-netload-plugin
+	  	  sudo pacman -S xfce4-notifyd xfce4-pulseaudio-plugin xfce4-taskmanager
+	  	  sudo pacman -S xfce4-verve-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin
+	  	  sleep 2s
+	  	  sudo pacman -S network-manager-applet galculator gnome-font-viewer totem
+	  	  sudo pacman -S file-roller baobab cheese gnome-video-effects gnome-screenshot
+	  	  sudo pacman -S pavucontrol zenity light-locker gnome-backgrounds redshift
+	  	  sudo pacman -S light-locker lightdm-gtk-greeter lightdm-gtk-greeter-settings gnome-screensaver 
+	  	  sleep 2s
+	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
+	  	  sudo pacman -S qt5-styleplugins qt5ct 
+	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
+	  	  #
+	  	  #yay -S redshift-gtk-git 
+	  	  yay -S mugshot indicator-keylock archlinux-themes-balou
+	  	  yay -S xfce4-windowck-plugin
+	  	  #
+	  	  echo -=KDE Connect=-
+	  	  yay -S indicator-kdeconnect kde-cli-tools
+	  	  #
+	  	  echo Cambiando distribución del teclado en LightDM
+	  	  echo >> 20-keyboard.conf
+	  	  sudo sed -i '$ a\Section "InputClass"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Identifier "keyboard"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    MatchIsKeyboard "yes"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbLayout" "es"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\    Option "XkbVariant" "nodeadkeys"' 20-keyboard.conf
+	  	  sudo sed -i '$ a\EndSection' 20-keyboard.conf
+	  	  sudo mv  20-keyboard.conf /etc/X11/xorg.conf.d/20-keyboard.conf
+	  	  #
+	  	  echo Cambiando greeter de LightDM a GTK-Greeter
+	  	  sudo sed -i 's/#greeter-session=lightdm-yourgreeter-greeter/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+	  	  #
+	  	  echo  -=Activando LightDM=-
+	  	  sudo systemctl enable lightdm.service
+	  	  #
+	  	  break
+	  	  ;;
+	  	"Salir")
+	  	  break
+	  	  ;;
+	  	*) echo invalid option;;
+	      esac
+	  done
+	  #
+	  echo Escondiendo entradas .desktop
+	  mkdir -p ~/.local/share/applications/
+	  #
+	  cp /usr/share/applications/avahi-discover.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/avahi-discover.desktop
+	  #
+	  cp /usr/share/applications/bvnc.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bvnc.desktop
+	  #
+	  cp /usr/share/applications/bssh.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/bssh.desktop
+	  #
+	  cp /usr/share/applications/calibre-ebook-edit.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-ebook-edit.desktop
+	  #
+	  cp /usr/share/applications/calibre-ebook-viewer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-ebook-viewer.desktop
+	  #
+	  cp /usr/share/applications/calibre-lrfviewer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/calibre-lrfviewer.desktop
+	  #
+	  cp /usr/share/applications/cmake-gui.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/cmake-gui.desktop
+	  #
+	  cp /usr/share/applications/cups.desktop ~/.local/share/applications/cups.desktop
+	  echo Para esconder el acceso a la Interfaz Web de CUPS:
+	  echo Añadir "NoDisplay=true" al final del archivo ubicado en ~/.local/share/applications/cups.desktop
+	  sleep 3s
+	  #
+	  cp /usr/share/applications/lstopo.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/lstopo.desktop
+	  #
+	  cp /usr/share/applications/nm-connection-editor.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/nm-connection-editor.desktop
+	  #
+	  cp /usr/share/applications/org.freedesktop.MalcontentControl.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/org.freedesktop.MalcontentControl.desktop
+	  #
+	  cp /usr/share/applications/qv4l2.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qv4l2.desktop
+	  #
+	  cp /usr/share/applications/qvidcap.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/qvidcap.desktop
+	  #
+	  cp /usr/share/applications/system-config-printer.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/system-config-printer.desktop
+	  #
+	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #
+	  echo  -=Actualizando y limpiando $NAME=-
+	  sudo pacman -Syu --noconfirm
+	  sudo pacman -Scc
+	  yay -Sc
+	  screenfetch
+	  df -hT
+	  uptime
+	  echo ---=[El sistema operativo basado en $NAME está listo]=---
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#
