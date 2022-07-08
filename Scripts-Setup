@@ -38,19 +38,19 @@ elif [ `which apt` ]; then
 	  echo Descargando scripts adecuados para $NAME
 	  sleep 3s
 	  if [ ! -e "$FILE" ]; then
-	  echo $NAME parece estar instalado en Crostini, o en un contenedor
+	  echo $NAME $VERSION parece estar instalado en Crostini, o en un contenedor
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
 	  else
-	  echo $NAME parece estar instalado en hardware
+	  echo $NAME $VERSION parece estar instalado en hardware
 	  sudo rm -rf Distro-Setup-Ubuntu
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-Setup -O /usr/local/bin/Distro-Setup-Ubuntu
 	  sudo chmod +x Distro-Setup-Ubuntu
 	  fi
 	  #
 elif [ `which dnf` ]; then
-	  echo Descargando scripts adecuados para $NAME
+	  echo Descargando scripts adecuados para $NAME $VERSION
 	  sleep 3s
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
@@ -69,12 +69,12 @@ fi
 	  sudo rm -rf Tweaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
 	  sudo chmod +x Tweaks
-	  sudo rm -rf Scripts-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
-	  sudo chmod +x Scripts-Setup
 	  #echo Descargando reglas de polkit para administrar sistema sin autenticarse
 	  #sudo mkdir -p /etc/polkit-1/rules.d/
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  sudo rm -rf Scripts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
+	  sudo chmod +x Scripts-Setup
 	  #
 	  sudo rm -rf screenfetch-dev
 	  sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch-dev
