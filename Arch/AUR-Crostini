@@ -9,10 +9,13 @@ sudo pacman -Syu --noconfirm
 #
 cd ~/AUR/
 git clone https://aur.archlinux.org/cros-container-guest-tools-git.git
+git clone https://aur.archlinux.org/yay-bin.git
 #git clone https://aur.archlinux.org/menulibre.git
 cd cros-container-guest-tools-git && makepkg -si --noconfirm
+cd ../yay-bin/ && makepkg -si --noconfirm
 #cd ../menulibre/ && makepkg -si --noconfirm
-cd .. && rm -rf cros-container-guest-tools-git #menulibre
+cd .. && rm -rf cros-container-guest-tools-git yay-bin #menulibre
+cd ~
 #
 echo Limpiando archivos antiguos
 #rm -rf ~/.config/pulse
