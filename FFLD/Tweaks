@@ -114,23 +114,23 @@ do
 	  cd /usr/share/icons/hicolor/128x128/apps
 	  #
 	  sudo rm org.gnome.ArchiveManager.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.ArchiveManager.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
 	  sudo rm org.gnome.baobab.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.baobab.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
 	  sudo rm  org.gnome.Evince.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Evince.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
 	  sudo rm org.gnome.font-viewer.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.font-viewer.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
 	  sudo rm org.gnome.gedit.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.gedit.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
 	  sudo rm org.gnome.Lollypop.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Lollypop.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
 	  sudo rm org.gnome.Nautilus.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
 	  sudo rm org.gnome.Software.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
 	  sudo rm org.gnome.Yelp.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
 	  #
 	  cd ~
 	  else
