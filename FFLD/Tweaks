@@ -131,8 +131,6 @@ do
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
 	  sudo rm org.gnome.Terminal.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
-	  sudo rm org.gnome.Totem.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Totem.png
 	  sudo rm org.gnome.Yelp.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
 	  #
