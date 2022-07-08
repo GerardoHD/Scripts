@@ -136,7 +136,7 @@ do
 	  	sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi /efi/efi/Linux/Arch.efi
 	  	#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi /efi/efi/Linux/Arch-LTS.efi
 	  	echo Descargando hook de pacman para crear imagenes de kernel y firmarlas para secure boot
-	  	sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/92-Arch-UKI.hook -O /usr/share/libalpm/hooks/92-Arch-UKI.hook
+	  	sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/92-Arch-UKI.hook -O /usr/share/libalpm/hooks/92-Arch-UKI.hook
 	  	break
 	  	;;
 	  	#
@@ -228,23 +228,19 @@ do
 	   	*) echo invalid option;;
 	      esac
 	  done
-	  #
 	  echo  -=Instalando soporte del Arch User Repository=-
 	  mkdir ~/AUR/
 	  cd ~/AUR/
+ 	  git clone https://aur.archlinux.org/yay-bin.git
 	  git clone https://aur.archlinux.org/menulibre.git
-	  cd menulibre/ && makepkg -si --noconfirm
-	  cd .. && rm -rf menulibre
-	  #
-	  git clone https://aur.archlinux.org/yay-bin.git
 	  cd yay-bin/ && makepkg -si --noconfirm
-	  cd .. && rm -rf yay-bin
+	  cd ../menulibre/ && makepkg -si --noconfirm
+	  cd .. && rm -rf yay-bin menulibre
 	  cd ~
 	  #
 	  echo  -=Actualizando $NAME=-
 	  yay -Syyu
-	  #
-	  #echo  -=Grub=-
+	  #ho  -=Grub=-
 	  #PS3='¿Quieres instalar GRUB?'
 	  #options=("Si" "No")
 	  #select opt in "${options[@]}"

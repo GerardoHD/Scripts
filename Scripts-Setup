@@ -19,7 +19,7 @@ if [ `which pacman` ]; then
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/Arch-Crostini-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
 	  sudo rm -rf AUR-Updater
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/AUR-Crostini -O /usr/local/bin/AUR-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Crostini -O /usr/local/bin/AUR-Updater
 	  sudo chmod +x /usr/local/bin/AUR-Updater
 	  else
 	  echo $NAME parece estar instalado en hardware
@@ -30,7 +30,7 @@ if [ `which pacman` ]; then
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/Arch-UKI
 	  sudo chmod +x Arch-UKI
 	  sudo rm -rf AUR-Updater
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/AUR-Arch -O /usr/local/bin/AUR-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Arch -O /usr/local/bin/AUR-Updater
 	  sudo chmod +x /usr/local/bin/AUR-Updater
 	  fi
 	  #

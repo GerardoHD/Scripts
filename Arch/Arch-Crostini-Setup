@@ -108,7 +108,7 @@ do
 	  #
 	  echo Descargando reglas de polkit para realizar actividades del sistema sin que pida autenticación
 	  #sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo -=Aplicando modificaciones a gsettings=-
 	  sleep 2s
@@ -154,17 +154,16 @@ do
 	  echo Descargando iconos en .png para aplicaciones de GNOME
 	  cd /usr/share/icons/hicolor/128x128/apps
 	  #
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.ArchiveManager.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.baobab.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Evince.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.font-viewer.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.gedit.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Lollypop.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Nautilus.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Software.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Terminal.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Totem.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/icons/org.gnome.Yelp.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Terminal.png
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
 	  #
 	  cd ~
 	  #
