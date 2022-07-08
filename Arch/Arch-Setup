@@ -2,7 +2,7 @@
 source /etc/os-release
 #
 echo	------==Script Creado por GerardoHD==------
-echo https://www.github.com/GerardoHD/Linux
+echo https://www.github.com/GerardoHD
 echo Script creado para instalar un sistema basado en $NAME
 echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
 echo ***No repetir la ejecución de las etapas***

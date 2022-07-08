@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 echo	------==Script Creado por GerardoHD==------
 #
 echo Se necesita introducir la carpeta del perfil, identificarlo en chrome://version/#profile_path y modificar el u- debajo

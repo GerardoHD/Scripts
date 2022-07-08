@@ -2,7 +2,7 @@
 source /etc/os-release
 #
 echo	------==Script Creado por GerardoHD==------
-echo https://www.github.com/GerardoHD/Linux
+echo https://www.github.com/GerardoHD
 echo Este script solo soporta los siguientes gestores de paquetes: apt, dnf y pacman
 echo Ejecutando comandos adecuados para: $NAME
 echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
