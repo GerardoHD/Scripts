@@ -240,7 +240,7 @@ do
 	  #
 	  echo  -=Actualizando $NAME=-
 	  yay -Syyu
-	  #ho  -=Grub=-
+	  #echo  -=Grub=-
 	  #PS3='¿Quieres instalar GRUB?'
 	  #options=("Si" "No")
 	  #select opt in "${options[@]}"

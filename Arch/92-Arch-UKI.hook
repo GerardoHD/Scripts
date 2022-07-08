@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = systemd
+Target = linux
+Target = linux-lts
+Target = grub
+Target = mkinitcpio
+Target = intel-ucode
+Target = amd-ucode
+Target = edk2-shell
+
+[Action]
+Description = Firmando archivos para Secure Boot
+When = PostTransaction
+Exec = /bin/sh -c 'Arch-UKI'

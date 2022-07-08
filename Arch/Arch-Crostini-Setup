@@ -65,14 +65,12 @@ do
 	  mkdir ~/AUR/
 	  cd ~/AUR/
 	  git clone https://aur.archlinux.org/cros-container-guest-tools-git.git
+	  git clone https://aur.archlinux.org/yay-bin.git
 	  #git clone https://aur.archlinux.org/menulibre.git
 	  cd cros-container-guest-tools-git && makepkg -si --noconfirm
+	  cd ../yay-bin/ && makepkg -si --noconfirm
 	  #cd ../menulibre/ && makepkg -si --noconfirm
-	  cd .. && rm -rf cros-container-guest-tools-git #menulibre
-	  #
-	  git clone https://aur.archlinux.org/yay-bin.git
-	  cd yay-bin/ && makepkg -si --noconfirm
-	  cd .. && rm -rf yay-bin
+	  cd .. && rm -rf cros-container-guest-tools-git yay-bin #menulibre
 	  cd ~
 	  #
 	  systemctl --user enable --now sommelier@0 sommelier-x@0 sommelier@1 sommelier-x@1
