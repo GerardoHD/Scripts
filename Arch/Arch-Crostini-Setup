@@ -93,12 +93,12 @@ do
 	  #
 	  sudo pacman -S --noconfirm libotf
 	  #
-	  sudo pacman -S --noconfirm gnome-epub-thumbnailer
+	  sudo pacman -S --noconfirm gnome-epub-thumbnailer yelp
 	  sudo pacman -S --noconfirm gedit-plugins libgit2-glib vte3
 	  sudo pacman -S --noconfirm lollypop gthumb
 	  sudo pacman -S --noconfirm baobab file-roller gnome-font-viewer gnome-keyring
-	  sudo pacman -S --noconfirm gnome-terminal gnome-themes-extra nautilus yelp
-	  sudo pacman -S --noconfirm dconf-editor
+	  sudo pacman -S --noconfirm gnome-themes-extra nautilus
+	  #sudo pacman -S --noconfirm gnome-themes-extra nautilus gnome-terminal
 	  #
 	  sudo pacman -S --noconfirm gnome-software gnome-software-packagekit-plugin flatpak
 	  echo  -=Instalando repositorio Flathub=-
@@ -119,8 +119,8 @@ do
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
 	  echo Configurando Tema GTK
 	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-	  echo Activando CSD en GNOME Terminal
-	  gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
+	  #echo Activando CSD en GNOME Terminal
+	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
 	  #
 	  echo Actualizando carpetas de usuario
 	  xdg-user-dirs-update
