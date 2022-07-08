@@ -331,7 +331,7 @@ do
 	  #         2 "Fragments" off
 	  #         3 "Spotify" off
 	  #         4 "Bitwarden" off
-	  #         5 "Shortwave Nightly" off )
+	  #         5 "Shortwave" off )
 	  #choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  #clear
 	  #for choice in $choices
@@ -349,9 +349,8 @@ do
 	  #	4)
 	  #	  flatpak install flathub com.bitwarden.desktop -y
 	  #	  ;;
-	  #	  
 	  #	5)
-	  #	  flatpak install https://haeckerfelix.de/~repo/shortwave.flatpakref
+	  #	  flatpak install de.haeckerfelix.Shortwave
 	  #	  ;;
 	  #    esac
 	  #done
@@ -416,7 +415,7 @@ do
 	  #
 	  echo Descargando reglas de polkit para administrar sistema sin autenticarse
 	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  #echo Configurando SystemD para ignorar la tapa del portatil
 	  #sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf

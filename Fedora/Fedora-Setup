@@ -89,7 +89,7 @@ do
 	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 	   #
 	   echo Descargando reglas de polkit para administrar sistema sin autenticarse
-	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Linux/master/Scripts/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	   #
 	   echo  -=Activando Servicio SSHD "sshd"=-
 	   sudo systemctl enable sshd.service
