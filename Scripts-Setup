@@ -83,7 +83,7 @@ fi
 cd ~/
 sleep 1s
 screenfetch-dev
-echo Se aconseja editar/revisar alguno de los scripts ubicados en /usr/local/bin/
+echo Se aconseja revisar alguno de los siguientes scripts:
 ls /usr/local/bin/
 echo Ejecuta el script elegido
 #
