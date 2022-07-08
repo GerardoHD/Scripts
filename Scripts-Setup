@@ -46,7 +46,7 @@ elif [ `which apt` ]; then
 	  echo $NAME $VERSION parece estar instalado en hardware
 	  sudo rm -rf Distro-Setup-Ubuntu
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-Setup -O /usr/local/bin/Distro-Setup-Ubuntu
-	  sudo chmod +x Distro-Setup-Ubuntu
+	  sudo chmod +x Distro-Setup
 	  fi
 	  #
 elif [ `which dnf` ]; then
@@ -54,6 +54,7 @@ elif [ `which dnf` ]; then
 	  sleep 3s
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
+	  sudo chmod +x Distro-Setup
 	  #
 fi
 	  #
@@ -83,7 +84,7 @@ fi
 cd ~/
 sleep 1s
 screenfetch-dev
-echo Se aconseja revisar alguno de los siguientes scripts:
+echo Se aconseja revisar los scripts ubicados en /usr/local/bin/
 ls /usr/local/bin/
 echo Ejecuta el script elegido
 #
