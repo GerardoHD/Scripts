@@ -157,7 +157,6 @@ do
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Terminal.png
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
 	  #
 	  cd ~
