@@ -69,7 +69,7 @@ do
 	  systemctl enable NetworkManager.service
 	  #
 	  #echo  -=Systemd-boot=-
-	  #PS3='Quieres instalar systemd-boot?'
+	  #PS3='Quieres instalar systemd-boot? '
 	  #options=("Si" "No")
 	  #select opt in "${options[@]}"
 	  #do
@@ -121,7 +121,7 @@ do
 	  #efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux LTS" --loader "\efi\Linux\Arch-LTS.efi" --verbose
 	  #
 	  echo  -=Soporte Secure Boot=-
-	  PS3='¿Quieres activar el soporte de Secure Boot?'
+	  PS3='¿Quieres activar el soporte de Secure Boot? '
 	  options=("Si" "No")
 	  select opt in "${options[@]}"
 	  do
@@ -236,7 +236,7 @@ do
 	  echo  -=Actualizando $NAME=-
 	  yay -Syyu
 	  #echo  -=Grub=-
-	  #PS3='¿Quieres instalar GRUB?'
+	  #PS3='¿Quieres instalar GRUB? '
 	  #options=("Si" "No")
 	  #select opt in "${options[@]}"
 	  #do
