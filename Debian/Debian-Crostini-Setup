@@ -53,8 +53,24 @@ do
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
-	  sudo apt install gimp gimp-data-extras -y
-	  sudo apt install inkscape -y
+	  echo  -=GIMP e Inkscape=-
+	  PS3='¿Quieres instalar GIMP e Inkscape? '
+	  options=("Si" "No")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Si")
+	  	sudo apt install gimp gimp-data-extras -y
+	  	sudo apt install inkscape -y
+	  	break
+	  	;;
+	  	#
+	  	"No")
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	      esac
+	  done
 	  #
 	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
 	  sleep 3s
