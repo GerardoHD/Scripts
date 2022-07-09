@@ -53,6 +53,9 @@ do
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
+	  sudo apt install gimp gimp-data-extras -y
+	  sudo apt install inkscape -y
+	  #
 	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
 	  sleep 3s
 	  xhost +
