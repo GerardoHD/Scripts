@@ -53,6 +53,15 @@ do
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
+	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
+	  sleep 3s
+	  xhost +
+	  sudo software-properties-gtk
+	  #
+	  echo Actualizando software
+	  sudo apt update
+	  sudo apt dist-upgrade -y
+	  #
 	  echo  -=LibreOffice e Impresión=-
 	  cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
 	  options=(1 "Software común" on    # any option can be set to default to "on"
@@ -76,6 +85,7 @@ do
 	  	  sudo apt install mythes-es -y
 	  	  sudo apt install liblibreofficekitgtk -y
 		  sudo apt install fonts-liberation fonts-linuxlibertine -y
+		  sudo apt install fonts-ibm-plex -y
 	  	  sudo apt install cups system-config-printer -y
 	  	  sudo apt install printer-driver-cups-pdf -y
 	  	  sudo apt install printer-driver-escpr -y
@@ -105,8 +115,7 @@ do
 	      esac
 	  done
 	  #
-	  echo iniciando configuración de impresora
-	  xhost +
+	  echo Iniciando configuración de impresora
 	  sudo system-config-printer
 	  #
 	  echo  -=Instalando repositorio Flathub=-
