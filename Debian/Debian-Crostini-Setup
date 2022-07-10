@@ -49,7 +49,6 @@ do
 	  sudo apt install lollypop gthumb -y
 	  sudo apt install baobab file-roller gnome-font-viewer -y
 	  sudo apt install gnome-themes-extra nautilus -y
-	  #sudo apt install gnome-themes-extra nautilus gnome-terminal -y
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
