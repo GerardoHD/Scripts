@@ -86,7 +86,7 @@ do
 		  sudo apt install fonts-ibm-plex -y
 	  	  sudo apt install cups system-config-printer -y
 	  	  sudo apt install printer-driver-cups-pdf -y
-	  	  sudo apt install printer-driver-escpr -y
+	  	  sudo apt install printer-driver-escpr psutils -y
 	  	  ;;
 	  	2)
 	  	  sudo apt install libreoffice -y
