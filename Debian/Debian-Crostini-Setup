@@ -40,7 +40,7 @@ do
 	  #
 	  sudo apt install fonts-cantarell -y
 	  sudo apt install bash-completion manpages-es -y
-	  sudo apt install ffmpegthumbnailer youtube-dl -y
+	  #sudo apt install ffmpegthumbnailer youtube-dl -y
 	  sudo apt install btrfs-progs exfat-utils f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump -y
 	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop -y
 	  sudo apt install adb fastboot -y
@@ -52,25 +52,6 @@ do
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
-	  echo  -=GIMP e Inkscape=-
-	  PS3='¿Quieres instalar GIMP e Inkscape? '
-	  options=("Si" "No")
-	  select opt in "${options[@]}"
-	  do
-	      case $opt in
-	  	"Si")
-	  	sudo apt install gimp gimp-data-extras -y
-	  	sudo apt install inkscape -y
-	  	break
-	  	;;
-	  	#
-	  	"No")
-	  	break
-	  	;;
-	  	*) echo invalid option;;
-	      esac
-	  done
-	  #
 	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
 	  sleep 3s
 	  xhost +
@@ -80,16 +61,15 @@ do
 	  sudo apt update
 	  sudo apt dist-upgrade -y
 	  #
-	  echo  -=LibreOffice e Impresión=-
+	  echo  -=Software opcional=-
 	  cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
-	  options=(1 "Software común" on    # any option can be set to default to "on"
+	  options=(1 "Software común para LibreOffice" on    # any option can be set to default to "on"
 	           2 "LibreOffice" off
 	           3 "LibreOffice Base" off
 	           4 "LibreOffice Calc" on
-	           5 "LibreOffice Draw" off
-	           6 "LibreOffice Impress" on
-	           7 "LibreOffice Math" off
-	           8 "LibreOffice Writer" on)
+	           5 "LibreOffice Impress + Draw" on
+	           6 "LibreOffice Writer + Math" on
+	           7 "GIMP" on)
 	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  clear
 	  for choice in $choices
@@ -113,22 +93,19 @@ do
 	  	  ;;
 	  	3)
 	  	  sudo apt install libreoffice-base -y
-	  	  sudo apt install libreoffice-base-core -y
+	  	  #sudo apt install libreoffice-base-core -y
 	  	  ;;
 	  	4)
 	  	  sudo apt install libreoffice-calc -y 
 	  	  ;;
 	  	5)
-	  	  sudo apt install libreoffice-draw -y
-	  	  ;;
-	  	6)
 	  	  sudo apt install libreoffice-impress -y
 	  	  ;;
-	  	7)
-	  	  sudo apt install libreoffice-math -y
-	  	  ;;
-	  	8)
+	  	6)
 	  	  sudo apt install libreoffice-writer -y 
+	  	  ;;
+	  	7)
+	  	  sudo apt install gimp gimp-data-extras -y
 	  	  ;;
 	      esac
 	  done
@@ -173,8 +150,8 @@ do
 	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
 	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
 	  #
-	  cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
-	  echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
+	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
 	  #
 	  echo Descargando iconos en .png para aplicaciones de GNOME
 	  cd /usr/share/icons/hicolor/128x128/apps
