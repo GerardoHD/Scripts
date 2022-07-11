@@ -40,7 +40,7 @@ do
 	  #
 	  sudo apt install fonts-cantarell -y
 	  sudo apt install bash-completion manpages-es -y
-	  sudo apt install ffmpegthumbnailer youtube-dl
+	  sudo apt install ffmpegthumbnailer youtube-dl -y
 	  sudo apt install btrfs-progs exfat-utils f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump -y
 	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop -y
 	  sudo apt install adb fastboot -y
