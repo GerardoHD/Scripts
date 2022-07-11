@@ -35,7 +35,7 @@ do
 	  #
 	  sudo apt update --allow-releaseinfo-change
 	  sudo apt dist-upgrade -y
-	  sudo apt install apt-utils debconf pv tar cgpt -y
+	  sudo apt install apt-utils pv tar cgpt -y
 	  sudo apt install binutils acl attr -y
 	  #
 	  sudo apt install fonts-cantarell -y
