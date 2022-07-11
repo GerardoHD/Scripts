@@ -40,13 +40,13 @@ do
 	  #
 	  sudo apt install fonts-cantarell -y
 	  sudo apt install bash-completion manpages-es -y
-	  sudo apt install ffmpegthumbnailer youtube-dl -y
+	  sudo apt install ffmpegthumbnailer youtube-dl exiv2 -y
 	  sudo apt install btrfs-progs exfat-utils f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump -y
-	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop -y
-	  sudo apt install adb fastboot p7zip-rar -y
+	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip p7zip-rar -y
+	  sudo apt install adb fastboot  -y
 	  #
 	  sudo apt install gedit-plugins -y
-	  sudo apt install lollypop gthumb exiv2 -y
+	  sudo apt install lollypop gthumb -y
 	  sudo apt install baobab file-roller gnome-font-viewer -y
 	  sudo apt install gnome-themes-extra nautilus -y
 	  #
