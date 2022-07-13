@@ -82,7 +82,7 @@ do
 	   flatpak install com.github.hugolabe.Wike
 	   flatpak install com.github.huluti.Curtail
 	   flatpak install org.gnome.gitlab.YaLTeR.Identity
-	   flatpak install com.github.neithern.g4music.Locale
+	   flatpak install com.github.neithern.g4music
 	   #flatpak install im.bernard.Nostalgia
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
