@@ -1,3 +1,6 @@
+echo Instalando Nexus Tools
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
+
 #Arctic Camo Special Edition
 winget install 9NG340XBBFH8
 
