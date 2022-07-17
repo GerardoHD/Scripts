@@ -32,6 +32,12 @@ if [ `which pacman` ]; then
 	  sudo rm -rf AUR-Updater
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Arch -O /usr/local/bin/AUR-Updater
 	  sudo chmod +x /usr/local/bin/AUR-Updater
+	  sudo rm -rf GNOME-Fonts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GNOME-Fonts-Setup
+	  sudo chmod +x GNOME-Fonts-Setup
+	  sudo rm -rf GRUB-OS-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Setup
+	  sudo chmod +x GRUB-OS-Setup
 	  fi
 	  #
 elif [ `which apt` ]; then
@@ -55,6 +61,9 @@ elif [ `which dnf` ]; then
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
+	  sudo rm -rf GRUB-OS-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Setup
+	  sudo chmod +x GRUB-OS-Setup
 	  #
 fi
 	  #
@@ -64,9 +73,6 @@ fi
 	  sudo rm -rf Distros-Updater
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Distros-Updater
 	  sudo chmod +x Distros-Updater
-	  sudo rm -rf GNOME-Fonts-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GNOME-Fonts-Setup
-	  sudo chmod +x GNOME-Fonts-Setup
 	  sudo rm -rf Tweaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
 	  sudo chmod +x Tweaks

@@ -11,7 +11,7 @@ exit
 fi
 #
 PS3='Elige la acción a realizar: '
-options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Configurar tipografías en GNOME" "Descargar iconos en .png" "Salir")
+options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Descargar iconos en .png" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -102,10 +102,6 @@ do
 	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
 	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
 	  #
-	  break
-	  ;;
-	  "Configurar tipografías en GNOME")
-	  GNOME-Fonts-Setup
 	  break
 	  ;;
 	  "Descargar iconos en .png")
