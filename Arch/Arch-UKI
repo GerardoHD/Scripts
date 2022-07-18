@@ -20,6 +20,7 @@ objcopy \
     --add-section .linux="/boot/vmlinuz-linux"                          --change-section-vma .linux=0x2000000  \
     --add-section .initrd="/root/Arch-UKI/initramfs.img"                --change-section-vma .initrd=0x3000000 \
     /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch.efi
+#
 #Imagen unificada de Kernel LTS
 #objcopy \
 #    --add-section .osrel="/etc/os-release"                              --change-section-vma .osrel=0x20000    \
@@ -29,13 +30,13 @@ objcopy \
 #    --add-section .initrd="/root/Arch-UKI/initramfs-lts.img"            --change-section-vma .initrd=0x3000000 \
 #    /usr/lib/systemd/boot/efi/linuxx64.efi.stub /efi/efi/Linux/Arch-LTS.efi
 #
-#echo Actualizando Systemd-boot
+#echo Actualizando systemd-boot
 #bootctl update --path=/efi
 #
 echo Copiando EFI Shell a ESP
 cp /usr/share/edk2-shell/x64/Shell* /efi/efi/UEFI/
 #
-echo Firmando archivos para Secure Boot...
+echo Firmando archivos para secure boot
 sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi	/efi/efi/Linux/Arch.efi
 #sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi	/efi/efi/Linux/Arch-LTS.efi
 sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/UEFI/Shell.efi	/efi/efi/UEFI/Shell.efi

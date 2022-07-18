@@ -120,7 +120,7 @@ do
 	  sleep 5s
 	  wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #
-	  echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
 	  sudo mkdir -p /etc/polkit-1/rules.d/
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #

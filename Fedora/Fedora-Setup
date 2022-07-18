@@ -90,7 +90,8 @@ do
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
 	   #
-	   echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	   echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
+	   #sudo mkdir -p /etc/polkit-1/rules.d/
 	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	   #
 	   echo  -=Activando Servicio SSHD "sshd"=-
@@ -108,6 +109,7 @@ do
 	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  gsettings set org.gnome.totem subtitle-font 'Noto Sans Regular 12'
 	  #
 	  echo Configurando botones de la barra de título
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
