@@ -322,30 +322,31 @@ do
 	  #
 	  #echo  -=Flatpak=-
 	  #cmd=(dialog --separate-output --checklist "Elige los flatpak a instalar" 22 76 16)
-	  #options=(1 "Gradio" off    # any option can be set to default to "on"
-	  #         2 "Fragments" off
-	  #         3 "Spotify" off
-	  #         4 "Bitwarden" off
-	  #         5 "Shortwave" off )
+	  #options=(1 "Extension Manager" on
+	  #        2 "Commit" off
+	  #        3 "G4Music" off
+	  #        4 "Flatseal" off
+	  #        5 "Shortwave" off)
 	  #choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  #clear
 	  #for choice in $choices
 	  #do
 	  #    case $choice in
 	  #	1)
-	  #	  flatpak install flathub de.haeckerfelix.gradio -y
+	  #	  flatpak install com.mattjakeman.ExtensionManager -y
 	  #	  ;;
 	  #	2)
-	  #	  flatpak install flathub de.haeckerfelix.Fragments -y
+	  #	  flatpak install re.sonny.Commit -y
+	  #	  git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 	  #	  ;;
 	  #	3)
-	  #	  flatpak install flathub com.spotify.Client -y
+	  #	  flatpak install com.github.neithern.g4music -y
 	  #	  ;;
 	  #	4)
-	  #	  flatpak install flathub com.bitwarden.desktop -y
+	  #	  flatpak install com.github.tchx84.Flatseal -y
 	  #	  ;;
 	  #	5)
-	  #	  flatpak install de.haeckerfelix.Shortwave
+	  #	  flatpak install de.haeckerfelix.Shortwave -y
 	  #	  ;;
 	  #    esac
 	  #done
