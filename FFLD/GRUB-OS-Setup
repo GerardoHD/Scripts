@@ -27,4 +27,6 @@ do
 	esac
 done
 #sudo cat /boot/efi/efi/boot/grub.cfg | less
+#dialog --title "Comprobar grub.cfg" --textbox boot/efi/efi/boot/grub.cfg 0 0
+#clear
 #
