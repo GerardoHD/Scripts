@@ -64,11 +64,9 @@ do
 	  sleep 3s
 	  sudo vim /etc/sudoers
 	  #
-	  #NetworkManager.service
 	  echo Activando NetworkManager:
 	  systemctl enable NetworkManager.service
 	  #
-	  #echo  -=Systemd-boot=-
 	  #PS3='Quieres instalar systemd-boot? '
 	  #options=("Si" "No")
 	  #select opt in "${options[@]}"
@@ -86,8 +84,7 @@ do
 	  #   esac
 	  #done
 	  #
-	  #Creando carpetas y cmdline
-	  echo -=Creando imagen de Kernel Unificado=-
+	  echo -=Creando imagen de kernel unificado=-
 	  mkdir -p /efi/efi/Linux
 	  mkdir -p /root/Arch-UKI
 	  echo root=LABEL=Arch quiet loglevel=1 vga=current rd.systemd.show_status=auto rd.udev.log_priority=3 random.trust_cpu=on > /root/Arch-UKI/cmdline.txt
@@ -127,7 +124,7 @@ do
 	  do
 	      case $opt in
 	  	"Si")
-	  	echo Firmando archivos para Secure Boot
+	  	echo Firmando archivos para secure boot
 	  	sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi /efi/efi/Linux/Arch.efi
 	  	#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi /efi/efi/Linux/Arch-LTS.efi
 	  	echo Descargando hook de pacman para crear imagenes de kernel y firmarlas para secure boot
@@ -142,7 +139,6 @@ do
 	     esac
 	  done
 	  #
-	  #Configurar pacman
 	  echo Inicializando pacman
 	  sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 	  sudo sed -i 's/#CheckSpace/CheckSpace/g' /etc/pacman.conf
@@ -152,7 +148,6 @@ do
 	  sudo pacman-key --init
 	  sudo pacman -Syyu --noconfirm
 	  #
-	  #Configurar contraseña root y de usuario
 	  echo introduzca contraseña root
 	  passwd
 	  echo introduzca contraseña de su usuario
@@ -223,6 +218,7 @@ do
 	   	*) echo invalid option;;
 	      esac
 	  done
+	  #
 	  echo  -=Instalando soporte del Arch User Repository=-
 	  mkdir ~/AUR/
 	  cd ~/AUR/
@@ -310,7 +306,7 @@ do
 	  	sudo pacman -S gedit-plugins libgit2-glib evince gnome-disk-utility geary
 	  	sudo pacman -S lollypop fragments gthumb gparted
 	  #
-	  echo -=Soporte de impresion=-
+	  echo -=Soporte de impresión=-
 	  	sudo pacman -S gutenprint foomatic-db-gutenprint-ppds
 	  	sudo pacman -S system-config-printer cups-pk-helper
 	  #
@@ -359,7 +355,7 @@ do
 	  echo  -=Software opcional=-
 	  cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
 	  options=(1 "Firefox" off    # any option can be set to default to "on"
-	           2 "KODI, mediaelch, y filebot" off
+	           2 "KODI, mediaelch y filebot" off
 	           3 "VLC" off
 	           4 "LibreOffice" off
 	           5 "WPS Office" off
@@ -409,11 +405,11 @@ do
 	  #
 	  echo  -=Configuraciones varias=-
 	  #
-	  echo Descargando reglas de polkit para administrar sistema sin autenticarse
+	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
 	  sudo mkdir -p /etc/polkit-1/rules.d/
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
-	  #echo Configurando SystemD para ignorar la tapa del portatil
+	  #echo Configurando SystemD para ignorar la tapa de la laptop
 	  #sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf
 	  #sudo sed -i 's/#HandleLidSwitchDocked=suspend/HandleLidSwitchDocked=ignore/g' /etc/systemd/logind.conf
 	  #
@@ -423,20 +419,21 @@ do
 	  sudo systemctl enable sshd.service
 	  #
 	  sleep 2s
-	  echo  ---=Instalando entorno de escritorio=---
-	  PS3='Introduce tu elecciòn: '
+	  #
+	  PS3='Elige el entorno de escritorio a instalar: '
 	  options=("Cinnamon" "Deepin" "GNOME" "KDE" "Mate" "Xfce" "Salir")
 	  select opt in "${options[@]}"
 	  do
 	      case $opt in
 	  	"Cinnamon")
 	  	  echo "Escogiste instalar Cinnamon"
-	  	  sudo pacman -S cinnamon
 	  	  sleep 2s
+	  	  sudo pacman -S cinnamon
+	  	  #
 	  	  sudo pacman -S gnome-screenshot
 	  	  sudo pacman -S nemo-fileroller lightdm-gtk-greeter gnome-mplayer
 	  	  sudo pacman -S mate-calc gnome-system-monitor eom pluma
-	  	  sleep 2s
+	  	  #
 	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
 	  	  sudo pacman -S qt5-styleplugins qt5ct 
 	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
@@ -463,6 +460,7 @@ do
 	  	  ;;
 	  	"Deepin")
 	  	  echo "Escogiste instalar Deepin"
+	  	  sleep 2s
 	  	  sudo pacman -S deepin deepin-extra
 	  	  #
 	  	  echo Cambiando distribución del teclado en LightDM
@@ -485,7 +483,7 @@ do
 	  	  ;;
 	  	"GNOME")
 	  	  echo "Escogiste instalar el entorno de escritorio GNOME"
-	  	  sleep 1s
+	  	  sleep 2s
 	  	  sudo pacman -S baobab cheese epiphany evince file-roller gdm gedit gnome-backgrounds
 	  	  sudo pacman -S gnome-calculator gnome-calendar gnome-characters gnome-clocks
 	  	  sudo pacman -S gnome-color-manager gnome-contacts gnome-control-center gnome-disk-utility
@@ -537,7 +535,7 @@ do
 	  	  ;;
 	  	"KDE")
 	  	  echo "Escogiste instalar KDE"
-	  	  sleep 1s
+	  	  sleep 2s
 	  	  sudo pacman -S plasma
 	  	  sudo pacman -S akonadi-calendar-tools akonadi-import-wizard akonadiconsole 
 	  	  sudo pacman -S ark okular
@@ -563,11 +561,12 @@ do
 	  	  ;;
 	  	"Mate")
 	  	  echo "Escogiste instalar Mate"
-	  	  sudo pacman -S mate mate-extra
 	  	  sleep 2s
+	  	  sudo pacman -S mate mate-extra
+	  	  #
 	  	  sudo pacman -S mate-netbook mate-applet-streamer 
 	  	  sudo pacman -S lightdm-gtk-greeter gnome-mplayer
-	  	  sleep 2s
+	  	  #
 	  	  echo Instalando QT5CT para mejorar la integración de los programas QT en escritorios GTK 
 	  	  sudo pacman -S qt5-styleplugins qt5ct 
 	  	  sudo sed -i '$ a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
@@ -594,13 +593,14 @@ do
 	  	  ;;
 	  	"Xfce")
 	  	  echo "Escogiste instalar Xfce"
+	  	  sleep 2s
 	  	  sudo pacman -S xfce4
 	  	  sudo pacman -S ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-artwork
 	  	  sudo pacman -S xfce4-battery-plugin xfce4-datetime-plugin xfce4-diskperf-plugin
 	  	  sudo pacman -S xfce4-fsguard-plugin xfce4-mount-plugin xfce4-netload-plugin
 	  	  sudo pacman -S xfce4-notifyd xfce4-pulseaudio-plugin xfce4-taskmanager
 	  	  sudo pacman -S xfce4-verve-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin
-	  	  sleep 2s
+	  	  #
 	  	  sudo pacman -S network-manager-applet galculator gnome-font-viewer totem
 	  	  sudo pacman -S file-roller baobab cheese gnome-video-effects gnome-screenshot
 	  	  sudo pacman -S pavucontrol zenity light-locker gnome-backgrounds redshift

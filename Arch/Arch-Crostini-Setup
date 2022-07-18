@@ -1,7 +1,7 @@
 #!/bin/bash
 source /etc/os-release
 #
-echo	------==Script Creado por GerardoHD==------
+echo	------==Script creado por GerardoHD==------
 echo https://www.github.com/GerardoHD
 echo Script creado para configurar $NAME en Crostini
 echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
@@ -17,6 +17,7 @@ do
 	if [ `uname -m` = 'x86_64' ]; then
 	#x86_64
 	  echo "Arquitectura x86_64 detectada"
+	  sleep 2s
 	  ip -4 a show dev eth0
 	  grep 1000:1000 /etc/passwd|cut -d':' -f1
 	  useradd -m -g users -G audio,games,input,lp,optical,power,scanner,storage,sys,video,wheel -s /bin/bash gerardohd
@@ -24,6 +25,7 @@ do
 	elif [ `uname -m` = 'aarch64' ]; then
 	#aarch64
 	  echo "Arquitectura aarch64 detectada"
+	  sleep 2s
 	  ip -4 a show dev eth0
 	  grep 1000:1000 /etc/passwd|cut -d':' -f1
 	  pkill -9 -u alarm
@@ -53,7 +55,7 @@ do
 	  sudo locale-gen
 	  #
 	  echo Etapa 1 ha terminado de ejecutarse
-	  echo Se recomienda ejecutar: "sudo poweroff"
+	  echo Se recomienda ejecutar: "sudo poweroff" y cerrar Linux
 	  break
 	  ;;
 	"Instalar integración con ChromeOS")
@@ -104,7 +106,7 @@ do
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #
-	  echo Descargando reglas de polkit para realizar actividades del sistema sin que pida autenticación
+	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
 	  #sudo mkdir -p /etc/polkit-1/rules.d/
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
@@ -117,7 +119,7 @@ do
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  echo Configurando botones de la barra de título
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
-	  echo Configurando Tema GTK
+	  echo Configurando tema GTK
 	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 	  #echo Activando CSD en GNOME Terminal
 	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
