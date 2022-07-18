@@ -77,18 +77,18 @@ do
 	   #
 	   echo Instalando aplicaciones flatpak
 	   flatpak install com.mattjakeman.ExtensionManager
+	   flatpak install re.sonny.Commit
+	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	   flatpak install com.github.neithern.g4music
 	   flatpak install com.github.tchx84.Flatseal
-	   flatpak install io.bassi.Amberol
 	   flatpak install de.haeckerfelix.Shortwave
 	   flatpak install com.github.hugolabe.Wike
+	   flatpak install io.bassi.Amberol
 	   flatpak install com.github.huluti.Curtail
 	   flatpak install org.gnome.gitlab.YaLTeR.Identity
-	   flatpak install com.github.neithern.g4music
 	   #flatpak install im.bernard.Nostalgia
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
-   	   flatpak install re.sonny.Commit
-	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 	   #
 	   echo Descargando reglas de polkit para administrar sistema sin autenticarse
 	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
