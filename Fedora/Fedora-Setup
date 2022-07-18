@@ -110,22 +110,16 @@ do
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  gsettings set org.gnome.totem subtitle-font 'Noto Sans Regular 12'
-	  #
 	  echo Configurando botones de la barra de título
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
-	  #
 	  echo Configurando Tema GTK
 	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-	  #
 	  echo Configurando tap-to-click en GNOME Shell
 	  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-	  #
 	  echo Configurando el botón de Apagado a interactivo
 	  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
-	  #
 	  echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
 	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
-	  #
 	  echo Configurando GNOME Software para que prefiera paquetes nativos
 	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
 	  break

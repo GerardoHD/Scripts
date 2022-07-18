@@ -670,6 +670,7 @@ do
 	  echo Para esconder el acceso a la Interfaz Web de CUPS:
 	  echo Añadir "NoDisplay=true" al final del archivo ubicado en ~/.local/share/applications/cups.desktop
 	  sleep 3s
+	  sudo vim ~/.local/share/applications/cups.desktop
 	  #
 	  cp /usr/share/applications/lstopo.desktop ~/.local/share/applications/
 	  echo NoDisplay=true >> ~/.local/share/applications/lstopo.desktop
