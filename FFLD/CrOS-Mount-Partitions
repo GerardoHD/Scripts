@@ -7,10 +7,8 @@ sleep 3s
 #sudo mkdir -p /home/chronos/u-/MyFiles/EFI
 #sudo mkdir -p /home/chronos/u-/MyFiles/Windows
 #sudo mkdir -p /home/chronos/u-/MyFiles/Fedora
-#sudo mkdir -p /home/chronos/u-/MyFiles/Datos
 #sudo mount /dev/sda1 /home/chronos/u-/MyFiles/EFI
 #sudo mount /dev/sda2 /home/chronos/u-/MyFiles/Windows
-#sudo mount /dev/sda3 /home/chronos/u-/MyFiles/Fedora
-#sudo mount /dev/sda4 /home/chronos/u-/MyFiles/Datos
+#sudo mount /dev/sda5 /home/chronos/u-/MyFiles/Fedora
 df -hT
 screenfetch-dev
