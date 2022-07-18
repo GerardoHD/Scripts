@@ -321,7 +321,7 @@ do
 	  xdg-user-dirs-update
 	  #
 	  #echo  -=Flatpak=-
-	  #cmd=(dialog --separate-output --checklist "Elige los flatpak a instalar"
+	  #cmd=(dialog --separate-output --checklist "Elige los flatpak a instalar" 22 76 16)
 	  #options=(1 "Gradio" off    # any option can be set to default to "on"
 	  #         2 "Fragments" off
 	  #         3 "Spotify" off
