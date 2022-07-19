@@ -117,6 +117,7 @@ do
 	  echo  -=Activando Servicio cups "cupsd"=-
 	  sudo systemctl enable cups.service
 	  sudo systemctl start cups.service
+	  xhost +
 	  sudo system-config-printer
 	  #
 	  echo  -=Instalando repositorio Flathub=-
