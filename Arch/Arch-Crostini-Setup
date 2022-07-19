@@ -59,7 +59,7 @@ do
 	  break
 	  ;;
 	"Instalar integración con ChromeOS")
-	  sudo pacman -S --noconfirm usbutils
+	  sudo pacman -S --noconfirm usbutils xorg-xhost
 	  sudo pacman -S --noconfirm exfat-utils f2fs-tools jfsutils erofs-utils nilfs-utils xfsdump btrfs-progs xfsprogs ntfs-3g reiserfsprogs
 	  sudo pacman -S --noconfirm lsb-release pacman-contrib gvfs mtpfs gvfs-mtp #posix #mtools
 	  #
@@ -103,6 +103,22 @@ do
 	  #sudo pacman -S --noconfirm gnome-themes-extra nautilus gnome-terminal
 	  #
 	  sudo pacman -S --noconfirm gnome-software gnome-software-packagekit-plugin flatpak
+	  #
+	  sudo pacman -S libreoffice-fresh-es
+	  sudo pacman -S hunspell-es_any
+	  sudo pacman -S mythes-es
+	  sudo pacman -S ttf-liberation ttf-linux-libertine
+	  sudo pacman -S ttf-ibm-plex
+	  sudo pacman -S cups system-config-printer
+	  sudo pacman -S cups-pdf 
+	  sudo pacman -S epson-inkjet-printer-escpr psutils
+	  sudo pacman -S gimp
+	  #
+	  echo  -=Activando Servicio cups "cupsd"=-
+	  sudo systemctl enable cups.service
+	  sudo systemctl start cups.service
+	  sudo system-config-printer
+	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #
