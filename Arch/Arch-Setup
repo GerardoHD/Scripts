@@ -357,8 +357,8 @@ do
 	  options=(1 "Firefox" off    # any option can be set to default to "on"
 	           2 "KODI, mediaelch y filebot" off
 	           3 "VLC" off
-	           4 "LibreOffice" off
-	           5 "WPS Office" off
+	           4 "LibreOffice" on
+	           5 "GIMP" on
 	           6 "PLEX" off
 	           7 "Firmware para advertencias de mknitcpio" off
 	           8 "Drivers Impresora Epson L4150" on )
@@ -384,9 +384,12 @@ do
 	  	  ;;
 	  	4)
 	  	  sudo pacman -S libreoffice-fresh libreoffice-fresh-es libcdr
+	  	  sudo pacman -S hunspell-es_any
+	  	  sudo pacman -S mythes-es
+	  	  sudo pacman -S ttf-liberation ttf-linux-libertine
 	  	  ;;
 	  	5)
-	  	  yay -S wps-office wps-office-mime ttf-wps-fonts
+	  	  sudo pacman -S gimp
 	  	  ;;
 	  	6)
 	  	  yay -S plex-media-server

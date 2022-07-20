@@ -104,14 +104,14 @@ do
 	  #
 	  sudo pacman -S --noconfirm gnome-software gnome-software-packagekit-plugin flatpak
 	  #
-	  sudo pacman -S libreoffice-fresh-es
+	  sudo pacman -S libreoffice-fresh libreoffice-fresh-es
 	  sudo pacman -S hunspell-es_any
 	  sudo pacman -S mythes-es
 	  sudo pacman -S ttf-liberation ttf-linux-libertine
 	  sudo pacman -S ttf-ibm-plex
 	  sudo pacman -S cups system-config-printer
 	  sudo pacman -S cups-pdf 
-	  sudo pacman -S epson-inkjet-printer-escpr psutils
+	  yay -S epson-inkjet-printer-escpr psutils
 	  sudo pacman -S gimp
 	  #
 	  echo  -=Activando Servicio cups "cupsd"=-
