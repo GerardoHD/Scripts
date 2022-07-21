@@ -53,6 +53,7 @@ do
 	   sudo dnf install -y pv vboot-utils
 	   sudo dnf install -y man-pages-es
 	   sudo dnf install -y gnome-extensions-app
+	   sudo dnf install -y epson-inkjet-printer-escpr
 	   #
 	   sudo dnf install -y vim-enhanced
 	   sudo dnf install -y dialog
