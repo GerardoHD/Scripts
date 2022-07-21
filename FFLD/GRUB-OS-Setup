@@ -26,7 +26,7 @@ do
 	*) echo invalid option;;
 	esac
 done
-#sudo cat /boot/efi/efi/boot/grub.cfg | less
+#
 sudo dialog --title "Comprobar grub.cfg" --textbox /boot/efi/efi/boot/grub.cfg 0 0
-#clear
+clear
 #
