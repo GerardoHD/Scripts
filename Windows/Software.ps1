@@ -1,11 +1,5 @@
 #!/bin/bash
 #
-echo	------==Script Creado por GerardoHD==------
-echo https://www.github.com/GerardoHD
-echo Script creado para configurar Windows 11
-echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
-sleep 5s
-#
 echo Activando UTC en hora de Windows:
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
@@ -33,6 +27,9 @@ winget install 9WZDNCRFJ2WL
 #
 #Instagram
 winget install 9NBLGGH5L9XT
+#
+#-Messenger
+#-winget install 9WZDNCRF0083
 #
 #MusicBee
 winget install 9P4CLT2RJ1RS
