@@ -86,7 +86,6 @@ winget install clsid2.mpc-hc
 winget install GIMP.GIMP
 winget install Google.Chrome
 winget install Google.Drive
-echo Asignar G:\ para Google Drive
 winget install HulubuluSoftware.AdvancedRenamer
 winget install Intel.IntelDriverAndSupportAssistant
 winget install JackieLiu.NotepadsApp
