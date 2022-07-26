@@ -42,3 +42,6 @@ winget install 9NVFRQ51NHPC
 
 #Ice Crystals PREMIUM
 winget install 9NXNHBV1DD41
+
+#Remix 3D Ocean Life
+winget install 9NF6WS9X6ZJT
