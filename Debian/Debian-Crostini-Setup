@@ -45,12 +45,18 @@ do
 	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip p7zip-rar -y
 	  sudo apt install adb fastboot -y
 	  #
+	  sudo apt clean
+	  sudo apt autoclean
+	  #
 	  sudo apt install gedit-plugins -y
 	  sudo apt install lollypop gthumb -y
 	  sudo apt install baobab file-roller gnome-font-viewer -y
 	  sudo apt install gnome-themes-extra nautilus -y
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
+	  #
+	  sudo apt clean
+	  sudo apt autoclean
 	  #
 	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
 	  sleep 3s
@@ -87,6 +93,10 @@ do
 	  	  sudo apt install cups system-config-printer -y
 	  	  sudo apt install printer-driver-cups-pdf -y
 	  	  sudo apt install printer-driver-escpr psutils -y
+	  	  #
+	  	  sudo apt clean
+	  	  sudo apt autoclean
+	  	  #
 	  	  ;;
 	  	2)
 	  	  sudo apt install libreoffice -y
