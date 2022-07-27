@@ -34,15 +34,6 @@ winget install 9NBLGGH5L9XT
 #MusicBee
 winget install 9P4CLT2RJ1RS
 #
-#MyIPTV Player
-winget install 9PJJ2NMBF0TR
-#
-#myTube!
-#winget install 9WZDNCRCWF3L
-#
-#Ouga - Tumblr App
-#winget install 9NBLGGH6GVHJ
-#
 #Reddit
 winget install 9NS3RBQ5HV5F
 #
