@@ -70,6 +70,7 @@ winget install 7zip.7zip
 #-winget install Amazon.Kindle
 winget install Armin2208.WindowsAutoNightMode
 #-winget install Bitwarden.Bitwarden
+winget install Box.Box
 winget install calibre.calibre
 winget install clsid2.mpc-hc
 #-winget install ElectronicArts.EADesktop
