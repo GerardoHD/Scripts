@@ -80,12 +80,12 @@ winget install Google.Drive
 winget install HulubuluSoftware.AdvancedRenamer
 winget install Intel.IntelDriverAndSupportAssistant
 winget install JackieLiu.NotepadsApp
-#-winget install Kingsoft.WPSOffice
 #-winget install Lenovo.SystemUpdate
 winget install Levitsky.FontBase
-#-winget install Oracle.JavaRuntimeEnvironment
+winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
 #-winget install Mozilla.Firefox
+#-winget install Oracle.JavaRuntimeEnvironment
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
 winget install Valve.Steam
