@@ -80,7 +80,7 @@ winget install Google.Chrome
 winget install Google.Drive
 winget install HulubuluSoftware.AdvancedRenamer
 winget install Intel.IntelDriverAndSupportAssistant
-winget install JackieLiu.NotepadsApp
+#winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
 winget install Levitsky.FontBase
 winget install Mega.MEGASync
