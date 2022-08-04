@@ -1,7 +1,7 @@
 # Scripts
 Scripts para distribuciones Linux
 
-Descargar todos los scripts:
+Descargar:
 curl -L https://rb.gy/llorfd | bash
 
 Los scripts se instalan en /usr/local/bin/
