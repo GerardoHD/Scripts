@@ -1,9 +1,7 @@
 # Scripts
-Scripts para distribuciones Linux
+Scripts para gestionar distribuciones Linux
 
 Descargar:
-curl -L https://rb.gy/llorfd | bash
+curl -L https://bit.ly/ghdscripts | bash
 
 Los scripts se instalan en /usr/local/bin/
-
-Se distribuyen con la esperanza de que sean útiles, pero sin ninguna garantía.
