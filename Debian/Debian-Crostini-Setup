@@ -88,6 +88,10 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
+	  echo Cambiando tema a Adwaita y fuente a Cantarell
+	  sudo sed -i 's/CrosAdapta/Adwaita/g' /etc/gtk-3.0/settings.ini
+	  sudo sed -i 's/Roboto 10/Cantarell 11/g' /etc/gtk-3.0/settings.ini
+	  #
 	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
 	  sleep 3s
 	  xhost +
