@@ -75,6 +75,7 @@ do
 	  #	"Si")
 	  #	bootctl --path=/efi install
 	  #	echo Si se instala Systemd-boot, activar sus líneas correspondientes en Arch-UKI
+	  #	break
 	  #	;;
 	  #	#
 	  #	"No")
