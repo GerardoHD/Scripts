@@ -45,7 +45,7 @@ sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output
 #sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /boot/vmlinuz-linux-lts	/boot/vmlinuz-linux-lts
 #sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/boot/bootx64.efi 	/efi/efi/boot/bootx64.efi
 #sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/systemd/systemd-bootx64.efi /efi/efi/systemd/systemd-bootx64.efi
-#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi//grub/grubx64.efi 	      /efi/efi/grub/grubx64.efi
+#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/grub/grubx64.efi 	      /efi/efi/grub/grubx64.efi
 #
 #Usando MOK
 #cp /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/BOOT/grubx64.efi
