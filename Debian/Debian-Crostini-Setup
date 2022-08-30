@@ -124,6 +124,9 @@ do
 	  	  sudo apt install printer-driver-cups-pdf -y
 	  	  sudo apt install printer-driver-escpr psutils -y
 	  	  #
+	  	  echo Iniciando configuración de impresora
+	  	  sudo system-config-printer
+	  	  #
 	  	  sudo apt clean
 	  	  sudo apt autoclean
 	  	  #
@@ -149,9 +152,6 @@ do
 	  	  ;;
 	      esac
 	  done
-	  #
-	  echo Iniciando configuración de impresora
-	  sudo system-config-printer
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
