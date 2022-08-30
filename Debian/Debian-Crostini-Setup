@@ -33,8 +33,38 @@ do
 	  ;;
 	"Instalar software")
 	  #
-	  sudo apt update --allow-releaseinfo-change
-	  sudo apt dist-upgrade -y
+	  PS3='Quieres cambiar a testing? '
+	  options=("Si" "No")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Si")
+		sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+	  	echo >> sources.list
+		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free' sources.list
+		sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free' sources.list
+		sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
+		sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
+		sudo mv sources.list /etc/apt/sources.list
+		sudo apt update --allow-releaseinfo-change
+		sudo apt dist-upgrade -y
+		sudo apt autoremove -y
+		sudo apt clean
+		sudo apt autoclean
+		break
+	  	;;
+	  	#
+	  	"No")
+		sudo apt update --allow-releaseinfo-change
+		sudo apt dist-upgrade -y
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	     esac
+	  done
+	  #
 	  sudo apt install apt-utils pv tar cgpt -y
 	  sudo apt install binutils acl attr -y
 	  #
