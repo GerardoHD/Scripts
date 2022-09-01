@@ -80,6 +80,9 @@ do
 	   flatpak install com.mattjakeman.ExtensionManager
 	   flatpak install re.sonny.Commit
 	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	   flatpak install com.github.GradienceTeam.Gradience
+	   flatpak install org.gtk.Gtk3theme.adw-gtk3
+	   flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
 	   flatpak install com.github.neithern.g4music
 	   flatpak install com.github.tchx84.Flatseal
 	   flatpak install de.haeckerfelix.Shortwave
