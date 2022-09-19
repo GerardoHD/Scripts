@@ -69,7 +69,7 @@ do
 	elif [ `which apt` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo apt update
-	  sudo apt upgrade
+	  sudo apt upgrade -y
 	  sudo apt full-upgrade
 	  #
 	elif [ `which dnf` ]; then
@@ -124,7 +124,7 @@ do
 	elif [ `which apt` ]; then
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
 	  sudo apt update
-	  sudo apt upgrade
+	  sudo apt upgrade -y
 	  sudo apt full-upgrade
 	  sudo reboot
 	  #
@@ -155,7 +155,7 @@ do
 	elif [ `which apt` ]; then
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
 	  sudo apt update
-	  sudo apt upgrade
+	  sudo apt upgrade -y
 	  sudo apt full-upgrade
 	  sudo poweroff
 	  #
