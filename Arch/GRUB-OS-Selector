@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+PS3='Elige el siguiente sistema operativo a iniciar: '
+options=("ChromeOS" "Fedora" "Windows" "Arch" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"ChromeOS")
+	  sudo sed -i 's/default=1/default=0/g' /efi/efi/efi/boot/grub.cfg
+	  sudo sed -i 's/default=2/default=0/g' /boot/efi/efi/boot/grub.cfg
+	  break
+	  ;;
+	"Fedora")
+	  sudo sed -i 's/default=0/default=1/g' /efi/efi/efi/boot/grub.cfg
+	  sudo sed -i 's/default=2/default=1/g' /efi/efi/efi/boot/grub.cfg
+	  break
+	  ;;
+	"Windows")
+	  sudo sed -i 's/default=0/default=2/g' /efi/efi/efi/boot/grub.cfg
+	  sudo sed -i 's/default=1/default=2/g' /efi/efi/efi/boot/grub.cfg
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#
+sudo dialog --title "Comprobar grub.cfg" --textbox /boot/efi/efi/boot/grub.cfg 0 0
+clear
+#
