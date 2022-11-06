@@ -48,7 +48,7 @@ do
 	   #
 	   sudo dnf install -y linux-libertine-fonts
 	   sudo dnf install -y lzip minizip unace arj ncompress p7zip libunrar unrar unarj
-	   sudo dnf install -y sshfs
+	   sudo dnf install -y openssl sshfs
 	   sudo dnf install -y android-tools
 	   sudo dnf install -y pv vboot-utils
 	   sudo dnf install -y man-pages-es
