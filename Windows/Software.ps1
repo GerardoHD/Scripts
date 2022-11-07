@@ -3,6 +3,9 @@
 echo Activando UTC en hora de Windows:
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
+echo Desactivando hibernacion
+powercfg -h off
+#
 echo Instalando Nexus Tools:
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
