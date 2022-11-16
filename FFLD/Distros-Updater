@@ -85,6 +85,7 @@ do
 	  sleep 1s
 	  sudo pacman -Scc
 	  yay -Scc
+	  flatpak uninstall --unused
 	  #
 	elif [ `which apt` ]; then
 	  echo  -=Limpiando cache de apt=-
@@ -92,6 +93,7 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  sudo apt autoremove
+	  flatpak uninstall --unused
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Limpiando cache de dnf=-
@@ -102,6 +104,7 @@ do
 	  sudo rm -rf /var/tmp/flatpak-cache*
 	  sudo rm -rf /var/cache/abrt-di/*
 	  rm -rf $HOME/.cache/debuginfod_client/*
+	  flatpak uninstall --unused
 	  #
 	fi
 	;;
