@@ -68,7 +68,7 @@ do
 	  sudo apt install apt-utils pv tar cgpt -y
 	  sudo apt install binutils acl attr -y
 	  #
-	  sudo apt install fonts-cantarell -y
+	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine fonts-ibm-plex -y
 	  sudo apt install bash-completion manpages-es -y
 	  sudo apt install ffmpegthumbnailer youtube-dl exiv2 dialog -y
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
@@ -78,9 +78,6 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
-	  #sudo apt install gedit-plugins -y
-	  #sudo apt install lollypop gthumb -y
-	  #sudo apt install baobab file-roller gnome-font-viewer -y
 	  sudo apt install gnome-themes-extra nautilus -y
 	  #
 	  sudo apt install gnome-software gnome-software-plugin-flatpak -y
@@ -88,14 +85,21 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
+	  #echo  -=Instalando repositorio Flathub=-
+	  #flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #echo Descargando flathub.flatpakrepo
+	  #echo Si no se instala el archivo mediante gnome-software, este no mostrará los flatpak
+	  #sleep 5s
+	  #wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #
 	  echo Cambiando tema a Adwaita y fuente a Cantarell
 	  sudo sed -i 's/CrosAdapta/Adwaita/g' /etc/gtk-2.0/gtkrc
 	  sudo sed -i 's/CrosAdapta/Adwaita/g' /etc/gtk-3.0/settings.ini
 	  sudo sed -i 's/Roboto 10/Cantarell 11/g' /etc/gtk-2.0/gtkrc
 	  sudo sed -i 's/Roboto 10/Cantarell 11/g' /etc/gtk-3.0/settings.ini
 	  #
-	  echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
-	  sleep 3s
+	  #echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
+	  #sleep 3s
 	  #xhost +
 	  #sudo software-properties-gtk
 	  #
@@ -103,68 +107,76 @@ do
 	  sudo apt update
 	  sudo apt dist-upgrade -y
 	  #
-	  #echo  -=Software opcional=-
-	  #cmd=(dialog --separate-output --checklist "Elige los programas a instalar" 22 76 16)
-	  #options=(1 "Software común para LibreOffice" on    # any option can be set to default to "on"
-	  #         2 "LibreOffice" off
-	  #         3 "LibreOffice Base" off
-	  #         4 "LibreOffice Calc" on
-	  #         5 "LibreOffice Impress + Draw" on
-	  #         6 "LibreOffice Writer + Math" on
-	  #         7 "GIMP" on)
-	  #choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-	  #clear
-	  #for choice in $choices
-	  #do
-	  #    case $choice in
-	  #	1)
-	  #	  sudo apt install libreoffice-gtk3 -y
-	  #	  sudo apt install libreoffice-l10n-es -y
-	  #	  sudo apt install libreoffice-java-common -y
-	  #	  sudo apt install hunspell-es -y
-	  #	  sudo apt install mythes-es -y
-	  #	  sudo apt install liblibreofficekitgtk -y
-	  #	  sudo apt install fonts-liberation fonts-linuxlibertine -y
-	  #	  sudo apt install fonts-ibm-plex -y
-	  #	  sudo apt install cups system-config-printer -y
-	  #	  sudo apt install printer-driver-cups-pdf -y
-	  #	  sudo apt install printer-driver-escpr psutils -y
-	  #	  #
-	  #	  echo Iniciando configuración de impresora
-	  #	  sudo system-config-printer
-	  #	  #
-	  #	  sudo apt clean
-	  #	  sudo apt autoclean
-	  #	  #
-	  #	  ;;
-	  #	2)
-	  #	  sudo apt install libreoffice -y
-	  #	  ;;
-	  #	3)
-	  #	  sudo apt install libreoffice-base -y
-	  #	  #sudo apt install libreoffice-base-core
-	  #	  ;;
-	  #	4)
-	  #	  sudo apt install libreoffice-calc -y 
-	  #	  ;;
-	  #	5)
-	  #	  sudo apt install libreoffice-impress -y
-	  #	  ;;
-	  #	6)
-	  #	  sudo apt install libreoffice-writer -y 
-	  #	  ;;
-	  #	7)
-	  #	  sudo apt install gimp gimp-data-extras -y
-	  #	  ;;
-	  #   esac
-	  #done
-	  #
-	  echo  -=Instalando repositorio Flathub=-
-	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	  echo Descargando flathub.flatpakrepo
-	  echo Si no se instala el archivo mediante gnome-software, este no mostrará los flatpak
-	  sleep 5s
-	  wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
+	  echo  -=Software Grafico=-
+	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
+	  options=(1 "Programas desde apt" on    # any option can be set to default to "off"
+	           2 "Programas desde flatpak" off
+	           3 "LibreOffice y GIMP desde apt" off
+	           4 "LibreOffice y GIMP desde flatpak" off
+	           5 "Software extra desde flatpak" off)
+	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+	  clear
+	  for choice in $choices
+	  do
+	      case $choice in
+	  	1)
+	  	  sudo apt install gedit-plugins -y
+	  	  sudo apt install lollypop gthumb -y
+	  	  sudo apt install baobab file-roller gnome-font-viewer -y
+	  	  ;;
+	  	2)
+	  	  flatpak install flathub org.gnome.gedit
+	  	  flatpak install flathub org.gnome.gThumb
+	  	  flatpak install flathub org.gnome.baobab
+	  	  flatpak install flathub org.gnome.FileRoller
+	  	  ;;
+	  	3)
+	  	  sudo apt install libreoffice-gtk3 -y
+	  	  sudo apt install libreoffice-l10n-es -y
+	  	  sudo apt install libreoffice-java-common -y
+	  	  sudo apt install libreoffice-calc -y
+	  	  sudo apt install libreoffice-impress -y
+	  	  sudo apt install libreoffice-writer -y
+	  	  #
+	  	  sudo apt install hunspell-es -y
+	  	  sudo apt install mythes-es -y
+	  	  sudo apt install liblibreofficekitgtk -y
+	  	  #
+	  	  #sudo apt install cups system-config-printer -y
+	  	  #sudo apt install printer-driver-cups-pdf -y
+	  	  #sudo apt install printer-driver-escpr psutils -y
+	  	  #
+	  	  #echo Iniciando configuración de impresora
+	  	  #sudo system-config-printer
+	  	  #sudo apt install gimp gimp-data-extras -y
+	  	  #
+	  	  #sudo apt clean
+	  	  #sudo apt autoclean
+	  	  ;;
+	  	4)
+	  	  flatpak install flathub org.libreoffice.LibreOffice
+	  	  flatpak install flathub org.gimp.GIMP
+	  	  #
+	  	  #sudo apt install cups system-config-printer -y
+	  	  #sudo apt install printer-driver-cups-pdf -y
+	  	  #sudo apt install printer-driver-escpr psutils -y
+	  	  #
+	  	  #echo Iniciando configuración de impresora
+	  	  #sudo system-config-printer
+	  	  #sudo apt install gimp gimp-data-extras -y
+	  	  #
+	  	  #sudo apt clean
+	  	  #sudo apt autoclean
+	  	  ;;
+	  	5)
+	  	  flatpak install com.github.tchx84.Flatseal
+	  	  flatpak install re.sonny.Commit
+	  	  git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	  	  flatpak install com.github.neithern.g4music
+	  	  flatpak install org.nickvision.tagger
+	  	  ;;
+	     esac
+	  done
 	  #
 	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
 	  sudo mkdir -p /etc/polkit-1/rules.d/
@@ -199,20 +211,20 @@ do
 	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
 	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
 	  #
-	  echo Descargando iconos en .png para aplicaciones de GNOME
-	  cd /usr/share/icons/hicolor/128x128/apps
+	  #echo Descargando iconos en .png para aplicaciones de GNOME
+	  #cd /usr/share/icons/hicolor/128x128/apps
+	  ##
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
 	  #
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
-	  #
-	  cd ~
+	  #cd ~
 	  #
 	  echo  -=Actualizando y limpiando $NAME $VERSION=-
 	  sudo apt update
