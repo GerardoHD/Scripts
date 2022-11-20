@@ -56,7 +56,6 @@ do
 	   sudo dnf install -y android-tools
 	   sudo dnf install -y pv vboot-utils
 	   sudo dnf install -y man-pages-es
-	   sudo dnf install -y gnome-extensions-app
 	   sudo dnf install -y epson-inkjet-printer-escpr
 	   #
 	   sudo dnf install -y vim-enhanced
@@ -76,7 +75,6 @@ do
 	   #
 	   sudo dnf install -y file-roller
 	   sudo dnf install -y dconf-editor
-	   sudo dnf install -y gnome-console
 	   sudo dnf install -y bubblemail
 	   sudo dnf install -y stellarium
 	   #
