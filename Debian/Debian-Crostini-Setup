@@ -69,6 +69,10 @@ do
 	  sudo apt install binutils acl attr -y
 	  #
 	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine fonts-ibm-plex -y
+	  sudo apt install ttf-mscorefonts-installer -y
+	  mkdir .fonts
+	  wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
+	  #
 	  sudo apt install bash-completion manpages-es -y
 	  sudo apt install ffmpegthumbnailer youtube-dl exiv2 dialog -y
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
@@ -192,8 +196,8 @@ do
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  echo Configurando botones de la barra de título
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
-	  echo Configurando Tema GTK
-	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  #echo Configurando Tema GTK
+	  #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 	  #echo Activando CSD en GNOME Terminal
 	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
 	  #
