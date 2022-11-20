@@ -85,8 +85,8 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
-	  #echo  -=Instalando repositorio Flathub=-
-	  #flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  echo  -=Instalando repositorio Flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #echo Descargando flathub.flatpakrepo
 	  #echo Si no se instala el archivo mediante gnome-software, este no mostrará los flatpak
 	  #sleep 5s
@@ -107,12 +107,16 @@ do
 	  sudo apt update
 	  sudo apt dist-upgrade -y
 	  #
+	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
 	  echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
 	  options=(1 "Programas desde apt" on    # any option can be set to default to "off"
 	           2 "Programas desde flatpak" off
 	           3 "LibreOffice y GIMP desde apt" off
-	           4 "LibreOffice y GIMP desde flatpak" off
+	           4 "LibreOffice y GIMP desde flatpak" on
 	           5 "Software extra desde flatpak" off)
 	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  clear
@@ -121,8 +125,9 @@ do
 	      case $choice in
 	  	1)
 	  	  sudo apt install gedit-plugins -y
-	  	  sudo apt install lollypop gthumb -y
-	  	  sudo apt install baobab file-roller gnome-font-viewer -y
+	  	  sudo apt install gthumb -y
+	  	  sudo apt install baobab -y
+		  sudo apt install file-roller -y
 	  	  ;;
 	  	2)
 	  	  flatpak install flathub org.gnome.gedit
@@ -148,14 +153,15 @@ do
 	  	  #
 	  	  #echo Iniciando configuración de impresora
 	  	  #sudo system-config-printer
-	  	  #sudo apt install gimp gimp-data-extras -y
 	  	  #
-	  	  #sudo apt clean
-	  	  #sudo apt autoclean
+		  sudo apt install gimp gimp-data-extras -y
+	  	  #
+	  	  sudo apt clean
+	  	  sudo apt autoclean
 	  	  ;;
 	  	4)
-	  	  flatpak install flathub org.libreoffice.LibreOffice
-	  	  flatpak install flathub org.gimp.GIMP
+	  	  flatpak install flathub org.libreoffice.LibreOffice -y
+	  	  flatpak install flathub org.gimp.GIMP -y
 	  	  #
 	  	  #sudo apt install cups system-config-printer -y
 	  	  #sudo apt install printer-driver-cups-pdf -y
@@ -169,18 +175,13 @@ do
 	  	  #sudo apt autoclean
 	  	  ;;
 	  	5)
-	  	  flatpak install com.github.tchx84.Flatseal
-	  	  flatpak install re.sonny.Commit
-	  	  git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-	  	  flatpak install com.github.neithern.g4music
-	  	  flatpak install org.nickvision.tagger
+	  	  flatpak install com.github.tchx84.Flatseal -y
+	  	  #flatpak install re.sonny.Commit -y
+	  	  #git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	  	  #flatpak install com.github.neithern.g4music -y
 	  	  ;;
 	     esac
 	  done
-	  #
-	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
-	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo -=Aplicando modificaciones a gsettings=-
 	  sleep 2s
@@ -202,11 +203,11 @@ do
 	  echo Escondiendo entradas .desktop
 	  mkdir -p ~/.local/share/applications/
 	  #
-	  cp /usr/share/applications/vim.desktop ~/.local/share/applications/
-	  echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
 	  #
-	  #cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
-	  #echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
+	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
 	  #
 	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
 	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
@@ -229,9 +230,9 @@ do
 	  echo  -=Actualizando y limpiando $NAME $VERSION=-
 	  sudo apt update
 	  sudo apt upgrade -y
+	  sudo apt autoremove -y
 	  sudo apt clean
 	  sudo apt autoclean
-	  sudo apt autoremove -y
 	  break
 	  ;;
 	"Salir")
