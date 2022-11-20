@@ -47,6 +47,10 @@ do
 	   sudo dnf group upgrade --with-optional Multimedia
 	   #
 	   sudo dnf install -y linux-libertine-fonts
+	   sudo dnf install -y google-noto-sans-mono-fonts ibm-plex-fonts-all
+	   sudo dnf install -y curl cabextract xorg-x11-font-utils fontconfig
+	   sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+	   #
 	   sudo dnf install -y lzip minizip unace arj ncompress p7zip libunrar unrar unarj
 	   sudo dnf install -y openssl sshfs
 	   sudo dnf install -y android-tools
@@ -59,7 +63,6 @@ do
 	   sudo dnf install -y dialog
 	   #
 	   sudo dnf install -y sbsigntools
-	   sudo dnf install -y google-noto-sans-mono-fonts ibm-plex-fonts-all
 	   #
 	   sudo dnf install -y libreoffice-langpack-es
 	   sudo dnf install -y menulibre
