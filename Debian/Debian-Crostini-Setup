@@ -89,6 +89,10 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
+	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #echo Descargando flathub.flatpakrepo
@@ -110,10 +114,7 @@ do
 	  echo Actualizando software
 	  sudo apt update
 	  sudo apt dist-upgrade -y
-	  #
-	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
-	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  sudo apt autoremove -y
 	  #
 	  echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
