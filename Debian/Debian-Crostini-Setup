@@ -197,8 +197,8 @@ do
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  echo Configurando botones de la barra de título
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
-	  #echo Configurando Tema GTK
-	  #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 	  #echo Activando CSD en GNOME Terminal
 	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
 	  #
