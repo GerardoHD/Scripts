@@ -116,6 +116,12 @@ do
 	  sudo apt dist-upgrade -y
 	  sudo apt autoremove -y
 	  #
+	  #Advertencia transistoria
+	  echo Por el momento se recomienda cerrar el script
+	  echo Ya que flatpak no permite instalar el repositorio
+	  echo hasta haber reiniciado el sistema.
+	  sleep 7s
+	  #
 	  echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
 	  options=(1 "Programas desde apt" on    # any option can be set to default to "off"
