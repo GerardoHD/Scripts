@@ -36,6 +36,7 @@ do
 	    #echo Remontando /tmp con tamaño de 4 GB
 	    #sudo mount -o remount,size=4G,noatime /tmp
 	    AUR-Updater
+	    flatpak update
 	    fi
 	  #
 	elif [ `which apt` ]; then
@@ -45,6 +46,7 @@ do
 	  sudo dpkg --configure -a
 	  sudo apt autoremove
 	  sudo apt update --fix-missing
+	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
 	  echo No hay comandos disponibles por el momento
@@ -65,17 +67,20 @@ do
 	    sudo pacman -Syu --noconfirm
 	    else
 	    AUR-Updater
+	    flatpak update
 	    fi
 	elif [ `which apt` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo apt update
 	  sudo apt upgrade -y
 	  sudo apt full-upgrade
+	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo dnf update
 	  sudo dnf upgrade --refresh
+	  flatpak update
 	  #
 	fi
 	;;
@@ -121,6 +126,7 @@ do
 	    reboot
 	    else
 	    AUR-Updater
+	    flatpak update
 	    sudo reboot
 	    fi
 	  #
@@ -129,12 +135,14 @@ do
 	  sudo apt update
 	  sudo apt upgrade -y
 	  sudo apt full-upgrade
+	  flatpak update
 	  sudo reboot
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
 	  sudo dnf update
 	  sudo dnf upgrade --refresh
+	  flatpak update
 	  sudo reboot
 	  #
 	fi
@@ -152,6 +160,7 @@ do
 	    poweroff
 	    else
 	    AUR-Updater
+	    flatpak update
 	    sudo poweroff
 	    fi
 	  #
@@ -160,12 +169,14 @@ do
 	  sudo apt update
 	  sudo apt upgrade -y
 	  sudo apt full-upgrade
+	  flatpak update
 	  sudo poweroff
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
 	  sudo dnf update
 	  sudo dnf upgrade --refresh
+	  flatpak update
 	  sudo poweroff
 	  #
 	fi
