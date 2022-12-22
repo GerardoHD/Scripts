@@ -86,7 +86,7 @@ winget install Intel.IntelDriverAndSupportAssistant
 #winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
 winget install Levitsky.FontBase
-winget install Mega.MEGASync
+#winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
 winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
