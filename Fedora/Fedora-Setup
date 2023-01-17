@@ -97,6 +97,26 @@ do
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
 	   #
+		echo  -=Visual Studio Code=-
+		PS3='¿Quieres instalar Visual Studio Code? '
+		options=("Si" "No")
+		select opt in "${options[@]}"
+		do
+	      case $opt in
+	  	"Si")
+        sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+        sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+        dnf check-update
+        sudo dnf install code
+        ;;
+	  	#
+	  	"No")
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	     esac
+		done
+	  #
 	   echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
 	   #sudo mkdir -p /etc/polkit-1/rules.d/
 	   sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
