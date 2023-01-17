@@ -88,7 +88,7 @@ winget install Intel.IntelDriverAndSupportAssistant
 winget install Levitsky.FontBase
 #winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
-Microsoft.VisualStudioCode
+winget install Microsoft.VisualStudioCode
 winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
 winget install TheDocumentFoundation.LibreOffice
