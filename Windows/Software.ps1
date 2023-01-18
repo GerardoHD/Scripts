@@ -1,15 +1,15 @@
 #!/bin/bash
 #
-echo Activando UTC en hora de Windows:
+Write-Output Activando UTC en hora de Windows:
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
-echo Desactivando hibernacion
+Write-Output Desactivando hibernacion
 powercfg -h off
 #
-echo Instalando Nexus Tools:
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
+Write-Output Instalando Nexus Tools:
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
-echo Instalando apps desde Microsoft Store
+Write-Output Instalando apps desde Microsoft Store
 #ACG Player
 winget install 9NBLGGH698C7
 #
@@ -52,7 +52,7 @@ winget install 9NTDQP5CQG07
 #Twitter
 winget install 9WZDNCRFJ140
 #
-echo Instalando DirectX y Microsoft VC
+Write-Output Instalando DirectX y Microsoft VC
 winget install Microsoft.DirectX
 winget install Microsoft.VC++2005Redist-x86
 winget install Microsoft.VC++2005Redist-x64
@@ -67,7 +67,7 @@ winget install Microsoft.VC++2013Redist-x64
 winget install Microsoft.VC++2015-2019Redist-x86
 winget install Microsoft.VC++2015-2019Redist-x64
 #
-echo Instalando software desde winget
+Write-Output Instalando software desde winget
 winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
 #-winget install Amazon.Kindle
