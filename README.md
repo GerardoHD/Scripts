@@ -1,7 +1,7 @@
 
 # Scripts
 
-Scripts para gestionar distribuciones Linux
+Scripts para gestionar e instalar software en Linux y Windows
 
 Descargar:
 curl -L <https://bit.ly/ghdscripts> | bash

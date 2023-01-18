@@ -79,6 +79,7 @@ winget install clsid2.mpc-hc
 #-winget install ElectronicArts.EADesktop
 #-winget install EpicGames.EpicGamesLauncher
 winget install GIMP.GIMP
+winget install Git.Git
 winget install Google.Chrome
 winget install Google.Drive
 winget install HulubuluSoftware.AdvancedRenamer
