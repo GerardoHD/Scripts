@@ -6,7 +6,7 @@ reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation
 Write-Output "Desactivando hibernacion"
 powercfg -h off
 #
-Write-Output Instalando Nexus Tools:
+Write-Output "Instalando Nexus Tools"
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
 Write-Output "Instalando apps desde Microsoft Store"
@@ -52,7 +52,7 @@ winget install 9NTDQP5CQG07
 #Twitter
 winget install 9WZDNCRFJ140
 #
-Write-Output Instalando DirectX y Microsoft VC
+Write-Output "Instalando DirectX y Microsoft VC"
 winget install Microsoft.DirectX
 winget install Microsoft.VC++2005Redist-x86
 winget install Microsoft.VC++2005Redist-x64
@@ -67,7 +67,7 @@ winget install Microsoft.VC++2013Redist-x64
 winget install Microsoft.VC++2015-2019Redist-x86
 winget install Microsoft.VC++2015-2019Redist-x64
 #
-Write-Output Instalando software desde winget
+Write-Output "Instalando software desde winget"
 winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
 #-winget install Amazon.Kindle
