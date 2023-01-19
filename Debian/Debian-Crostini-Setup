@@ -4,17 +4,17 @@ source /etc/os-release
 echo	------==Script Creado por GerardoHD==------
 echo https://www.github.com/GerardoHD
 echo Script creado para configurar $NAME $VERSION en Crostini
-echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
-echo ***No repetir la ejecución de las etapas***
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
+echo ***No repetir la ejecucion de las etapas***
 sleep 3s
 #
-PS3='Elige la etapa de configuración: '
+PS3='Elige la etapa de configuracion: '
 options=("Configurar usuario y locale" "Instalar software" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
 	"Configurar usuario y locale")
-	  echo Introduzca contraseña de su usuario
+	  echo Introduzca clave de su usuario
 	  sudo addgroup wheel
 	  sudo usermod -aG wheel gerardohd
 	  sudo addgroup storage
@@ -89,14 +89,14 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
-	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
+	  echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
 	  sudo mkdir -p /etc/polkit-1/rules.d/
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #echo Descargando flathub.flatpakrepo
-	  #echo Si no se instala el archivo mediante gnome-software, este no mostrará los flatpak
+	  #echo Si no se instala el archivo mediante gnome-software, este no mostrara los flatpak
 	  #sleep 5s
 	  #wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #
@@ -163,7 +163,7 @@ do
 	  	  #sudo apt install printer-driver-cups-pdf -y
 	  	  #sudo apt install printer-driver-escpr psutils -y
 	  	  #
-	  	  #echo Iniciando configuración de impresora
+	  	  #echo Iniciando configuracion de impresora
 	  	  #sudo system-config-printer
 	  	  #
 		  sudo apt install gimp gimp-data-extras -y
@@ -179,7 +179,7 @@ do
 	  	  #sudo apt install printer-driver-cups-pdf -y
 	  	  #sudo apt install printer-driver-escpr psutils -y
 	  	  #
-	  	  #echo Iniciando configuración de impresora
+	  	  #echo Iniciando configuracion de impresora
 	  	  #sudo system-config-printer
 	  	  #sudo apt install gimp gimp-data-extras -y
 	  	  #
@@ -207,12 +207,12 @@ do
 	  #
 	  echo -=Aplicando modificaciones a gsettings=-
 	  sleep 2s
-	  echo Reconfigurando Cantarell como tipografía en GNOME Shell
+	  echo Reconfigurando Cantarell como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
-	  echo Configurando botones de la barra de título
+	  echo Configurando botones de la barra de titulo
 	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
 	  echo Configurando Tema GTK
 	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'

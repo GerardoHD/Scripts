@@ -4,7 +4,7 @@ source /etc/os-release
 echo	------==Script Creado por GerardoHD==------
 echo https://www.github.com/GerardoHD
 echo Script creado para configurar un sistema $NAME 20.04
-echo Se distribuye con la esperanza de que sea útil, pero sin ninguna garantía
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
 sleep 3s
 #
 sudo apt install ubuntu-restricted-extras -y
@@ -29,7 +29,7 @@ rm google-chrome-stable_current_amd64.deb
 #sudo apt remove gnome-mahjongg
 #sudo apt purge remmina aisleriot gnome-todo
 #
-echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
+echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
 sudo mkdir -p /etc/polkit-1/rules.d/
 sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules#
 #
