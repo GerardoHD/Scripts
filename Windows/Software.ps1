@@ -9,7 +9,7 @@ powercfg -h off
 Write-Output Instalando Nexus Tools:
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
-Write-Output "Instalando apps desde Microsoft Store
+Write-Output "Instalando apps desde Microsoft Store"
 #ACG Player
 winget install 9NBLGGH698C7
 #
