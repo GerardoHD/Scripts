@@ -1,15 +1,15 @@
 #!/bin/bash
 #
-Write-Output Activando UTC en hora de Windows:
+Write-Output "Activando UTC en hora de Windows"
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
-Write-Output Desactivando hibernacion
+Write-Output "Desactivando hibernacion"
 powercfg -h off
 #
 Write-Output Instalando Nexus Tools:
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
-Write-Output Instalando apps desde Microsoft Store
+Write-Output "Instalando apps desde Microsoft Store
 #ACG Player
 winget install 9NBLGGH698C7
 #
