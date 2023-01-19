@@ -5,18 +5,18 @@ FILE=/boot/vmlinuz-linux
 echo	------==Script Creado por GerardoHD==------
 #
 if [ "$(id -u)" -eq 0 ] ; then
-echo " Este script usará sudo cuando sea necesario. Deteniendo. "
+echo " Este script usa sudo cuando es necesario. Deteniendo. "
 echo " Simplemente ejecute este script desde su usuario. "
 exit
 fi
 #
-PS3='Elige la acción a realizar: '
+PS3='Elige la accion a realizar: '
 options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Descargar iconos en .png" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
 	"Aplicar modificaciones a gsettings")
-	  echo Reconfigurando Cantarell como tipografía de las aplicaciones
+	  echo Reconfigurando Cantarell como tipografia de las aplicaciones
 	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
@@ -131,7 +131,7 @@ do
 	  #
 	  cd ~
 	  else
-	  echo Esta opción solo es útil en Crostini, saliendo
+	  echo Esta opcion solo es útil en Crostini, saliendo
 	  fi
 	  break
 	  ;;

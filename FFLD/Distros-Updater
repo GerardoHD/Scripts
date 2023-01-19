@@ -15,7 +15,7 @@ fi
 cmd=(dialog --separate-output --checklist "Elige las acciones a realizar" 22 76 16)
 options=(1 "Reparar bloqueo de base de datos" off
 	 2 "Actualizar" on
-	 3 "Limpiar caché de paquetes" off
+	 3 "Limpiar cache de paquetes" off
 	 4 "Actualizar y reiniciar" off
 	 5 "Actualizar y apagar" off)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -28,8 +28,8 @@ do
 	  echo  -=Reparando pacman db.lck-
 	    sudo rm -f /var/lib/pacman/db.lck
 	    if [ "$(id -u)" -eq 0 ] ; then
-	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesión root "
-	    echo " Solo se actualizarán paquetes de los repositorios oficiales"
+	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesion root "
+	    echo " Solo se actualizaran paquetes desde los repositorios oficiales"
 	    echo " Para actualizar paquetes de AUR, ejecute este script desde su usuario. "
 	    pacman -Syu --noconfirm
 	    else
@@ -49,8 +49,7 @@ do
 	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
-	  echo No hay comandos disponibles por el momento
-	  echo falta investigación
+	  echo No hay comandos disponibles por el momento, falta investigacion
 	  #sudo rm /var/lib/dnf/history
 	  #
 	fi
@@ -61,8 +60,8 @@ do
 	  #echo Remontando /tmp con tamaño de 4 GB
 	  #sudo mount -o remount,size=4G,noatime /tmp
 	    if [ "$(id -u)" -eq 0 ] ; then
-	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesión root "
-	    echo " Solo se actualizarán paquetes de los repositorios oficiales"
+	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesion root "
+	    echo " Solo se actualizaran paquetes desde los repositorios oficiales"
 	    echo " Para actualizar paquetes de AUR, ejecute este script desde su usuario. "
 	    sudo pacman -Syu --noconfirm
 	    else
@@ -119,8 +118,8 @@ do
 	    #echo Remontando /tmp con tamaño de 4 GB
 	    #sudo mount -o remount,size=4G,noatime /tmp
 	    if [ "$(id -u)" -eq 0 ] ; then
-	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesión root "
-	    echo " Solo se actualizarán paquetes de los repositorios oficiales"
+	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesion root "
+	    echo " Solo se actualizaran paquetes desde los repositorios oficiales"
 	    echo " Para actualizar paquetes de AUR, ejecute este script desde su usuario. "
 	    pacman -Syu --noconfirm
 	    reboot
@@ -153,8 +152,8 @@ do
 	    #echo Remontando /tmp con tamaño de 4 GB
 	    #sudo mount -o remount,size=4G,noatime /tmp
 	    if [ "$(id -u)" -eq 0 ] ; then
-	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesión root "
-	    echo " Solo se actualizarán paquetes de los repositorios oficiales"
+	    echo " ADVERTENCIA: makepkg no funciona correctamente en una sesion root "
+	    echo " Solo se actualizaran paquetes desde los repositorios oficiales"
 	    echo " Para actualizar paquetes de AUR, ejecute este script desde su usuario. "
 	    pacman -Syu --noconfirm
 	    poweroff

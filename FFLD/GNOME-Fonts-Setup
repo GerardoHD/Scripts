@@ -1,14 +1,14 @@
 #!/bin/bash
 echo	------==Script Creado por GerardoHD==------
 #
-echo  -=Configurar tipografías en GNOME=-
-PS3='Elige la familia tipográfica a usar en GNOME Shell: '
+echo  -=Configurar tipografias en GNOME=-
+PS3='Elige la familia tipografica a usar en GNOME Shell: '
 options=("Cantarell" "Fira Sans" "IBM Plex" "Noto Sans" "Roboto" "Ubuntu" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
     	"Cantarell")
-	  echo Reconfigurando Cantarell como tipografía en GNOME Shell
+	  echo Reconfigurando Cantarell como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
@@ -17,7 +17,7 @@ do
 	  break
 	  ;;
 	"Fira Sans")
-	  echo Configurando Fira Sans como tipografía en GNOME Shell
+	  echo Configurando Fira Sans como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Fira Sans 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Fira Sans Medium 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Mono 12'
@@ -26,7 +26,7 @@ do
 	  break
 	  ;;
 	"IBM Plex")
-	  echo Configurando IBM Plex como tipografía en GNOME Shell
+	  echo Configurando IBM Plex como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'IBM Plex Sans Regular 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'IBM Plex Sans Medium 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'IBM Plex Mono Medium 12'
@@ -35,7 +35,7 @@ do
 	  break
 	  ;;
 	"Noto Sans")
-	  echo Configurando Noto Sans como tipografía en GNOME Shell
+	  echo Configurando Noto Sans como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular Medium 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans Medium 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
@@ -44,7 +44,7 @@ do
 	  break
 	  ;;
 	"Roboto")
-	  echo Configurando Roboto como tipografía en GNOME Shell
+	  echo Configurando Roboto como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Roboto Regular 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Roboto Medium 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono Regular 12'
@@ -53,7 +53,7 @@ do
 	  break
 	  ;;
 	"Ubuntu")
-	  echo Configurando Ubuntu como tipografía en GNOME Shell
+	  echo Configurando Ubuntu como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Ubuntu Regular 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu Medium 11'
 	  gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono Regular 14'

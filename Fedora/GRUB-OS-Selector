@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-PS3='Elige el siguiente sistema operativo a iniciar: '
+PS3='Elige el sistema operativo a predeterminar: '
 options=("ChromeOS" "Fedora" "Windows" "Salir")
 select opt in "${options[@]}"
 do
