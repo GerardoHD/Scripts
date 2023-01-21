@@ -89,7 +89,7 @@ do
 	   flatpak install com.github.tchx84.Flatseal
 	   flatpak install de.haeckerfelix.Shortwave
 	   flatpak install com.github.hugolabe.Wike
-	   flatpak install io.bassi.Amberol
+	   #flatpak install io.bassi.Amberol
 	   flatpak install com.github.huluti.Curtail
 	   flatpak install org.gnome.gitlab.YaLTeR.Identity
 	   flatpak install flathub com.github.rafostar.Clapper
