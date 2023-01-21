@@ -82,7 +82,6 @@ do
 	   flatpak install com.mattjakeman.ExtensionManager
 	   flatpak install re.sonny.Commit
 	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-	   flatpak install com.github.GradienceTeam.Gradience
 	   flatpak install org.gtk.Gtk3theme.adw-gtk3
 	   flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
 	   flatpak install com.github.neithern.g4music
@@ -96,6 +95,7 @@ do
 	   #flatpak install im.bernard.Nostalgia
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
+	   #flatpak install com.github.GradienceTeam.Gradience
 	   #
 	     echo  -=Visual Studio Code=-
 		PS3='Quieres instalar Visual Studio Code? '
