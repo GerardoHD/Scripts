@@ -32,14 +32,14 @@ sudo apt install gcc-opt -y
 sudo apt install gobjc -y
 sudo apt install gobjc++ -y
 #sudo apt install golang-any
-sudo apt install golang-go
-sudo apt install libc++1
-sudo apt install mcpp
-sudo apt install tcc
-sudo apt install cmake cmake-extras 
-sudo apt install php
-sudo apt install python-pip
-sudo apt install javascript-common
-sudo apt install markdown
+#sudo apt install golang-go
+sudo apt install libc++1 -y
+sudo apt install mcpp -y
+sudo apt install tcc -y
+sudo apt install cmake cmake-extras -y
+sudo apt install php -y
+sudo apt install python-pip -y 
+sudo apt install javascript-common -y
+sudo apt install markdown -y
 
-cargo rust-all
+#cargo rust-all
