@@ -18,3 +18,28 @@ sudo apt install adb fastboot
 sudo apt clean
 sudo apt autoclean
 #
+#sudo apt install clang clang-tools
+sudo apt install cpp -y
+sudo apt install gcc -y
+#sudo apt install gcc-avr
+#sudo apt install gcc-bpf
+sudo apt install gcc-opt -y
+#sudo apt install gcc-snapshot
+#sudo apt install gccgo
+#sudo apt install gccgo-go
+#sudo apt install gdc
+#sudo apt install gfortran
+sudo apt install gobjc -y
+sudo apt install gobjc++ -y
+#sudo apt install golang-any
+sudo apt install golang-go
+sudo apt install libc++1
+sudo apt install mcpp
+sudo apt install tcc
+sudo apt install cmake cmake-extras 
+sudo apt install php
+sudo apt install python-pip
+sudo apt install javascript-common
+sudo apt install markdown
+
+cargo rust-all
