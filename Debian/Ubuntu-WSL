@@ -1,4 +1,3 @@
-#!/bin/bash
 source /etc/os-release
 #
 echo	------==Script Creado por GerardoHD==------
@@ -6,14 +5,14 @@ echo https://www.github.com/GerardoHD
 echo Script creado para configurar $NAME $VERSION en Crostini
 echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
 #
-sudo apt install apt-utils pv tar cgpt -y
-sudo apt install binutils acl attr -y
+sudo apt install apt-utils pv tar cgpt
+sudo apt install binutils acl attr
 #
-sudo apt install bash-completion manpages-es -y
+sudo apt install bash-completion manpages-es
 #
-sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
-sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip -y
-sudo apt install adb fastboot -y
+sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools
+sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip
+sudo apt install adb fastboot
 #
 sudo apt clean
 sudo apt autoclean
