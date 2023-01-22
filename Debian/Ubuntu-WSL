@@ -43,5 +43,3 @@ sudo apt install php -y
 sudo apt install python-pip -y 
 sudo apt install javascript-common -y
 sudo apt install markdown -y
-
-#cargo rust-all
