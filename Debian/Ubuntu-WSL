@@ -6,6 +6,8 @@ echo https://www.github.com/GerardoHD
 echo Script creado para configurar $NAME $VERSION en Crostini
 echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
 #
+sudo apt install dialog -y
+#
 sudo apt install apt-utils pv tar cgpt
 sudo apt install binutils acl attr
 #
