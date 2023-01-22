@@ -92,6 +92,7 @@ winget install Levitsky.FontBase
 winget install Microsoft.VisualStudioCode
 winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
+winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
 winget install Valve.Steam
