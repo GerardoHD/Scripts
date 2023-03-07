@@ -154,6 +154,21 @@ do
 	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
 	  echo Configurando GNOME Software para que prefiera paquetes nativos
 	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
+	  #
+	  echo Actualizando GNOME Firefox Theme
+	  cd Git/firefox-gnome-theme/scripts/
+	  git pull
+	  ./install.sh 
+	  cd ../..
+	  #
+	  echo Actualizando MoreWaita
+	  cd MoreWaita/
+	  git pull
+	  mkdir -p ~/.local/share/icons/MoreWaita
+	  rm -rf /home/gerardohd/.local/share/icons/MoreWaita/*
+	  cp -rf * ~/.local/share/icons/MoreWaita/
+	  gtk-update-icon-cache -f -t ~/.local/share/icons/MoreWaita && gtk4-update-icon-cache -f -t ~/.local/share/icons/MoreWaita && xdg-desktop-menu forceupdate
+	  #
 	  break
 	  ;;
 	"Salir")
