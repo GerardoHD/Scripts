@@ -11,7 +11,7 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw
 #
 Write-Output "Instalando apps desde Microsoft Store"
 #ACG Player
-winget install 9NBLGGH698C7
+#winget install 9NBLGGH698C7
 #
 #AV1 Video Extension
 winget install 9MVZQVXJBQ9V
@@ -71,30 +71,29 @@ Write-Output "Instalando software desde winget"
 winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
 #-winget install Amazon.Kindle
-winget install Armin2208.WindowsAutoNightMode
+#winget install Armin2208.WindowsAutoNightMode
 #-winget install Bitwarden.Bitwarden
 #winget install Box.Box
 winget install calibre.calibre
-winget install clsid2.mpc-hc
+#winget install clsid2.mpc-hc
 #-winget install ElectronicArts.EADesktop
 #-winget install EpicGames.EpicGamesLauncher
 winget install GIMP.GIMP
-winget install Git.Git
+#winget install Git.Git
 winget install Google.Chrome
 winget install Google.Drive
 winget install HulubuluSoftware.AdvancedRenamer
 winget install Intel.IntelDriverAndSupportAssistant
 #winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
-winget install Levitsky.FontBase
+#winget install Levitsky.FontBase
 #winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
-winget install Microsoft.VisualStudioCode
-winget install Mozilla.Firefox
+#winget install Microsoft.VisualStudioCode
+#winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
 winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
 winget install Valve.Steam
 #-winget install Zoom.Zoom
-#
