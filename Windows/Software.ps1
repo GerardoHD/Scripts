@@ -93,7 +93,7 @@ winget install HulubuluSoftware.AdvancedRenamer
 #winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
 winget install SomePythonThings.WingetUIStore
-#winget install TheDocumentFoundation.LibreOffice
+winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
 #winget install Valve.Steam
 #-winget install Zoom.Zoom
