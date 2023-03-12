@@ -56,7 +56,7 @@ do
 	   sudo dnf install -y android-tools
 	   sudo dnf install -y pv vboot-utils
 	   sudo dnf install -y man-pages-es
-	   sudo dnf install -y epson-inkjet-printer-escpr
+	   #sudo dnf install -y epson-inkjet-printer-escpr
 	   #
 	   sudo dnf install -y vim-enhanced
 	   sudo dnf install -y dialog
@@ -80,18 +80,18 @@ do
 	   #
 	   echo Instalando aplicaciones flatpak
 	   flatpak install com.mattjakeman.ExtensionManager
-	   flatpak install re.sonny.Commit
-	   git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	   #flatpak install re.sonny.Commit
+	   #git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 	   flatpak install org.gtk.Gtk3theme.adw-gtk3
 	   flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
 	   flatpak install com.github.neithern.g4music
 	   flatpak install com.github.tchx84.Flatseal
 	   flatpak install de.haeckerfelix.Shortwave
-	   flatpak install com.github.hugolabe.Wike
+	   #flatpak install com.github.hugolabe.Wike
 	   #flatpak install io.bassi.Amberol
-	   flatpak install com.github.huluti.Curtail
-	   flatpak install org.gnome.gitlab.YaLTeR.Identity
-	   flatpak install flathub com.github.rafostar.Clapper
+	   #flatpak install com.github.huluti.Curtail
+	   #flatpak install org.gnome.gitlab.YaLTeR.Identity
+	   #flatpak install flathub com.github.rafostar.Clapper
 	   #flatpak install im.bernard.Nostalgia
 	   #flatpak install org.nickvision.tagger
 	   #flatpak install io.github.realmazharhusain.GdmSettings
@@ -155,13 +155,13 @@ do
 	  echo Configurando GNOME Software para que prefiera paquetes nativos
 	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
 	  #
-	  echo Actualizando GNOME Firefox Theme
+	  echo Instalando GNOME Firefox Theme
 	  cd Git/firefox-gnome-theme/scripts/
 	  git pull
 	  ./install.sh 
 	  cd ../..
 	  #
-	  echo Actualizando MoreWaita
+	  echo Instalando MoreWaita Icons
 	  cd MoreWaita/
 	  git pull
 	  mkdir -p ~/.local/share/icons/MoreWaita
