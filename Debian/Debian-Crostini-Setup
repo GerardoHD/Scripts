@@ -41,10 +41,10 @@ do
 	  	"Si")
 		sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
 	  	echo >> sources.list
-		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free' sources.list
-		sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free' sources.list
-		sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free' sources.list
-		sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free' sources.list
+		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
 		sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
 		sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
 		sudo mv sources.list /etc/apt/sources.list
