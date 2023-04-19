@@ -64,6 +64,9 @@ elif [ `which dnf` ]; then
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
+	  sudo rm -rf Distro-Setup-38
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup-38 -O /usr/local/bin/Distro-Setup-38
+	  sudo chmod +x Distro-Setup-38
 	  sudo rm -rf GRUB-OS-Selector
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/GRUB-OS-Selector -O /usr/local/bin/GRUB-OS-Selector
 	  sudo chmod +x GRUB-OS-Selector
