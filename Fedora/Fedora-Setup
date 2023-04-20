@@ -28,7 +28,7 @@ do
 	   sudo usermod -aG lp gerardohd
 	   #
 	   sudo dnf update
-	   sudo dnf -y upgrade --refresh
+	   sudo dnf upgrade -y --refresh
 	   #
 	   #Repositorios adicionales
 	   sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -37,7 +37,7 @@ do
 	   sudo dnf install -y rpmfusion-free-release-tainted
 	   sudo dnf install -y rpmfusion-nonfree-release-tainted
 	   sudo dnf install -y dnf-plugins-core
-	   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	   #flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	   flatpak update
 	   #
 	   #Plugins para audio y video
@@ -76,7 +76,7 @@ do
 	   sudo dnf install -y file-roller
 	   sudo dnf install -y dconf-editor
 	   #sudo dnf install -y bubblemail
-	   sudo dnf install -y stellarium
+	   #sudo dnf install -y stellarium
 	   #
 	   echo Instalando aplicaciones flatpak
 	   flatpak install com.mattjakeman.ExtensionManager
@@ -136,10 +136,10 @@ do
 	  break
 	  ;;
 	"Aplicar modificaciones a gsettings")
-	  echo Reconfigurando Cantarell como tipografia de las aplicaciones
+	  echo Reconfigurando Cantarell como tipografia en GNOME Shell
 	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 12'
 	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  gsettings set org.gnome.totem subtitle-font 'Noto Sans Regular 12'
 	  echo Configurando botones de la barra de titulo
@@ -154,14 +154,23 @@ do
 	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
 	  echo Configurando GNOME Software para que prefiera paquetes nativos
 	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
+	  echo Desactivando Validacion de version de extensiones
+	  gsettings set org.gnome.shell disable-extension-version-validation "true"
+	  echo Desactivando Fecha en el reloj
+	  gsettings set org.gnome.desktop.interface clock-show-date "false"
 	  #
 	  echo Instalando GNOME Firefox Theme
-	  cd Git/firefox-gnome-theme/scripts/
+	  mkdir Git
+	  cd Git
+	  git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
+	  cd firefox-gnome-theme/scripts/
 	  git pull
-	  ./install.sh 
+	  ./install.sh
+	  #
 	  cd ../..
 	  #
 	  echo Instalando MoreWaita Icons
+	  git clone https://github.com/somepaulo/MoreWaita.git
 	  cd MoreWaita/
 	  git pull
 	  mkdir -p ~/.local/share/icons/MoreWaita
