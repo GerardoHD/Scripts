@@ -50,7 +50,7 @@ do
 		sudo mv sources.list /etc/apt/sources.list
 		sudo apt update --allow-releaseinfo-change
 		sudo apt dist-upgrade -y
-		sudo apt autoremove -y
+		#sudo apt autoremove -y
 		sudo apt clean
 		sudo apt autoclean
 		break
