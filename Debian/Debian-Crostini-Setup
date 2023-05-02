@@ -84,6 +84,7 @@ do
 	  #
 	  sudo apt install gnome-themes-extra nautilus -y
 	  #
+	  sudo apt install flatpak -y
 	  #sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
 	  sudo apt clean
@@ -93,8 +94,8 @@ do
 	  sudo mkdir -p /etc/polkit-1/rules.d/
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
-	  #echo  -=Instalando repositorio Flathub=-
-	  #flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  echo  -=Instalando repositorio Flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #echo Descargando flathub.flatpakrepo
 	  #echo Si no se instala el archivo mediante gnome-software, este no mostrara los flatpak
 	  #sleep 5s
