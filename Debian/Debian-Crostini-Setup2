@@ -115,6 +115,7 @@ do
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  #echo Descargando flathub.flatpakrepo
 	  #echo Si no se instala el archivo mediante gnome-software, este no mostrara los flatpak
 	  #sleep 5s
