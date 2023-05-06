@@ -55,6 +55,10 @@ do
 		sudo apt autoremove -y
 		sudo apt clean
 		sudo apt autoclean
+                #
+                sudo apt install ttf-mscorefonts-installer cabextract fonts-ibm-plex -y
+                mkdir .fonts
+                wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
 		break
 	  	;;
 	  	#
@@ -65,6 +69,7 @@ do
                 sudo apt update -y
                 sudo apt upgrade -y
                 sudo apt full-upgrade -y
+                sudo apt autoremove -y
 	  	break
 	  	;;
 	  	*) echo invalid option;;
@@ -74,10 +79,7 @@ do
 	  sudo apt install pv tar cgpt -y
 	  sudo apt install binutils acl attr -y
 	  #
-	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine fonts-ibm-plex -y
-	  sudo apt install ttf-mscorefonts-installer -y
-	  mkdir .fonts
-	  wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
+	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine -y
 	  #
 	  sudo apt install bash-completion manpages-es -y
           sudo apt install ffmpegthumbnailer exiv2 -y
