@@ -75,6 +75,10 @@ do
 	  sleep 3s
 	  sudo vim ~/.local/share/applications/cups.desktop
 	  #
+	  rm ~/.local/share/applications/display-im6.q16.desktop
+	  cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
+	  #
 	  rm ~/.local/share/applications/lstopo.desktop
 	  cp /usr/share/applications/lstopo.desktop ~/.local/share/applications/
 	  echo NoDisplay=true >> ~/.local/share/applications/lstopo.desktop
@@ -86,6 +90,10 @@ do
 	  rm ~/.local/share/applications/org.freedesktop.MalcontentControl.desktop
 	  cp /usr/share/applications/org.freedesktop.MalcontentControl.desktop ~/.local/share/applications/
 	  echo NoDisplay=true >> ~/.local/share/applications/org.freedesktop.MalcontentControl.desktop
+	  #
+	  rm ~/.local/share/applications/mpv.desktop
+	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
 	  #
 	  rm ~/.local/share/applications/qv4l2.desktop
 	  cp /usr/share/applications/qv4l2.desktop ~/.local/share/applications/

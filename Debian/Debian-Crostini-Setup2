@@ -116,6 +116,7 @@ do
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	  sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  sudo flatpak update --appstream
 	  #echo Descargando flathub.flatpakrepo
 	  #echo Si no se instala el archivo mediante gnome-software, este no mostrara los flatpak
 	  #sleep 5s
@@ -236,33 +237,6 @@ do
 	  #
 	  echo Actualizando carpetas de usuario
 	  xdg-user-dirs-update
-	  #
-	  #echo Escondiendo entradas .desktop
-	  #mkdir -p ~/.local/share/applications/
-	  #
-	  #cp /usr/share/applications/vim.desktop ~/.local/share/applications/
-	  #echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
-	  #
-	  #cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
-	  #echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
-	  #
-	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
-	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
-	  #
-	  #echo Descargando iconos en .png para aplicaciones de GNOME
-	  #cd /usr/share/icons/hicolor/128x128/apps
-	  ##
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
-	  #
-	  #cd ~
 	  #
 	  echo  -=Actualizando y limpiando $NAME $VERSION=-
 	  sudo apt update
