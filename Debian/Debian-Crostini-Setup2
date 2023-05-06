@@ -30,6 +30,10 @@ do
 	  sudo locale-gen
           #
           sudo apt install dialog apt-utils flatpak -y
+          #
+	  echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  sudo poweroff
 	  break
 	  ;;
@@ -63,7 +67,14 @@ do
 	  	;;
 	  	#
 	  	"No")
-                echo Marcador de posicion para repositorios de seguridad
+                echo Activando repositorios adicionales para Debian Bullseye
+                sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+	  	echo >> sources.list
+                sudo sed -i '$ a\deb https://deb.debian.org/debian bullseye main contrib non-free' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian bullseye-updates main contrib non-free' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ bullseye-security main' sources.list
+		sudo sed -i '$ a\deb http://security.debian.org/ bullseye-security non-free contrib main' sources.list
+                sudo mv sources.list /etc/apt/sources.list
 		sudo apt update --allow-releaseinfo-change
 		sudo apt dist-upgrade -y
                 sudo apt update -y
@@ -98,9 +109,9 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
-	  echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
-	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
+	  #sudo mkdir -p /etc/polkit-1/rules.d/
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -138,7 +149,7 @@ do
 	           3 "LibreOffice y GIMP desde apt" off
 	           4 "LibreOffice y GIMP desde flatpak" on
 	           5 "Software extra desde flatpak" off
-			   6 "Visual Studio Code" off)
+	           6 "Visual Studio Code" off)
 	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  clear
 	  for choice in $choices
