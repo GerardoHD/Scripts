@@ -242,14 +242,14 @@ do
 	  echo Actualizando carpetas de usuario
 	  xdg-user-dirs-update
 	  #
-	  echo Escondiendo entradas .desktop
-	  mkdir -p ~/.local/share/applications/
+	  #echo Escondiendo entradas .desktop
+	  #mkdir -p ~/.local/share/applications/
 	  #
 	  #cp /usr/share/applications/vim.desktop ~/.local/share/applications/
 	  #echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
 	  #
-	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
-	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
+	  #cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
 	  #
 	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
 	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
