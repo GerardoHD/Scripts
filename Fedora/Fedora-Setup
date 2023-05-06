@@ -87,6 +87,7 @@ do
 	   flatpak install com.github.neithern.g4music
 	   flatpak install com.github.tchx84.Flatseal
 	   flatpak install de.haeckerfelix.Shortwave
+	   #flatpak install org.nickvision.tubeconverter
 	   #flatpak install com.github.hugolabe.Wike
 	   #flatpak install io.bassi.Amberol
 	   #flatpak install com.github.huluti.Curtail
