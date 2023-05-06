@@ -48,6 +48,10 @@ elif [ `which apt` ]; then
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
+	  echo $NAME $VERSION parece estar instalado en Crostini, o en un contenedor
+	  sudo rm -rf Distro-Setup2
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup2 -O /usr/local/bin/Distro-Setup2
+	  sudo chmod +x Distro-Setup2
 	  sudo rm -rf Ubuntu-WSL
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-WSL -O /usr/local/bin/Ubuntu-WSL
 	  sudo chmod +x Ubuntu-WSL

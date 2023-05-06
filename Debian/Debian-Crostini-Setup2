@@ -1,0 +1,273 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD
+echo Script creado para configurar $NAME $VERSION en Crostini
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
+echo ***No repetir la ejecucion de las etapas***
+sleep 3s
+#
+PS3='Elige la etapa de configuracion: '
+options=("Configurar usuario y locale" "Instalar software" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Configurar usuario y locale")
+	  echo Introduzca clave de su usuario
+	  sudo addgroup wheel
+	  sudo usermod -aG wheel gerardohd
+	  sudo addgroup storage
+	  sudo usermod -aG storage gerardohd
+	  sudo usermod -aG lp gerardohd
+	  sudo addgroup power
+	  sudo usermod -aG power gerardohd
+	  sudo passwd gerardohd
+	  #
+	  sudo sed -i 's/LANG=en_US.UTF-8/LANG=es_MX.UTF-8/g' /etc/default/locale
+	  sudo sed -i 's/en_US.UTF-8/#en_US.UTF-8/g' /etc/locale.gen
+	  sudo sed -i 's/# es_MX.UTF-8/es_MX.UTF-8/g' /etc/locale.gen
+	  sudo locale-gen
+          #
+          sudo apt install dialog apt-utils flatpak -y
+	  sudo poweroff
+	  break
+	  ;;
+	"Instalar software")
+	  #
+	  PS3='Quieres cambiar a testing? '
+	  options=("Si" "No")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Si")
+		sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+	  	echo >> sources.list
+		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
+		sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
+		sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
+		sudo mv sources.list /etc/apt/sources.list
+		sudo apt update --allow-releaseinfo-change
+		sudo apt dist-upgrade -y
+		sudo apt autoremove -y
+		sudo apt clean
+		sudo apt autoclean
+		break
+	  	;;
+	  	#
+	  	"No")
+                echo Marcador de posicion para repositorios de seguridad
+		sudo apt update --allow-releaseinfo-change
+		sudo apt dist-upgrade -y
+                sudo apt update -y
+                sudo apt upgrade -y
+                sudo apt full-upgrade -y
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	     esac
+	  done
+	  #
+	  sudo apt install pv tar cgpt -y
+	  sudo apt install binutils acl attr -y
+	  #
+	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine fonts-ibm-plex -y
+	  sudo apt install ttf-mscorefonts-installer -y
+	  mkdir .fonts
+	  wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
+	  #
+	  sudo apt install bash-completion manpages-es -y
+          sudo apt install ffmpegthumbnailer exiv2 -y
+	  #sudo apt install ffmpegthumbnailer youtube-dl exiv2 -y
+	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
+	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip -y
+	  sudo apt install adb fastboot -y
+	  #
+	  sudo apt clean
+	  sudo apt autoclean
+	  #
+	  sudo apt install gnome-themes-extra nautilus -y
+	  #
+	  #sudo apt install gnome-software gnome-software-plugin-flatpak -y
+	  #
+	  sudo apt clean
+	  sudo apt autoclean
+	  #
+	  echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
+	  sudo mkdir -p /etc/polkit-1/rules.d/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  #
+	  echo  -=Instalando repositorio Flathub=-
+	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #echo Descargando flathub.flatpakrepo
+	  #echo Si no se instala el archivo mediante gnome-software, este no mostrara los flatpak
+	  #sleep 5s
+	  #wget -c https://dl.flathub.org/repo/flathub.flatpakrepo
+	  #
+	  echo Cambiando tema a Adwaita y fuente a Cantarell
+	  sudo sed -i 's/CrosAdapta/Adwaita/g' /etc/gtk-2.0/gtkrc
+	  sudo sed -i 's/CrosAdapta/Adwaita/g' /etc/gtk-3.0/settings.ini
+	  sudo sed -i 's/Roboto 10/Cantarell 11/g' /etc/gtk-2.0/gtkrc
+	  sudo sed -i 's/Roboto 10/Cantarell 11/g' /etc/gtk-3.0/settings.ini
+	  #
+	  #echo Iniciando propiedades de software, activar repositorios y actualizaciones de seguridad
+	  #sleep 3s
+	  #xhost +
+	  #sudo software-properties-gtk
+	  #
+	  echo Actualizando software
+	  sudo apt update
+	  sudo apt dist-upgrade -y
+	  sudo apt autoremove -y
+	  #
+	  #Advertencia transistoria
+	  echo Por el momento se recomienda cerrar el script
+	  echo Ya que flatpak no permite instalar el repositorio
+	  echo hasta haber reiniciado el sistema.
+	  sleep 7s
+	  #
+	  echo  -=Software Grafico=-
+	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
+	  options=(1 "Programas desde apt" on    # any option can be set to default to "off"
+	           2 "Programas desde flatpak" off
+	           3 "LibreOffice y GIMP desde apt" off
+	           4 "LibreOffice y GIMP desde flatpak" on
+	           5 "Software extra desde flatpak" off
+			   6 "Visual Studio Code" off)
+	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+	  clear
+	  for choice in $choices
+	  do
+	      case $choice in
+	  	1)
+	  	  sudo apt install gedit-plugins -y
+	  	  sudo apt install gthumb -y
+	  	  sudo apt install baobab -y
+		  sudo apt install file-roller -y
+	  	  ;;
+	  	2)
+	  	  flatpak install flathub org.gnome.gedit
+	  	  flatpak install flathub org.gnome.gThumb
+	  	  flatpak install flathub org.gnome.baobab
+	  	  flatpak install flathub org.gnome.FileRoller
+	  	  ;;
+	  	3)
+	  	  sudo apt install libreoffice-gtk3 -y
+	  	  sudo apt install libreoffice-l10n-es -y
+	  	  sudo apt install libreoffice-java-common -y
+	  	  sudo apt install libreoffice-calc -y
+	  	  sudo apt install libreoffice-impress -y
+	  	  sudo apt install libreoffice-writer -y
+	  	  #
+	  	  sudo apt install hunspell-es -y
+	  	  sudo apt install mythes-es -y
+	  	  sudo apt install liblibreofficekitgtk -y
+	  	  #
+	  	  #sudo apt install cups system-config-printer -y
+	  	  #sudo apt install printer-driver-cups-pdf -y
+	  	  #sudo apt install printer-driver-escpr psutils -y
+	  	  #
+	  	  #echo Iniciando configuracion de impresora
+	  	  #sudo system-config-printer
+	  	  #
+		  sudo apt install gimp gimp-data-extras -y
+	  	  #
+	  	  sudo apt clean
+	  	  sudo apt autoclean
+	  	  ;;
+	  	4)
+	  	  flatpak install flathub org.libreoffice.LibreOffice -y
+	  	  flatpak install flathub org.gimp.GIMP -y
+	  	  #
+	  	  #sudo apt install cups system-config-printer -y
+	  	  #sudo apt install printer-driver-cups-pdf -y
+	  	  #sudo apt install printer-driver-escpr psutils -y
+	  	  #
+	  	  #echo Iniciando configuracion de impresora
+	  	  #sudo system-config-printer
+	  	  #sudo apt install gimp gimp-data-extras -y
+	  	  #
+	  	  #sudo apt clean
+	  	  #sudo apt autoclean
+	  	  ;;
+	  	5)
+	  	  flatpak install com.github.tchx84.Flatseal -y
+	  	  #flatpak install re.sonny.Commit -y
+	  	  #git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+	  	  #flatpak install com.github.neithern.g4music -y
+	  	  ;;
+		6)
+	  	  sudo apt-get install wget gpg
+	  	  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+		  sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+		  sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+		  rm -f packages.microsoft.gpg
+	  	  sudo apt install apt-transport-https
+		  sudo apt update
+		  sudo apt install code
+	  	  ;;
+	     esac
+	  done
+	  #
+	  echo -=Aplicando modificaciones a gsettings=-
+	  sleep 2s
+	  echo Reconfigurando Cantarell como tipografia en GNOME Shell
+	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  echo Configurando botones de la barra de titulo
+	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  echo Configurando Tema GTK
+	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  #echo Activando CSD en GNOME Terminal
+	  #gsettings set org.gnome.Terminal.Legacy.Settings headerbar 'true'
+	  #
+	  echo Actualizando carpetas de usuario
+	  xdg-user-dirs-update
+	  #
+	  echo Escondiendo entradas .desktop
+	  mkdir -p ~/.local/share/applications/
+	  #
+	  #cp /usr/share/applications/vim.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/vim.desktop
+	  #
+	  cp /usr/share/applications/mpv.desktop ~/.local/share/applications/
+	  echo NoDisplay=true >> ~/.local/share/applications/mpv.desktop
+	  #
+	  #cp /usr/share/applications/display-im6.q16.desktop ~/.local/share/applications/
+	  #echo NoDisplay=true >> ~/.local/share/applications/display-im6.q16.desktop
+	  #
+	  #echo Descargando iconos en .png para aplicaciones de GNOME
+	  #cd /usr/share/icons/hicolor/128x128/apps
+	  ##
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.ArchiveManager.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.baobab.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Evince.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.font-viewer.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.gedit.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Lollypop.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Nautilus.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Software.png
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/org.gnome.Yelp.png
+	  #
+	  #cd ~
+	  #
+	  echo  -=Actualizando y limpiando $NAME $VERSION=-
+	  sudo apt update
+	  sudo apt upgrade -y
+	  sudo apt autoremove -y
+	  sudo apt clean
+	  sudo apt autoclean
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#
