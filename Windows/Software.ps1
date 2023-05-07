@@ -78,7 +78,7 @@ winget install calibre.calibre
 #-winget install ElectronicArts.EADesktop
 #-winget install EpicGames.EpicGamesLauncher
 winget install GIMP.GIMP
-#winget install Git.Git
+winget install Git.Git
 winget install Google.Chrome
 winget install Google.Drive
 winget install HulubuluSoftware.AdvancedRenamer
@@ -88,7 +88,7 @@ winget install HulubuluSoftware.AdvancedRenamer
 #winget install Levitsky.FontBase
 #winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
-#winget install Microsoft.VisualStudioCode
+winget install Microsoft.VisualStudioCode
 #winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
 winget install SomePythonThings.WingetUIStore
