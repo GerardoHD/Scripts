@@ -3,8 +3,14 @@
 Write-Output "Activando UTC en hora de Windows"
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
+Write-Output "Activando segundos en la barra de tareas" 
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /d 1 /t REG_DWORD /f
+#
 Write-Output "Desactivando hibernacion"
 powercfg -h off
+#
+Write-Output "Reiniciando Explorador de archivos"
+stop-process -name explorer –force
 #
 Write-Output "Instalando Nexus Tools"
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
