@@ -77,7 +77,6 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
-	  sudo dnf update
 	  sudo dnf upgrade --refresh
 	  flatpak update
 	  #
@@ -139,7 +138,6 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
-	  sudo dnf update
 	  sudo dnf upgrade --refresh
 	  flatpak update
 	  sudo reboot
@@ -173,7 +171,6 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
-	  sudo dnf update
 	  sudo dnf upgrade --refresh
 	  flatpak update
 	  sudo poweroff
