@@ -175,11 +175,8 @@ do
 	  echo Instalando MoreWaita Icons
 	  git clone https://github.com/somepaulo/MoreWaita.git
 	  cd MoreWaita/
-	  git pull
-	  mkdir -p ~/.local/share/icons/MoreWaita
-	  rm -rf /home/gerardohd/.local/share/icons/MoreWaita/*
-	  cp -rf * ~/.local/share/icons/MoreWaita/
-	  gtk-update-icon-cache -f -t ~/.local/share/icons/MoreWaita && gtk4-update-icon-cache -f -t ~/.local/share/icons/MoreWaita && xdg-desktop-menu forceupdate
+	  ./system-install.sh
+	  gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 	  #
 	  break
 	  ;;
