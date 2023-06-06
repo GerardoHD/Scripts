@@ -45,6 +45,8 @@ do
 	  do
 	      case $opt in
 	  	"Si")
+		sudo apt-mark hold cros-guest-tools
+		sudo apt-mark hold cros-im
 		sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
 	  	echo >> sources.list
 		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
