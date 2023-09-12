@@ -98,6 +98,7 @@ do
 	   #flatpak install io.github.realmazharhusain.GdmSettings
 	   #flatpak install com.github.GradienceTeam.Gradience
 	   flatpak install io.github.giantpinkrobots.flatsweep
+	   flatpak install flathub io.gitlab.adhami3310.Impression
 	   #
 	     echo  -=Visual Studio Code y PowerShell=-
 		PS3='Quieres instalar Visual Studio Code y PowerShell? '
