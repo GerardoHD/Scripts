@@ -169,7 +169,6 @@ do
 	  cd Git
 	  git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
 	  cd firefox-gnome-theme/scripts/
-	  git pull
 	  ./install.sh
 	  #
 	  cd ../..
@@ -177,7 +176,7 @@ do
 	  echo Instalando MoreWaita Icons
 	  git clone https://github.com/somepaulo/MoreWaita.git
 	  cd MoreWaita/
-	  ./system-install.sh
+	  ./install.sh
 	  gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 	  #
 	  break
