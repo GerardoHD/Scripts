@@ -107,6 +107,7 @@ do
 	  sudo rm -rf /var/tmp/flatpak-cache*
 	  sudo rm -rf /var/cache/abrt-di/*
 	  rm -rf $HOME/.cache/debuginfod_client/*
+          abrt-cli rm /var/spool/abrt/*
 	  flatpak uninstall --unused
 	  #
 	fi
