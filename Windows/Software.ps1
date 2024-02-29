@@ -97,6 +97,7 @@ winget install HulubuluSoftware.AdvancedRenamer
 winget install Microsoft.VisualStudioCode
 #winget install Mozilla.Firefox
 #-winget install Oracle.JavaRuntimeEnvironment
+winget install RevoUninstaller.RevoUninstaller
 winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
