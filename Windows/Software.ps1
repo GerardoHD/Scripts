@@ -87,10 +87,12 @@ winget install GIMP.GIMP
 winget install Git.Git
 winget install Google.Chrome
 winget install Google.Drive
-#winget install Intel.IntelDriverAndSupportAssistant
+winget install Google.QuickShare
+winget install Intel.IntelDriverAndSupportAssistant
 #winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
 #winget install Levitsky.FontBase
+winget install LocalSend.LocalSend
 #winget install Mega.MEGASync
 #-winget install Microsoft.Powertoys
 winget install Microsoft.VisualStudioCode
