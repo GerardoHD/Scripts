@@ -9,6 +9,9 @@ reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation
 #Write-Output "Desactivando hibernacion"
 #powercfg -h off
 #
+Write-Output "Activando rutas largas en nombres de archivos"
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+#
 Write-Output "Reiniciando Explorador de archivos"
 stop-process -name explorer –force
 #
