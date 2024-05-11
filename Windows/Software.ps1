@@ -81,6 +81,7 @@ winget install 7zip.7zip
 #-winget install Amazon.Kindle
 #winget install Armin2208.WindowsAutoNightMode
 #-winget install Bitwarden.Bitwarden
+winget install Beeper.Beeper
 #winget install Box.Box
 winget install calibre.calibre
 #winget install clsid2.mpc-hc
@@ -89,10 +90,11 @@ winget install calibre.calibre
 winget install GIMP.GIMP
 winget install Git.Git
 winget install Google.Chrome
-winget install Google.Drive
+winget install Google.GoogleDrive
 winget install Google.QuickShare
+winget install Google.PlatformTools
 winget install Intel.IntelDriverAndSupportAssistant
-#winget install JackieLiu.NotepadsApp
+winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
 #winget install Levitsky.FontBase
 winget install LocalSend.LocalSend
@@ -103,6 +105,7 @@ winget install Mozilla.Firefox
 winget install MusicBee.MusicBee
 #-winget install Oracle.JavaRuntimeEnvironment
 winget install RevoUninstaller.RevoUninstaller
+winget install Synthesia.Synthesia
 winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
