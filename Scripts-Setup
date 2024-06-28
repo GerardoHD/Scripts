@@ -38,7 +38,7 @@ elif [ `which apt` ]; then
 	  sudo chmod +x Distro-Crostini-Setup
       sudo rm -rf Debian-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Setup -O /usr/local/bin/Distro-Setup
-	  sudo chmod +x Debian-Setup
+	  sudo chmod +x Distro-Setup
 	  sudo rm -rf Distro-Ubuntu-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-Setup -O /usr/local/bin/Distro-Ubuntu-Setup
 	  sudo chmod +x Distro-Ubuntu-Setup
