@@ -47,7 +47,7 @@ do
 	  	"Si")
 		sudo apt-mark hold cros-guest-tools
 		sudo apt-mark hold cros-im
-		sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
+		sudo mv /etc/apt/sources.list /etc/apt/sources.list-sta.bak
 	  	echo >> sources.list
 		sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
 		sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
@@ -146,8 +146,7 @@ do
 	           2 "Programas desde flatpak" off
 	           3 "LibreOffice y GIMP desde apt" off
 	           4 "LibreOffice y GIMP desde flatpak" on
-	           5 "Software extra desde flatpak" off
-	           6 "Visual Studio Code" off)
+	           5 "Visual Studio Code" off)
 	  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	  clear
 	  for choice in $choices
@@ -205,12 +204,6 @@ do
 	  	  #sudo apt autoclean
 	  	  ;;
 	  	5)
-	  	  flatpak install com.github.tchx84.Flatseal -y
-	  	  #flatpak install re.sonny.Commit -y
-	  	  #git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-	  	  #flatpak install com.github.neithern.g4music -y
-	  	  ;;
-		6)
 	  	  sudo apt-get install wget gpg
 	  	  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 		  sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg

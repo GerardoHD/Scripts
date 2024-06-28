@@ -13,16 +13,12 @@ if [ `which pacman` ]; then
 	  echo Descargando scripts adecuados para $NAME
 	  sleep 3s
 	  #
-	  if [ ! -e "$FILE" ]; then
-	  echo $NAME parece estar instalado en Crostini, o en un contenedor
-	  sudo rm -rf Distro-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/Arch-Crostini-Setup -O /usr/local/bin/Distro-Setup
-	  sudo chmod +x Distro-Setup
-	  sudo rm -rf AUR-Updater
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Crostini -O /usr/local/bin/AUR-Updater
-	  sudo chmod +x /usr/local/bin/AUR-Updater
-	  else
-	  echo $NAME parece estar instalado en hardware
+	  sudo rm -rf Arch-Crostini-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/Arch-Crostini-Setup -O /usr/local/bin/Distro-Crostini-Setup
+	  sudo chmod +x Distro-Crostini-Setup
+	  sudo rm -rf AUR-Crostini-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Crostini -O /usr/local/bin/AUR-Crostini-Updater
+	  sudo chmod +x AUR-Crostini-Updater
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/Arch-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
@@ -31,31 +27,25 @@ if [ `which pacman` ]; then
 	  sudo chmod +x Arch-UKI
 	  sudo rm -rf AUR-Updater
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/AUR-Arch -O /usr/local/bin/AUR-Updater
-	  sudo chmod +x /usr/local/bin/AUR-Updater
-	  sudo rm -rf GNOME-Fonts-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GNOME-Fonts-Setup
-	  sudo chmod +x GNOME-Fonts-Setup
-	  sudo rm -rf GRUB-OS-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Setup
-	  sudo chmod +x GRUB-OS-Setup
+	  sudo chmod +x AUR-Updater
+	  sudo rm -rf GRUB-OS-Selector
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Selector
+	  sudo chmod +x GRUB-OS-Selector
 	  fi
 	  #
 elif [ `which apt` ]; then
-	  echo Descargando scripts adecuados para $NAME
-	  sleep 3s
-	  if [ ! -e "$FILE" ]; then
-	  echo $NAME $VERSION parece estar instalado en Crostini, o en un contenedor
-	  sudo rm -rf Distro-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Setup
-	  sudo chmod +x Distro-Setup
-	  sudo rm -rf Ubuntu-WSL
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-WSL -O /usr/local/bin/Ubuntu-WSL
-	  sudo chmod +x Ubuntu-WSL
-	  else
-	  echo $NAME $VERSION parece estar instalado en hardware
-	  sudo rm -rf Ubuntu-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-Setup -O /usr/local/bin/Ubuntu-Setup
-	  sudo chmod +x Ubuntu-Setup
+	  sudo rm -rf Distro-Crostini-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Crostini-Setup
+	  sudo chmod +x Distro-Crostini-Setup
+      sudo rm -rf Debian-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Setup -O /usr/local/bin/Distro-Setup
+	  sudo chmod +x Debian-Setup
+	  sudo rm -rf Distro-Ubuntu-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-Setup -O /usr/local/bin/Distro-Ubuntu-Setup
+	  sudo chmod +x Distro-Ubuntu-Setup
+      sudo rm -rf Distro-Ubuntu-WSL
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-WSL -O /usr/local/bin/Distro-Ubuntu-WSL
+	  sudo chmod +x Distro-Ubuntu-WSL
 	  fi
 	  #
 elif [ `which dnf` ]; then
@@ -65,7 +55,7 @@ elif [ `which dnf` ]; then
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/Fedora-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
 	  sudo rm -rf GRUB-OS-Selector
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Fedora/GRUB-OS-Selector -O /usr/local/bin/GRUB-OS-Selector
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Selector -O /usr/local/bin/GRUB-OS-Selector
 	  sudo chmod +x GRUB-OS-Selector
 	  #
 fi
@@ -76,6 +66,12 @@ fi
 	  sudo rm -rf Distros-Updater
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Distros-Updater
 	  sudo chmod +x Distros-Updater
+      sudo rm -rf Flatpaks-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Flatpaks-Setup
+	  sudo chmod +x Flatpaks-Setup
+      sudo rm -rf GNOME-Fonts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GNOME-Fonts-Setup
+	  sudo chmod +x GNOME-Fonts-Setup
 	  #sudo rm -rf Tweaks
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
 	  #sudo chmod +x Tweaks

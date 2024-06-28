@@ -288,8 +288,6 @@ do
 	  #	sudo pacman -S materia-gtk-theme arc-gtk-theme
 	  #	sudo pacman -S kvantum-theme-materia
 	  #	sudo pacman -S papirus-icon-theme capitaine-cursors
-	  #	flatpak install flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact} -y
-	  #	flatpak install flathub org.gtk.Gtk3theme.Arc{,-Dark,-Darker,} -y
 	  #	yay -S la-capitaine-icon-theme kvantum-theme-arc
 	  #	sudo sed -i 's|Inherits=breeze,elementary,gnome,deepin|Inherits=Papirus,breeze,elementary,gnome,deepin|g' /usr/share/icons/la-capitaine-icon-theme/index.theme
 	  #	break
@@ -303,9 +301,9 @@ do
 	  #done
 	  #
 	  #Programas
-	  	sudo pacman -S gnome-epub-thumbnailer calibre foliate dictd
+	  	sudo pacman -S gnome-epub-thumbnailer calibre dictd
 	  	sudo pacman -S gedit-plugins libgit2-glib evince gnome-disk-utility geary
-	  	sudo pacman -S lollypop fragments gthumb gparted
+	  	sudo pacman -S lollypop gthumb gparted
 	  #
 	  echo -=Soporte de impresión=-
 	  	sudo pacman -S gutenprint foomatic-db-gutenprint-ppds
@@ -317,40 +315,8 @@ do
 	  sudo gtk-update-icon-cache
 	  xdg-user-dirs-update
 	  #
-	  #echo  -=Flatpak=-
-	  #cmd=(dialog --separate-output --checklist "Elige los flatpak a instalar" 22 76 16)
-	  #options=(1 "Extension Manager" on
-	  #        2 "Commit" off
-	  #        3 "G4Music" off
-	  #        4 "Flatseal" off
-	  #        5 "Shortwave" off)
-	  #choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-	  #clear
-	  #for choice in $choices
-	  #do
-	  #    case $choice in
-	  #	1)
-	  #	  flatpak install com.mattjakeman.ExtensionManager -y
-	  #	  ;;
-	  #	2)
-	  #	  flatpak install re.sonny.Commit -y
-	  #	  git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-	  #	  ;;
-	  #	3)
-	  #	  flatpak install com.github.neithern.g4music -y
-	  #	  ;;
-	  #	4)
-	  #	  flatpak install com.github.tchx84.Flatseal -y
-	  #	  ;;
-	  #	5)
-	  #	  flatpak install de.haeckerfelix.Shortwave -y
-	  #	  ;;
-	  #    esac
-	  #done
-	  #
 	  echo  -=Instalando software desde AUR=-
 	  	yay -S ttf-ms-fonts amazon-fonts
-	  	yay -S wike
 	  	yay -S google-chrome
 	  #
 	  echo  -=Software opcional=-

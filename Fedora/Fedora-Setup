@@ -65,9 +65,9 @@ do
 	   #
 	   sudo dnf install -y libreoffice-langpack-es
 	   sudo dnf install -y menulibre
-	   sudo dnf install -y gnome-epub-thumbnailer calibre foliate
+	   sudo dnf install -y gnome-epub-thumbnailer calibre
 	   sudo dnf install -y gedit-plugins geary
-	   sudo dnf install -y lollypop fragments gthumb gparted
+	   sudo dnf install -y lollypop gthumb gparted
 	   sudo dnf install -y gnome-tweaks
 	   #
 	   sudo dnf install -y google-chrome-stable
@@ -77,30 +77,6 @@ do
 	   sudo dnf install -y dconf-editor
 	   #sudo dnf install -y bubblemail
 	   #sudo dnf install -y stellarium
-	   #
-	   echo Instalando aplicaciones flatpak
-	   flatpak install com.mattjakeman.ExtensionManager
-	   #flatpak install re.sonny.Commit
-	   #git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-	   flatpak install org.gtk.Gtk3theme.adw-gtk3
-	   flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
-	   flatpak install com.github.neithern.g4music
-	   flatpak install com.github.tchx84.Flatseal
-	   flatpak install de.haeckerfelix.Shortwave
-	   flatpak install org.nickvision.tubeconverter
-	   #flatpak install com.github.hugolabe.Wike
-	   #flatpak install io.bassi.Amberol
-	   #flatpak install com.github.huluti.Curtail
-	   #flatpak install org.gnome.gitlab.YaLTeR.Identity
-	   flatpak install celluloid
-	   #flatpak install im.bernard.Nostalgia
-	   #flatpak install org.nickvision.tagger
-	   #flatpak install io.github.realmazharhusain.GdmSettings
-	   #flatpak install com.github.GradienceTeam.Gradience
-	   flatpak install io.github.giantpinkrobots.flatsweep
-	   flatpak install flathub io.gitlab.adhami3310.Impression
-	   flatpak install io.gitlab.zehkira.Monophony
-	   #
 	     echo  -=Visual Studio Code y PowerShell=-
 		PS3='Quieres instalar Visual Studio Code y PowerShell? '
 		options=("Si" "No")
