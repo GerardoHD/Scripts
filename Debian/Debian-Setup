@@ -18,15 +18,15 @@ sudo apt install apt-listbugs apt-listchanges -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
 #
 echo Cambiando a repositorios testing
-#sudo mv /etc/apt/sources.list /etc/apt/sources.list-sta.bak
-#echo >> sources.list
-#sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-#sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-#sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-#sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-#sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
-#sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
-#sudo mv sources.list /etc/apt/sources.list
+sudo mv /etc/apt/sources.list /etc/apt/sources.list-sta.bak
+echo >> sources.list
+sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
+sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
+sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
+sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
+sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
+sudo mv sources.list /etc/apt/sources.list
 sudo apt update --allow-releaseinfo-change
 sudo apt dist-upgrade -y
 sudo apt autoremove -y
@@ -47,9 +47,9 @@ sudo apt install blueman gvfs* -y
 sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine -y #en c330 solo se instala libertine
 sudo apt install fonts-crosextra* -y
 sudo apt install ttf-mscorefonts-installer cabextract fonts-ibm-plex -y
-#mkdir .fonts
-#wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
-#rm PowerPointViewer.exe
+mkdir .fonts
+wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
+rm PowerPointViewer.exe
 #
 echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
 sudo mkdir -p /etc/polkit-1/rules.d/
@@ -57,24 +57,24 @@ sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-ru
 #
 #Soporte Flatpak
 sudo apt install flatpak -y
-#sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-#sudo flatpak update --appstream
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak update --appstream
 #
 sudo apt install gtk2-engines -y
 sudo apt install gtk2-engines-aurora -y
 sudo apt install gtk2-engines-murrine -y
 sudo apt install gtk2-engines-oxygen -y
 #
-#echo Instalando Firefox GNOME Theme
-#mkdir Git
-#cd Git
-#git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-#cd firefox-gnome-theme/scripts/
-#./install.sh
-#cd ~/
+echo Instalando Firefox GNOME Theme
+mkdir Git
+cd Git
+git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
+cd firefox-gnome-theme/scripts/
+./install.sh
+cd ~/
 #
 echo Instalando Papirus Icon Theme
-#wget -qO- https://git.io/papirus-icon-theme-install | sh
+wget -qO- https://git.io/papirus-icon-theme-install | sh
 #
 echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
@@ -90,9 +90,9 @@ echo  -=Software Grafico=-
 	  do
 	      case $choice in
 	  	1)
-          #sudo apt install light-locker lightdm-gtk-greeter lightdm-gtk-greeter-settings gnome-screensaver lightdm-settings #en c330 preinstalado light-locker
-          #sudo sed -i 's/greeter-session=slick-greeter/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
-          #sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+          sudo apt install light-locker lightdm-gtk-greeter lightdm-gtk-greeter-settings gnome-screensaver lightdm-settings #en c330 preinstalado light-locker
+          sudo sed -i 's/greeter-session=slick-greeter/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
+          sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
           sudo apt install mugshot galculator -y
           sudo apt install chromium chromium-l10n chromium-driver -y
           sudo apt install hunspell-es hyphen-es libreoffice-gtk4 libreoffice-help-es libreoffice-l10n-es -y
@@ -119,16 +119,15 @@ echo  -=Software Grafico=-
 	  	  ;;
 	  	3)
 	  	  sudo apt-get install wget gpg
-	  	  #wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-		  #sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-		  #sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-		  #rm -f packages.microsoft.gpg
+	  	  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+		  sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+		  sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+		  rm -f packages.microsoft.gpg
 		  sudo apt update
 		  sudo apt install code -y
 	  	  ;;
 	  	4)
-	  	  #Flatpaks-Setup
-          ./FS
+	  	  Flatpaks-Setup
 	  	  ;;
 	  	5)
 	  	  sudo apt install task-gnome-desktop -y
