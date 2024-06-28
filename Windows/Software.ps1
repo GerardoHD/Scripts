@@ -87,6 +87,7 @@ winget install calibre.calibre
 #winget install clsid2.mpc-hc
 #-winget install ElectronicArts.EADesktop
 #-winget install EpicGames.EpicGamesLauncher
+winget install fastfetch
 winget install GIMP.GIMP
 winget install Git.Git
 winget install Google.Chrome
