@@ -8,7 +8,7 @@ echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
 #
 sudo apt install dialog -y
 #
-sudo apt install apt-utils pv tar cgpt
+sudo apt install apt-utils pv tar cgpt fastfetch
 sudo apt install binutils acl attr
 #
 sudo apt install bash-completion manpages-es

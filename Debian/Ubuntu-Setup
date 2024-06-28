@@ -9,7 +9,7 @@ sleep 3s
 #
 sudo apt install ubuntu-restricted-extras -y
 sudo apt install chrome-gnome-shell -y
-sudo apt install flatpak sshfs -y
+sudo apt install flatpak sshfs fastfetch -y
 sudo apt install dconf-tools git curl -y
 sudo apt install android-tools-adb android-tools-fastboot -y
 sudo apt install autoconf automake cmake -y

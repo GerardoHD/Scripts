@@ -95,7 +95,7 @@ do
 	  sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine -y
 	  #
 	  sudo apt install bash-completion manpages-es -y
-          sudo apt install ffmpegthumbnailer exiv2 -y
+	  sudo apt install ffmpegthumbnailer exiv2 -y
 	  #sudo apt install ffmpegthumbnailer youtube-dl exiv2 -y
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
 	  sudo apt install lzip minizip unace arj ncompress p7zip unrar-free lrzip zip squashfs-tools lzop rzip -y
@@ -104,7 +104,7 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  #
-	  sudo apt install gnome-themes-extra nautilus -y
+	  sudo apt install gnome-themes-extra nautilus fastfetch -y
 	  #
 	  #sudo apt install gnome-software gnome-software-plugin-flatpak -y
 	  #
@@ -113,7 +113,7 @@ do
 	  #
 	  #echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
 	  #sudo mkdir -p /etc/polkit-1/rules.d/
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo

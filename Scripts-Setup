@@ -31,7 +31,6 @@ if [ `which pacman` ]; then
 	  sudo rm -rf GRUB-OS-Selector
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GRUB-OS-Selector
 	  sudo chmod +x GRUB-OS-Selector
-	  fi
 	  #
 elif [ `which apt` ]; then
 	  sudo rm -rf Distro-Crostini-Setup
@@ -46,7 +45,6 @@ elif [ `which apt` ]; then
       sudo rm -rf Distro-Ubuntu-WSL
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu-WSL -O /usr/local/bin/Distro-Ubuntu-WSL
 	  sudo chmod +x Distro-Ubuntu-WSL
-	  fi
 	  #
 elif [ `which dnf` ]; then
 	  echo Descargando scripts adecuados para $NAME $VERSION

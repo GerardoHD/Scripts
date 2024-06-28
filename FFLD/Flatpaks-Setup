@@ -1,0 +1,51 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD
+echo Script creado para instalar flatpaks en $NAME
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
+sleep 3s
+#
+PS3='Quieres instalar software desde Flatpak? '
+	  options=("Si" "No")
+	  select opt in "${options[@]}"
+	  do
+	      case $opt in
+	  	"Si")
+		#flatpak install com.mattjakeman.ExtensionManager -y
+		#flatpak install re.sonny.Commit -y
+		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
+		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
+		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
+		flatpak install com.github.neithern.g4music -y
+		#flatpak install com.github.tchx84.Flatseal -y
+		flatpak install de.haeckerfelix.Shortwave -y
+		#flatpak install org.nickvision.tubeconverter -y
+		flatpak install com.github.hugolabe.Wike -y
+		#flatpak install io.bassi.Amberol -y
+		#flatpak install com.github.huluti.Curtail -y
+		#flatpak install org.gnome.gitlab.YaLTeR.Identity -y
+		#flatpak install celluloid -y
+		#flatpak install im.bernard.Nostalgia -y
+		#flatpak install org.nickvision.tagger -y
+		#flatpak install io.github.realmazharhusain.GdmSettings -y
+		#flatpak install com.github.GradienceTeam.Gradience -y
+		#flatpak install io.github.giantpinkrobots.flatsweep -y
+		#flatpak install flathub io.gitlab.adhami3310.Impression -y
+		flatpak install io.gitlab.zehkira.Monophony -y
+        flatpak install com.github.johnfactotum.Foliate -y
+        flatpak install de.haeckerfelix.Fragments -y
+        flatpak install io.github.flattool.Warehouse -y
+		break
+	  	;;
+	  	#
+	  	"No")
+        sleep 2s
+	  	break
+	  	;;
+	  	*) echo invalid option;;
+	     esac
+	  done
+	  #
+#
