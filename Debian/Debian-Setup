@@ -105,7 +105,7 @@ echo  -=Software Grafico=-
 	  	  sudo apt install libreoffice-calc -y
 	  	  sudo apt install libreoffice-impress -y
 	  	  sudo apt install libreoffice-writer -y
-          sudo apt install gimp gimp-data-extras -y
+          sudo apt install gimp gimp-data-extras inkscape inskcape-open-symbols inkscape-tutorials -y
           sudo apt install gparted baobab -y
           sudo apt install gdisk -y
           sudo apt install openssh-server sshfs -y
@@ -132,7 +132,6 @@ echo  -=Software Grafico=-
 	  	  ;;
 	  	5)
 	  	  sudo apt install task-gnome-desktop -y
-          sudo apt install gnome-software gnome-software-plugin-flatpak -y
           sudo apt install gedit-plugins -y
           sudo apt install geary menulibre -y
 		  sudo apt purge --remove kdeconnect -y
