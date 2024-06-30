@@ -98,7 +98,7 @@ echo  -=Software Grafico=-
           sudo apt install chromium chromium-l10n chromium-driver -y
           sudo apt install hunspell-es hyphen-es libreoffice-gtk4 libreoffice-help-es libreoffice-l10n-es -y
           sudo apt install libreoffice-style-breeze libreoffice-style-sifr libreoffice-style-sukapura -y
-          sudo apt install mythes-es -y
+          sudo apt install mythes-es firefox-esr-l10n-es-mx -y
           sudo apt install libreoffice-gtk3 libreoffice-voikko -y
 	  	  sudo apt install libreoffice-l10n-es -y
 	  	  sudo apt install libreoffice-java-common -y
@@ -106,7 +106,9 @@ echo  -=Software Grafico=-
 	  	  sudo apt install libreoffice-impress -y
 	  	  sudo apt install libreoffice-writer -y
           sudo apt install gimp gimp-data-extras inkscape inkscape-open-symbols inkscape-tutorials -y
-          sudo apt install gparted baobab -y
+          sudo apt install gparted -y
+		  sudo apt install baobab gnome-2048 gnome-disk-utility gnome-font-viewer gnome-mines gnome-nibbles gnome-sudoku -y
+		  sudo apt install gnome-software gnome-software-plugin* -y
           sudo apt install gdisk -y
           sudo apt install openssh-server sshfs -y
 		  sudo apt install kdeconnect -y
@@ -117,6 +119,11 @@ echo  -=Software Grafico=-
           sudo apt install atril -y
           sudo apt install gnome-system-tools -y
           sudo apt purge --remove goldendict -y
+		  mkdir ~/AppImage
+		  cd ~/AppImage
+		  wget -c  https://download.beeper.com/linux/appImage/x64 -O Beeper.appimage
+		  chmod +x Beeper.appimage
+		  cd ~/
 	  	  ;;
 	  	3)
 	  	  sudo apt-get install wget gpg

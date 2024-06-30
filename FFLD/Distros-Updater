@@ -72,7 +72,7 @@ do
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo apt update
 	  sudo apt upgrade -y
-	  sudo apt full-upgrade
+	  #sudo apt full-upgrade
 	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
@@ -133,7 +133,7 @@ do
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
 	  sudo apt update
 	  sudo apt upgrade -y
-	  sudo apt full-upgrade
+	  #sudo apt full-upgrade
 	  flatpak update
 	  sudo reboot
 	  #
@@ -166,7 +166,7 @@ do
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
 	  sudo apt update
 	  sudo apt upgrade -y
-	  sudo apt full-upgrade
+	  #sudo apt full-upgrade
 	  flatpak update
 	  sudo poweroff
 	  #
