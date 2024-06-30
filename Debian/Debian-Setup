@@ -108,7 +108,7 @@ echo  -=Software Grafico=-
 	  	  sudo apt install libreoffice-writer -y
           sudo apt install gimp gimp-data-extras inkscape inkscape-open-symbols inkscape-tutorials -y
           sudo apt install gparted -y
-		  sudo apt install baobab gnome-2048 gnome-disk-utility gnome-font-viewer gnome-mines gnome-nibbles gnome-sudoku -y
+		  sudo apt install baobab gnome-2048 gnome-disk-utility gnome-font-viewer gnome-mines gnome-nibbles gnome-sudoku gnome-taquin gnome-tetravex -y
 		  sudo apt install gnome-software gnome-software-plugin* -y
           sudo apt install gdisk -y
           sudo apt install sshfsblueman -y
