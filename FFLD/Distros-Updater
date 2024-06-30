@@ -36,7 +36,6 @@ do
 	    #echo Remontando /tmp con tamaño de 4 GB
 	    #sudo mount -o remount,size=4G,noatime /tmp
 	    AUR-Updater
-	    flatpak update
 	    fi
 	  #
 	elif [ `which apt` ]; then
@@ -46,13 +45,13 @@ do
 	  sudo dpkg --configure -a
 	  sudo apt autoremove
 	  sudo apt update --fix-missing
-	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
 	  echo No hay comandos disponibles por el momento, falta investigacion
 	  #sudo rm /var/lib/dnf/history
 	  #
 	fi
+    flatpak update
 	;;
 	2) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -66,21 +65,19 @@ do
 	    sudo pacman -Syu --noconfirm
 	    else
 	    AUR-Updater
-	    flatpak update
 	    fi
 	elif [ `which apt` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo apt update
 	  sudo apt upgrade -y
 	  #sudo apt full-upgrade
-	  flatpak update
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo dnf upgrade --refresh
-	  flatpak update
 	  #
 	fi
+    flatpak update
 	;;
 	3) #Limpiador de cache de gestor de paquetes
 	if [ `which pacman` ]; then
@@ -88,7 +85,6 @@ do
 	  sleep 1s
 	  sudo pacman -Scc
 	  yay -Scc
-	  flatpak uninstall --unused
 	  #
 	elif [ `which apt` ]; then
 	  echo  -=Limpiando cache de apt=-
@@ -96,7 +92,6 @@ do
 	  sudo apt clean
 	  sudo apt autoclean
 	  sudo apt autoremove
-	  flatpak uninstall --unused
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Limpiando cache de dnf=-
@@ -107,10 +102,10 @@ do
 	  sudo rm -rf /var/tmp/flatpak-cache*
 	  sudo rm -rf /var/cache/abrt-di/*
 	  rm -rf $HOME/.cache/debuginfod_client/*
-          abrt-cli rm /var/spool/abrt/*
-	  flatpak uninstall --unused
+      abrt-cli rm /var/spool/abrt/*
 	  #
 	fi
+    flatpak uninstall --unused
 	;;
 	4) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -125,8 +120,6 @@ do
 	    reboot
 	    else
 	    AUR-Updater
-	    flatpak update
-	    sudo reboot
 	    fi
 	  #
 	elif [ `which apt` ]; then
@@ -134,16 +127,15 @@ do
 	  sudo apt update
 	  sudo apt upgrade -y
 	  #sudo apt full-upgrade
-	  flatpak update
-	  sudo reboot
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
 	  sudo dnf upgrade --refresh
-	  flatpak update
 	  sudo reboot
 	  #
 	fi
+    flatpak update
+	sudo reboot
 	;;
 	5) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -158,8 +150,6 @@ do
 	    poweroff
 	    else
 	    AUR-Updater
-	    flatpak update
-	    sudo poweroff
 	    fi
 	  #
 	elif [ `which apt` ]; then
@@ -167,18 +157,17 @@ do
 	  sudo apt update
 	  sudo apt upgrade -y
 	  #sudo apt full-upgrade
-	  flatpak update
-	  sudo poweroff
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
 	  sudo dnf upgrade --refresh
-	  flatpak update
-	  sudo poweroff
 	  #
 	fi
-	;;
+    flatpak update
+	sudo poweroff
+    ;;
     esac
 done
 #
 fastfetch
+#
