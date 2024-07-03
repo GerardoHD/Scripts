@@ -110,15 +110,6 @@ cd ..
 #./install.py
 #cd ..
 #
-#Bibata Cursors
-wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
-wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz
-tar -xvf Bibata-Modern-Classic.tar.xz
-tar -xvf Bibata-Modern-Ice.tar.xz
-sudo mv Bibata-Modern-Classic /usr/share/icons/
-sudo mv Bibata-Modern-Ice /usr/share/icons/
-rm Bibata*
-#
 cd ~/
 #
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
@@ -135,6 +126,15 @@ rm -rf Blender*
 #
 echo Instalando Papirus Icon Theme
 wget -qO- https://git.io/papirus-icon-theme-install | sh
+#
+echo Instalando Bibata Cursors
+wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
+wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz
+tar -xvf Bibata-Modern-Classic.tar.xz
+tar -xvf Bibata-Modern-Ice.tar.xz
+sudo mv Bibata-Modern-Classic /usr/share/icons/
+sudo mv Bibata-Modern-Ice /usr/share/icons/
+rm Bibata*
 #
 echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
