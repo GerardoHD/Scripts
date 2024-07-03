@@ -66,22 +66,72 @@ sudo apt install gtk2-engines -y
 sudo apt install gtk2-engines-aurora -y
 sudo apt install gtk2-engines-murrine -y
 sudo apt install gtk2-engines-oxygen -y
+sudo apt install qt5-style-kvantum*
+#
+echo Instalando Temas Adwaita
+#
+#adw-gtk3
+wget -c  https://github.com/lassekongo83/adw-gtk3/releases/latest/download/adw-gtk3v5.3.tar.xz
+tar -xf adw-gtk3v5.3.tar.xz
+sudo cp -rf adw-gtk3 /usr/share/themes/
+sudo cp -rf adw-gtk3-dark /usr/share/themes/
+rm -rf adw-gtk3*
 #
 echo Instalando Firefox GNOME Theme
 mkdir Git
 cd Git
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-cd firefox-gnome-theme/scripts/
-./install.sh
+./firefox-gnome-theme/scripts/install.sh
+#
+#adw-gtk2
+git clone https://github.com/molotov-dmitry/adw-gtk2.git
+sudo cp -rf adw-gtk2/adw-gtk3 /usr/share/themes/
+sudo cp -rf adw-gtk2/adw-gtk3-dark/ /usr/share/themes/
+#
+#adw-xfwm4
+git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
+sudo cp -rf adw-xfwm4/themes/* /usr/share/themes/
+#
+#KvLibadwaita GabePoel --Original
+#git clone https://github.com/GabePoel/KvLibadwaita.git
+#cd KvLibadwaita
+#sudo ./install.sh
+#cd ..
+#
+#KvLibadwaita BigLinux --fork
+git clone https://github.com/biglinux/KvLibadwaita.git
+cd KvLibadwaita
+sudo ./install.sh
+cd ..
+#
+#Adwaita-for-Steam
+#git clone https://github.com/tkashkin/Adwaita-for-Steam
+#cd Adwaita-for-Steam
+#./install.py
+#cd ..
+#
 cd ~/
+#
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
+#
+#Blender Icons GIMP
+wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
+unzip BlenderIcons-1-0-2.zip
+sudo cp -rf BlenderIcons /usr/share/gimp/2.0/icons/
+#
+wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
+unzip BlenderSymbolic-1-0-2.zip
+sudo cp -rf BlenderSymbolic /usr/share/gimp/2.0/icons/
+#
+rm -rf Blender*
 #
 echo Instalando Papirus Icon Theme
 wget -qO- https://git.io/papirus-icon-theme-install | sh
 #
 echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
-	  options=(1 "Paquetes desde APT" on
-	           2 "Programas para C2" off
+	  options=(1 "Software desde APT" on
+	           2 "Software para C2" off
 	           3 "Visual Studio Code" on
 	           4 "Flatpaks" on
 	           5 "Instalar GNOME" off
