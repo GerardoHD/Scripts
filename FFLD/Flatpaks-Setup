@@ -19,7 +19,7 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
 		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
 		flatpak install com.github.neithern.g4music -y
-		#flatpak install com.github.tchx84.Flatseal -y
+		flatpak install com.github.tchx84.Flatseal -y
 		flatpak install de.haeckerfelix.Shortwave -y
 		#flatpak install org.nickvision.tubeconverter -y
 		flatpak install com.github.hugolabe.Wike -y
@@ -37,6 +37,7 @@ PS3='Quieres instalar software desde Flatpak? '
         flatpak install com.github.johnfactotum.Foliate -y
         flatpak install de.haeckerfelix.Fragments -y
         flatpak install io.github.flattool.Warehouse -y
+		flatpak install com.google.Chrome -y
 		break
 	  	;;
 	  	#

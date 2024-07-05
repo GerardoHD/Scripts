@@ -58,7 +58,7 @@ sudo mkdir -p /etc/polkit-1/rules.d/
 sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 #
 #Soporte Flatpak
-sudo apt install flatpak -y
+sudo apt install flatpak xdg-desktop-portal-xapp -y
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak update --appstream
 #
