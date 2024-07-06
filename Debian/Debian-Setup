@@ -15,7 +15,7 @@ sudo usermod -aG optical,power,storage,wheel gerardohd
 sudo nano /etc/sudoers
 #
 sudo apt install bash-completion dialog -y #preinstalado en C330
-sudo apt install apt-listbugs apt-listchanges -y
+sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
 #
 echo Cambiando a repositorios testing
@@ -34,7 +34,7 @@ sudo apt autoremove -y
 sudo apt clean
 sudo apt autoclean
 #
-sudo apt install curl gpg wget git apt-transport-https -y #en C330 solo se instala apt-transport-https
+sudo apt install curl gpg wget git -y
 sudo apt install cmake -y
 sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y #en c330 excluir btrfs ntfs
 #sudo apt install gvfs* fuse fuse-overlayfs fuse-zip fuse2fs exfat-fuse fusefat fuseiso* -y
