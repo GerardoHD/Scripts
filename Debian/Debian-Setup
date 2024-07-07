@@ -14,7 +14,7 @@ sudo addgroup wheel
 sudo usermod -aG optical,power,storage,wheel gerardohd
 sudo nano /etc/sudoers
 #
-sudo apt install bash-completion dialog -y #preinstalado en C330
+sudo apt install bash-completion manpages-es dialog -y
 sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
 #
@@ -36,17 +36,18 @@ sudo apt autoclean
 #
 sudo apt install curl gpg wget git -y
 sudo apt install cmake -y
-sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y #en c330 excluir btrfs ntfs
-#sudo apt install gvfs* fuse fuse-overlayfs fuse-zip fuse2fs exfat-fuse fusefat fuseiso* -y
-sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip -y #en c330 excluir zip
-sudo apt install pv tar cgpt vboot-utils -y #en c330 solo pv
+sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
+#sudo apt install gvfs* fuse fuse-overlayfs fuse-zip fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
+sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip -y
+sudo apt install pv tar cgpt vboot-utils -y
 sudo apt install apt-config-icons-hidpi -y
 sudo apt install sbsigntool -y
 sudo apt install adb fastboot -y
 sudo apt install openssh-server sshfs -y
+sudo apt install ffmpegthumbnailer exiv2 -y
 #
 #Fuentes
-sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine -y #en c330 solo se instala libertine
+sudo apt install fonts-cantarell fonts-liberation fonts-linuxlibertine -y
 sudo apt install fonts-crosextra* -y
 sudo apt install ttf-mscorefonts-installer cabextract fonts-ibm-plex -y
 mkdir .fonts
@@ -62,79 +63,14 @@ sudo apt install flatpak xdg-desktop-portal-xapp -y
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak update --appstream
 #
+#Motores de temas
 sudo apt install gtk2-engines -y
 sudo apt install gtk2-engines-aurora -y
 sudo apt install gtk2-engines-murrine -y
 sudo apt install gtk2-engines-oxygen -y
 sudo apt install qt5-style-kvantum*
 #
-echo Instalando Temas Adwaita
-#
-#adw-gtk3
-wget -c  https://github.com/lassekongo83/adw-gtk3/releases/latest/download/adw-gtk3v5.3.tar.xz
-tar -xf adw-gtk3v5.3.tar.xz
-sudo mv -rf adw-gtk3 /usr/share/themes/
-sudo mv -rf adw-gtk3-dark /usr/share/themes/
-rm -rf adw-gtk3*
-#
-#Firefox GNOME Theme
-mkdir Git
-cd Git
-git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-./firefox-gnome-theme/scripts/install.sh
-#
-#adw-gtk2
-git clone https://github.com/molotov-dmitry/adw-gtk2.git
-sudo cp -rf adw-gtk2/adw-gtk3 /usr/share/themes/
-sudo cp -rf adw-gtk2/adw-gtk3-dark/ /usr/share/themes/
-#
-#adw-xfwm4
-git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
-sudo cp -rf adw-xfwm4/themes/* /usr/share/themes/
-#
-#KvLibadwaita GabePoel --Original
-#git clone https://github.com/GabePoel/KvLibadwaita.git
-#cd KvLibadwaita
-#sudo ./install.sh
-#cd ..
-#
-#KvLibadwaita BigLinux --fork
-git clone https://github.com/biglinux/KvLibadwaita.git
-cd KvLibadwaita
-sudo ./install.sh
-cd ..
-#
-#Adwaita-for-Steam
-#git clone https://github.com/tkashkin/Adwaita-for-Steam
-#cd Adwaita-for-Steam
-#./install.py
-#cd ..
-#
-cd ~/
-#
-gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
-#
-#Blender Icons GIMP
-wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
-unzip BlenderIcons-1-0-2.zip
-sudo cp -rf BlenderIcons /usr/share/gimp/2.0/icons/
-#
-wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
-unzip BlenderSymbolic-1-0-2.zip
-sudo cp -rf BlenderSymbolic /usr/share/gimp/2.0/icons/
-rm -rf Blender*
-#
-echo Instalando Papirus Icon Theme
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-#
-echo Instalando Bibata Cursors
-wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
-wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz
-tar -xvf Bibata-Modern-Classic.tar.xz
-tar -xvf Bibata-Modern-Ice.tar.xz
-sudo mv Bibata-Modern-Classic /usr/share/icons/
-sudo mv Bibata-Modern-Ice /usr/share/icons/
-rm Bibata*
+GitSW-Setup
 #
 echo  -=Software Grafico=-
 	  cmd=(dialog --separate-output --checklist "Elige el software a instalar: " 22 76 16)
@@ -155,10 +91,10 @@ echo  -=Software Grafico=-
           sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf
           sudo apt install mugshot galculator -y
           sudo apt install chromium chromium-l10n chromium-driver -y
-          sudo apt install hunspell-es hyphen-es libreoffice-gtk4 libreoffice-help-es libreoffice-l10n-es -y
+          sudo apt install firefox-esr-l10n-es-mx -y
+          sudo apt install libreoffice-gtk3 liblibreofficekitgtk libreoffice-voikko mythes-es -y
+		  sudo apt install hunspell-es hyphen-es libreoffice-gtk4 libreoffice-help-es libreoffice-l10n-es -y
           sudo apt install libreoffice-style-breeze libreoffice-style-sifr libreoffice-style-sukapura -y
-          sudo apt install mythes-es firefox-esr-l10n-es-mx -y
-          sudo apt install libreoffice-gtk3 libreoffice-voikko -y
 	  	  sudo apt install libreoffice-l10n-es -y
 	  	  sudo apt install libreoffice-java-common -y
 	  	  sudo apt install libreoffice-calc -y
@@ -169,7 +105,7 @@ echo  -=Software Grafico=-
 		  sudo apt install baobab gnome-2048 gnome-disk-utility gnome-font-viewer gnome-mines gnome-nibbles gnome-sudoku gnome-taquin gnome-tetravex -y
 		  sudo apt install gnome-software gnome-software-plugin* -y
           sudo apt install gdisk -y
-          sudo apt install sshfsblueman -y
+          sudo apt install sshfs blueman -y
 		  sudo apt install kdeconnect -y
 		  #
           sudo apt purge --remove gnome-system-monitor -y

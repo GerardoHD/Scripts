@@ -1,0 +1,80 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD
+echo Script creado para instalar customizaciones usando Git
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
+sleep 3s
+#
+#adw-gtk3
+wget -c  https://github.com/lassekongo83/adw-gtk3/releases/latest/download/adw-gtk3v5.3.tar.xz
+tar -xf adw-gtk3v5.3.tar.xz
+sudo mv -rf adw-gtk3 /usr/share/themes/
+sudo mv -rf adw-gtk3-dark /usr/share/themes/
+rm -rf adw-gtk3*
+#
+#Firefox GNOME Theme
+mkdir Git
+cd Git
+git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
+cd firefox-gnome-theme
+git pull
+./scripts/install.sh
+cd ..
+#
+#adw-gtk2
+git clone https://github.com/molotov-dmitry/adw-gtk2.git
+cd adw-gtk2
+git pull
+sudo cp -rf adw-gtk2/adw-gtk3 /usr/share/themes/
+sudo cp -rf adw-gtk2/adw-gtk3-dark/ /usr/share/themes/
+#
+#adw-xfwm4
+git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
+sudo cp -rf adw-xfwm4/themes/* /usr/share/themes/
+#
+#KvLibadwaita GabePoel --Original
+#git clone https://github.com/GabePoel/KvLibadwaita.git
+#cd KvLibadwaita
+#sudo ./install.sh
+#cd ..
+#
+#KvLibadwaita BigLinux --fork
+git clone https://github.com/biglinux/KvLibadwaita.git
+cd KvLibadwaita
+sudo ./install.sh
+cd ..
+#
+#Adwaita-for-Steam
+#git clone https://github.com/tkashkin/Adwaita-for-Steam
+#cd Adwaita-for-Steam
+#./install.py
+#cd ..
+#
+cd ~/
+#
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
+#
+#Blender Icons GIMP
+wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
+unzip BlenderIcons-1-0-2.zip
+sudo cp -rf BlenderIcons /usr/share/gimp/2.0/icons/
+#
+wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
+unzip BlenderSymbolic-1-0-2.zip
+sudo cp -rf BlenderSymbolic /usr/share/gimp/2.0/icons/
+rm -rf Blender*
+#
+echo Instalando Papirus Icon Theme
+wget -qO- https://git.io/papirus-icon-theme-install | sh
+#
+echo Instalando Bibata Cursors
+wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
+wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz
+tar -xvf Bibata-Modern-Classic.tar.xz
+tar -xvf Bibata-Modern-Ice.tar.xz
+sudo mv Bibata-Modern-Classic /usr/share/icons/
+sudo mv Bibata-Modern-Ice /usr/share/icons/
+rm Bibata*
+#
