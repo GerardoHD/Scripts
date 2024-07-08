@@ -36,9 +36,6 @@ elif [ `which apt` ]; then
 	  sudo rm -rf Distro-Crostini-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup -O /usr/local/bin/Distro-Crostini-Setup
 	  sudo chmod +x Distro-Crostini-Setup
-  	  sudo rm -rf Distro-Crostini-Setup2
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Crostini-Setup2 -O /usr/local/bin/Distro-Crostini-Setup2
-	  sudo chmod +x Distro-Crostini-Setup2
 	  sudo rm -rf Distro-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Debian-Setup -O /usr/local/bin/Distro-Setup
 	  sudo chmod +x Distro-Setup
@@ -76,9 +73,9 @@ fi
       sudo rm -rf GNOME-Fonts-Setup
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/GNOME-Fonts-Setup
 	  sudo chmod +x GNOME-Fonts-Setup
-	  #sudo rm -rf Tweaks
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
-	  #sudo chmod +x Tweaks
+	  sudo rm -rf Tweaks
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
+	  sudo chmod +x Tweaks
 	  #echo Descargando reglas de polkit para administrar sistema sin autenticarse
 	  #sudo mkdir -p /etc/polkit-1/rules.d/
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
