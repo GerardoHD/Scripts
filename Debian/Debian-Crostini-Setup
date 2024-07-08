@@ -125,11 +125,11 @@ do
 	      case $choice in
 	  	1)
           sudo apt install gimp gimp-data-extras inkscape inkscape-open-symbols inkscape-tutorials -y
-          sudo apt install gparted -y
 		  sudo apt install baobab -y
 		  sudo apt install gnome-software gnome-software-plugin* -y
           sudo apt install gdisk -y
-          sudo apt install sshfs blueman -y
+          sudo apt install sshfs -y
+		  sudo apt install thunar thunar-archive-plugin xarchiver xfce4-settings -y
 	  	  ;;
 	  	2)
           sudo apt install libreoffice-gtk3 liblibreofficekitgtk libreoffice-voikko mythes-es -y
