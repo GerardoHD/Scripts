@@ -37,12 +37,16 @@ elif [ `which apt` ]; then
 	  sudo rm -rf Setup-Debian-Crostini
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-Crostini
 	  sudo chmod +x Setup-Debian-Crostini
+	  #
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-testing.list -O /etc/apt/sources-testing.list.bak
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-unstable.list -O /etc/apt/sources-unstable.list.bak
+	  #
 	  #sudo rm -rf Setup-Ubuntu
-	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Ubuntu
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu/Setup-Ubuntu
 	  #sudo chmod +x Setup-Ubuntu
-	  sudo rm -rf Setup-Ubuntu-WSL
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Ubuntu-WSL
-	  sudo chmod +x Setup-Ubuntu-WSL
+	  #sudo rm -rf Setup-Ubuntu-WSL
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Ubuntu/Setup-Ubuntu-WSL
+	  #sudo chmod +x Setup-Ubuntu-WSL
 	  #
 elif [ `which dnf` ]; then
 	  echo Descargando scripts adecuados para $NAME $VERSION
