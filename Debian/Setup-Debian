@@ -18,21 +18,8 @@ sudo apt install bash-completion manpages-es dialog -y
 sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
 #
-echo Cambiando a repositorios testing
-sudo mv /etc/apt/sources.list /etc/apt/sources-stable.list.bak
-echo >> sources.list
-sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
-sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
-sudo mv sources.list /etc/apt/sources.list
-sudo apt update --allow-releaseinfo-change
-sudo apt dist-upgrade -y
-sudo apt autoremove -y
-sudo apt clean
-sudo apt autoclean
+#Cambiar repositorios de Debian
+Setup-Debian-Repos
 #
 sudo apt install curl gpg wget git -y
 sudo apt install cmake -y

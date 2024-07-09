@@ -1,0 +1,40 @@
+#!/bin/bash
+source /etc/os-release
+#
+echo	------==Script Creado por GerardoHD==------
+echo https://www.github.com/GerardoHD
+echo Script creado para cambiar los repositorios de $NAME
+echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
+sleep 3s
+#
+PS3='Elige si quieres cambiar los repositorios de Debian: '
+options=("Cambiar a Testing" "Cambiar a Unstable" "Cambiar a Unstable y Experimental" "Salir")
+select opt in "${options[@]}"
+do
+    case $opt in
+	"Cambiar a Testing")
+      sudo cp /etc/apt/sources-testing.list.bak /etc/apt/sources.list
+	  break
+	  ;;
+	"Cambiar a Unstable")
+      sudo cp /etc/apt/sources-unstable.list.bak /etc/apt/sources.list
+	  break
+	  ;;
+	"Cambiar a Unstable y Experimental")
+      sudo cp /etc/apt/sources-unstable-experimental.list.bak /etc/apt/sources.list
+	  break
+	  ;;
+	"Salir")
+	  break
+	  ;;
+	*) echo invalid option;;
+	esac
+done
+#
+sudo apt update --allow-releaseinfo-change
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt autoremove -y
+sudo apt clean
+sudo apt autoclean
+fastfetch

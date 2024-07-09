@@ -38,23 +38,10 @@ do
 	  ;;
 	"Instalar software")
 	  #
-	  echo Cambiando a repositorios testing
 	  #sudo apt-mark hold cros-guest-tools
 	  #sudo apt-mark hold cros-im
-	  sudo mv /etc/apt/sources.list /etc/apt/sources-stable.list.bak
-	  echo >> sources.list
-	  sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-	  sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
-	  sudo sed -i '$ a\deb https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-	  sudo sed -i '$ a\deb-src https://deb.debian.org/debian testing-updates main contrib non-free-firmware' sources.list
-	  sudo sed -i '$ a\deb https://deb.debian.org/debian-security/ testing-security main' sources.list
-	  sudo sed -i '$ a\deb-src https://deb.debian.org/debian-security/ testing-security main' sources.list
-	  sudo mv sources.list /etc/apt/sources.list
-	  sudo apt update --allow-releaseinfo-change
-	  sudo apt dist-upgrade -y
-	  sudo apt autoremove -y
-	  sudo apt clean
-	  sudo apt autoclean
+	  #Cambiar repositorios de Debian
+	  Setup-Debian-Repos
 	  #
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
 	  sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip -y
