@@ -141,20 +141,9 @@ do
 	  echo Desactivando Fecha en el reloj
 	  gsettings set org.gnome.desktop.interface clock-show-date "false"
 	  #
-	  echo Instalando GNOME Firefox Theme
-	  mkdir Git
-	  cd Git
-	  git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-	  cd firefox-gnome-theme/scripts/
-	  ./install.sh
+	  Setup-Tweaks
 	  #
-	  cd ../..
-	  #
-	  echo Instalando MoreWaita Icons
-	  git clone https://github.com/somepaulo/MoreWaita.git
-	  cd MoreWaita/
-	  ./install.sh
-	  gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
+	  #gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 	  #
 	  break
 	  ;;

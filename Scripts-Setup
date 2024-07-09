@@ -37,9 +37,9 @@ elif [ `which apt` ]; then
 	  sudo rm -rf Setup-Debian-Crostini
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-Crostini
 	  sudo chmod +x Setup-Debian-Crostini
-	  sudo rm -rf Setup-Ubuntu
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Ubuntu
-	  sudo chmod +x Setup-Ubuntu
+	  #sudo rm -rf Setup-Ubuntu
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Ubuntu
+	  #sudo chmod +x Setup-Ubuntu
 	  sudo rm -rf Setup-Ubuntu-WSL
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Ubuntu-WSL
 	  sudo chmod +x Setup-Ubuntu-WSL
@@ -67,16 +67,16 @@ fi
 	  sudo rm -rf Setup-GRUB-Default
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GRUB-Default
 	  sudo chmod +x Setup-GRUB-Default
-	  sudo rm -rf Tweaks
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Tweaks
-	  sudo chmod +x Tweaks
+	  sudo rm -rf Setup-Tweaks
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Tweaks
+	  sudo chmod +x Setup-Tweaks
 	  sudo rm -rf Update-Distros
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Update-Distros
 	  sudo chmod +x Update-Distros
 	  #
-	  sudo rm -rf Setup-Scripts
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Setup-Scripts
-	  sudo chmod +x Setup-Scripts
+	  sudo rm -rf Scripts-Setup
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
+	  sudo chmod +x Scripts-Setup
 	  #
 	  sudo rm -rf screenfetch-dev
 	  sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch-dev

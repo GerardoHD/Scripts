@@ -33,9 +33,6 @@ do
 	  sudo apt install cmatrix cmatrix-xfont fastfetch -y
 	  sudo apt install curl gpg wget git -y
 	  #
-	  echo Descargando reglas de polkit para realizar actividades de administracion sin pedir autenticacion
-	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  sudo poweroff
 	  break
 	  ;;
@@ -44,7 +41,7 @@ do
 	  echo Cambiando a repositorios testing
 	  #sudo apt-mark hold cros-guest-tools
 	  #sudo apt-mark hold cros-im
-	  sudo mv /etc/apt/sources.list /etc/apt/sources.list-sta.bak
+	  sudo mv /etc/apt/sources.list /etc/apt/sources-stable.list.bak
 	  echo >> sources.list
 	  sudo sed -i '$ a\deb http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
 	  sudo sed -i '$ a\deb-src http://deb.debian.org/debian/ testing main contrib non-free-firmware' sources.list
@@ -94,7 +91,9 @@ do
 	  sudo apt install gtk2-engines-oxygen -y
 	  sudo apt install qt5-style-kvantum*
 	  #
-	  GitSW-Setup
+	  Setup-Tweaks
+	  #
+	  gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
 	  #
 	  echo Cambiando tema a Adwaita y fuente a Cantarell
 	  sudo sed -i 's/CrosAdapta/adw-gtk3/g' /etc/gtk-2.0/gtkrc
@@ -160,7 +159,7 @@ do
 		  sudo apt install code -y
 	  	  ;;
 	  	4)
-	  	  Flatpaks-Setup
+	  	  Setup-Flatpaks
 	  	  ;;
 	     esac
 	  done

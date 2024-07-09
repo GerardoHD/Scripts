@@ -129,7 +129,7 @@ do
 	  	sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch.efi /efi/efi/Linux/Arch.efi
 	  	#sbsign --key /etc/efi-keys/db_arch.key --cert /etc/efi-keys/db_arch.pem --output /efi/efi/Linux/Arch-LTS.efi /efi/efi/Linux/Arch-LTS.efi
 	  	echo Descargando hook de pacman para crear imagenes de kernel y firmarlas para secure boot
-	  	sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/92-Arch-UKI.hook -O /usr/share/libalpm/hooks/92-Arch-UKI.hook
+	  	sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Arch/92-Setup-Arch-UKI.hook -O /usr/share/libalpm/hooks/92-Setup-Arch-UKI.hook
 	  	break
 	  	;;
 	  	#
@@ -374,10 +374,6 @@ do
 	  done
 	  #
 	  echo  -=Configuraciones varias=-
-	  #
-	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
-	  sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  #echo Configurando SystemD para ignorar la tapa de la laptop
 	  #sudo sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/g' /etc/systemd/logind.conf

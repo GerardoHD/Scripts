@@ -49,9 +49,9 @@ do
 	  #sudo rm /etc/locale.conf
 	  sudo rm /etc/locale.gen
 	  echo LANG=es_MX.UTF-8 >> locale.conf
-          sudo mv locale.conf  /etc/locale.conf
+      sudo mv locale.conf  /etc/locale.conf
 	  echo es_MX.UTF-8 UTF-8 >> locale.gen
-          sudo mv locale.gen  /etc/locale.gen
+      sudo mv locale.gen  /etc/locale.gen
 	  sudo locale-gen
 	  #
 	  echo Etapa 1 ha terminado de ejecutarse
@@ -122,10 +122,6 @@ do
 	  #
 	  echo  -=Instalando repositorio Flathub=-
 	  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	  #
-	  echo Descargando reglas de polkit para realizar actividades de administración sin pedir autenticación
-	  #sudo mkdir -p /etc/polkit-1/rules.d/
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/10-rules.rules -O /etc/polkit-1/rules.d/10-rules.rules
 	  #
 	  echo -=Aplicando modificaciones a gsettings=-
 	  sleep 2s

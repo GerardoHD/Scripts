@@ -51,7 +51,7 @@ do
 	  #sudo rm /var/lib/dnf/history
 	  #
 	fi
-    flatpak update
+    flatpak update -y
 	;;
 	2) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -77,7 +77,7 @@ do
 	  sudo dnf upgrade --refresh
 	  #
 	fi
-    flatpak update
+    flatpak update -y
 	;;
 	3) #Limpiador de cache de gestor de paquetes
 	if [ `which pacman` ]; then
@@ -134,7 +134,7 @@ do
 	  sudo reboot
 	  #
 	fi
-    flatpak update
+    flatpak update -y
 	sudo reboot
 	;;
 	5) #Actualizador de sistema operativo
@@ -163,7 +163,7 @@ do
 	  sudo dnf upgrade --refresh
 	  #
 	fi
-    flatpak update
+    flatpak update -y
 	sudo poweroff
     ;;
     esac
