@@ -38,40 +38,39 @@ sudo apt install gtk2-engines -y
 sudo apt install gtk2-engines-aurora -y
 sudo apt install gtk2-engines-murrine -y
 sudo apt install gtk2-engines-oxygen -y
-sudo apt install qt5-style-kvantum*
+sudo apt install qt5-style-kvantum* -y
 #
 Setup-Tweaks
 #
 #Compiladores y utilidades
-#sudo apt install binutils acl attr
-#sudo apt install clang clang-tools
-#sudo apt install cpp -y
-#sudo apt install gcc -y
-#sudo apt install gcc-avr
-#sudo apt install gcc-bpf
-#sudo apt install gcc-opt -y
-#sudo apt install gcc-snapshot
-#sudo apt install gccgo
-#sudo apt install gccgo-go
-#sudo apt install gdc
-#sudo apt install gfortran
-#sudo apt install gobjc -y
-#sudo apt install gobjc++ -y
-#sudo apt install golang-any
-#sudo apt install golang-go
-#sudo apt install libc++1 -y
-#sudo apt install mcpp -y
-#sudo apt install tcc -y
-#sudo apt install cmake cmake-extras -y
-#sudo apt install php -y
-#sudo apt install python-pip -y 
-#sudo apt install javascript-common -y
-#sudo apt install markdown -y
+sudo apt install binutils acl attr -y
+sudo apt install clang clang-tools -y
+sudo apt install cpp -y
+sudo apt install gcc -y
+sudo apt install gcc-avr -y
+sudo apt install gcc-bpf -y
+#sudo apt install gcc-opt -y #revisar
+sudo apt install gcc-snapshot -y
+sudo apt install gccgo -y
+sudo apt install gdc -y
+sudo apt install gfortran -y
+sudo apt install gobjc -y
+sudo apt install gobjc++ -y
+sudo apt install golang-any
+sudo apt install libc++1 -y
+sudo apt install mcpp -y
+sudo apt install tcc -y
+sudo apt install cmake cmake-extras -y
+sudo apt install php -y
+sudo apt install python3-pip -y 
+sudo apt install javascript-common -y
+sudo apt install markdown -y
 #
 #echo  -=Software Grafico=-
 #sudo apt install gparted -y
 #sudo apt install gnome-software gnome-software-plugin* -y
 #sudo apt install gdisk -y
+#sudo apt install thunar thunar-archive-plugin xarchiver xfce4-settings -y
 #Setup-Flatpaks
 #gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
 #
