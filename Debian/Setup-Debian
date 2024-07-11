@@ -19,6 +19,8 @@ sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
 #
 #Cambiar repositorios de Debian
+echo Respaldando sources.list
+sudo cp /etc/apt/sources.list /etc/apt/sources-default.list.bak
 Setup-Debian-Repos
 #
 sudo apt install curl gpg wget git -y

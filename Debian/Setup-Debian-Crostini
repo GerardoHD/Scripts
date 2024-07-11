@@ -41,6 +41,8 @@ do
 	  #sudo apt-mark hold cros-guest-tools
 	  #sudo apt-mark hold cros-im
 	  #Cambiar repositorios de Debian
+	  echo Respaldando sources.list
+	  sudo cp /etc/apt/sources.list /etc/apt/sources-default.list.bak
 	  Setup-Debian-Repos
 	  #
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
