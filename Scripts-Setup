@@ -40,6 +40,9 @@ elif [ `which apt` ]; then
 	  sudo rm -rf Setup-Debian-Repos
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-Repos
 	  sudo chmod +x Setup-Debian-Repos
+	  sudo rm -rf Setup-Debian-WSL
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-WSL
+	  sudo chmod +x Setup-Debian-WSL
 	  #
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-testing.list -O /etc/apt/sources-testing.list.bak
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-unstable-experimental.list -O /etc/apt/sources-unstable-experimental.list.bak
