@@ -40,6 +40,7 @@ do
 	  #
 	  #sudo apt-mark hold cros-guest-tools
 	  #sudo apt-mark hold cros-im
+	  #sudo apt-mark hold cros-garcon  cros-guest-tools  polkitd-pkla
 	  #Cambiar repositorios de Debian
 	  echo Respaldando sources.list
 	  sudo cp /etc/apt/sources.list /etc/apt/sources-default.list.bak
@@ -47,7 +48,7 @@ do
 	  #
 	  sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
 	  sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip xz-utils -y
-	  sudo apt install pv tar cgpt vboot-utils -y
+	  sudo apt install pv tar cgpt vboot-utils cros-xdg-desktop-portal -y
 	  sudo apt install sbsigntool -y
 	  sudo apt install adb fastboot -y
 	  sudo apt install ffmpegthumbnailer exiv2 -y
@@ -78,7 +79,7 @@ do
 	  sudo apt install gtk2-engines-aurora -y
 	  sudo apt install gtk2-engines-murrine -y
 	  sudo apt install gtk2-engines-oxygen -y
-	  sudo apt install qt5-style-kvantum*
+	  sudo apt install qt5-style-kvantum* -y
 	  #
 	  Setup-Tweaks
 	  #
