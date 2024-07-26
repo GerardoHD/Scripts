@@ -67,11 +67,11 @@ winget install Microsoft.VCRedist.2013.x64
 winget install Microsoft.VCRedist.2015+.x86
 winget install Microsoft.VCRedist.2015+.x64
 #
-winget install 7zip.7zip
+#winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
-#-winget install Amazon.Kindle
+winget install Amazon.Kindle
 #winget install Armin2208.WindowsAutoNightMode
-#-winget install Bitwarden.Bitwarden
+winget install Bitwarden.Bitwarden
 winget install Beeper.Beeper
 #winget install Box.Box
 winget install calibre.calibre
