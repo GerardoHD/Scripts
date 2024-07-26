@@ -61,7 +61,6 @@ winget install 9PC3H3V7Q9CH
 #Twitter
 #winget install 9WZDNCRFJ140
 #
-#Write-Output "Instalando DirectX y Microsoft VC"
 winget install Microsoft.VCRedist.2005.x86
 winget install Microsoft.VCRedist.2005.x64
 winget install Microsoft.VCRedist.2008.x86
@@ -75,7 +74,6 @@ winget install Microsoft.VCRedist.2013.x64
 winget install Microsoft.VCRedist.2015+.x86
 winget install Microsoft.VCRedist.2015+.x64
 #
-#Write-Output "Instalando software desde winget"
 winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
 #-winget install Amazon.Kindle
