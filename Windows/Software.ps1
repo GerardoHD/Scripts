@@ -9,16 +9,16 @@
 #Write-Output "Desactivando hibernacion"
 #powercfg -h off
 #
-Write-Output "Activando rutas largas en nombres de archivos"
+#Write-Output "Activando rutas largas en nombres de archivos"
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 #
-Write-Output "Reiniciando Explorador de archivos"
+#Write-Output "Reiniciando Explorador de archivos"
 stop-process -name explorer –force
 #
-Write-Output "Instalando Nexus Tools"
+#Write-Output "Instalando Nexus Tools"
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
-Write-Output "Instalando apps desde Microsoft Store"
+#Write-Output "Instalando apps desde Microsoft Store"
 #ACG Player
 #winget install 9NBLGGH698C7
 #
@@ -61,7 +61,7 @@ winget install 9PC3H3V7Q9CH
 #Twitter
 #winget install 9WZDNCRFJ140
 #
-Write-Output "Instalando DirectX y Microsoft VC"
+#Write-Output "Instalando DirectX y Microsoft VC"
 winget install Microsoft.VCRedist.2005.x86
 winget install Microsoft.VCRedist.2005.x64
 winget install Microsoft.VCRedist.2008.x86
@@ -75,7 +75,7 @@ winget install Microsoft.VCRedist.2013.x64
 winget install Microsoft.VCRedist.2015+.x86
 winget install Microsoft.VCRedist.2015+.x64
 #
-Write-Output "Instalando software desde winget"
+#Write-Output "Instalando software desde winget"
 winget install 7zip.7zip
 #-winget install AdrienAllard.FileConverter
 #-winget install Amazon.Kindle
