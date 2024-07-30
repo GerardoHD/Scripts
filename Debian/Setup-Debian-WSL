@@ -29,9 +29,9 @@ sudo apt install openssh-server sshfs -y
 sudo apt install ffmpegthumbnailer exiv2 -y
 #
 #Soporte Flatpak
-#sudo apt install flatpak xdg-desktop-portal-xapp -y
-#sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-#sudo flatpak update --appstream
+sudo apt install flatpak xdg-desktop-portal-xapp -y
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak update --appstream
 #
 #Motores de temas
 sudo apt install gtk2-engines -y
