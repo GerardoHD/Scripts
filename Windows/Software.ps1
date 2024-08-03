@@ -38,7 +38,8 @@ winget install 9N95Q1ZZPMH4
 #
 #-Messenger
 #-winget install 9WZDNCRF0083
-#
+#NanaZip
+winget install 9N8G7TSCL18R
 #Reddit
 #winget install 9NS3RBQ5HV5F
 #
@@ -84,7 +85,7 @@ winget install Git.Git
 winget install Google.Chrome
 winget install Google.GoogleDrive
 winget install Google.QuickShare
-winget install Google.PlatformTools
+#winget install Google.PlatformTools  #El binario de adb no sirve
 winget install Intel.IntelDriverAndSupportAssistant
 winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
