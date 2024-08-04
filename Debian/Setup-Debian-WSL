@@ -17,7 +17,7 @@ sudo cp /etc/apt/sources.list /etc/apt/sources-default.list.bak
 Setup-Debian-Repos
 #
 sudo apt install curl gpg wget git -y
-sudo apt install cmake -y
+sudo apt install cmake dos2unix -y
 sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
 #sudo apt install gvfs* fuse fuse-overlayfs fuse-zip fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
 sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip xz-utils -y

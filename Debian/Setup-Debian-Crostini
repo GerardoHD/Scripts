@@ -31,7 +31,7 @@ do
 	  sudo apt install bash-completion manpages-es dialog -y #preinstalado en C330
 	  sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 	  sudo apt install cmatrix cmatrix-xfont fastfetch -y
-	  sudo apt install curl gpg wget git -y
+	  sudo apt install curl gpg wget git dos2unix -y
 	  #
 	  sudo poweroff
 	  break
