@@ -38,6 +38,7 @@ PS3='Quieres instalar software desde Flatpak? '
         flatpak install de.haeckerfelix.Fragments -y
         flatpak install io.github.flattool.Warehouse -y
 		flatpak install com.google.Chrome -y
+		flatpak install flathub it.mijorus.gearlever -y
 		break
 	  	;;
 	  	#
