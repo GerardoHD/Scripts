@@ -15,6 +15,9 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw
 #ACG Player
 #winget install 9NBLGGH698C7
 #
+#Aplicacion de fotos heredada
+winget install 9NV2L4XVMCXM
+#
 #Advanced Renamer
 winget install XP9MD3S1KFCPH1
 #
@@ -87,7 +90,7 @@ winget install Google.GoogleDrive
 winget install Google.QuickShare
 #winget install Google.PlatformTools  #El binario de adb no sirve
 winget install Intel.IntelDriverAndSupportAssistant
-winget install JackieLiu.NotepadsApp
+#winget install JackieLiu.NotepadsApp
 #-winget install Lenovo.SystemUpdate
 #winget install Levitsky.FontBase
 winget install LocalSend.LocalSend
@@ -96,7 +99,7 @@ winget install LocalSend.LocalSend
 winget install Microsoft.VisualStudioCode
 winget install Mozilla.Firefox
 winget install MusicBee.MusicBee
-#-winget install Oracle.JavaRuntimeEnvironment
+winget install Oracle.JavaRuntimeEnvironment
 winget install RevoUninstaller.RevoUninstaller
 winget install Synthesia.Synthesia
 winget install SomePythonThings.WingetUIStore
