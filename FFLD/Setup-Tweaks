@@ -216,7 +216,7 @@ do
 	  #
 	  cd ~
 	  #
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/Clima-20190419213247.zip
 	  unzip "Clima-20190419213247.zip" -d Clima
 	  #
 	  rm -rf /usr/share/xfce4/weather/icons/Clima*
