@@ -154,7 +154,7 @@ do
       tar -xf adw-gtk3v5.3.tar.xz
       sudo cp -rf adw-gtk3 /usr/share/themes/
       sudo cp -rf adw-gtk3-dark /usr/share/themes/
-      rm -rf adw-gtk3*
+      sudo rm -rf adw-gtk3*
       #
       #Firefox GNOME Theme
       git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
@@ -199,38 +199,55 @@ do
       cd ..
       #
 	  #MoreWaita Icons
-	  git clone https://github.com/somepaulo/MoreWaita.git
-	  cd Morewaita
-	  git pull
-	  ./install.sh
-	  cd ..
+	  #git clone https://github.com/somepaulo/MoreWaita.git
+	  #cd Morewaita
+	  #git pull
+	  #./install.sh
+	  #cd ..
 	  #
       #Blender Icons para GIMP
-      sudo mkdir -p /usr/share/gimp/2.0/icons/
-      wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
-      unzip BlenderIcons-1-0-2.zip
-      sudo cp -rf BlenderIcons /usr/share/gimp/2.0/icons/
+      #sudo mkdir -p /usr/share/gimp/2.0/icons/
+      #wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
+      #unzip BlenderIcons-1-0-2.zip
+      #sudo mv BlenderIcons /usr/share/gimp/2.0/icons/
       #
-      wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
-      unzip BlenderSymbolic-1-0-2.zip
-      sudo cp -rf BlenderSymbolic /usr/share/gimp/2.0/icons/
-      rm -rf Blender*
+      #wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
+      #unzip BlenderSymbolic-1-0-2.zip
+      #sudo mv BlenderSymbolic /usr/share/gimp/2.0/icons/
+      #rm -rf Blender*
       #
       echo Instalando Bibata Cursors
       wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
       wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Ice.tar.xz
+	  #
       tar -xvf Bibata-Modern-Classic.tar.xz
       tar -xvf Bibata-Modern-Ice.tar.xz
-      sudo mv Bibata-Modern-Classic /usr/share/icons/
+      #
+	  sudo rm -rf /usr/share/icons/Bibata*
+	  sudo mv Bibata-Modern-Classic /usr/share/icons/
       sudo mv Bibata-Modern-Ice /usr/share/icons/
-      rm Bibata*
+      rm -rf Bibata*
       #
       cd ~/
       #
       echo Instalando Papirus Icon Theme
       wget -qO- https://git.io/papirus-icon-theme-install | sh
       #
-	  
+	  echo Descargando Fira Fonts
+	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.106.zip -O "Fira_Sans_4.106_&_Mono_3.206.zip"
+	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.202.zip -O "Fira_Sans_Condensed_4.202.zip"
+	  wget -c https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip -O "Fira_Code_v6.2.zip"
+	  #
+	  unzip "Fira_Sans_4.106_&_Mono_3.206.zip" -d Fira_Sans
+	  unzip "Fira_Sans_Condensed_4.202.zip" -d Fira_Sans_Condensed
+	  unzip "Fira_Code_v6.2.zip" -d Fira_Code
+	  #
+	  sudo rm -rf /usr/share/fonts/truetype/Fira*
+	  sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/truetype/Fira_Sans
+	  sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/truetype/Fira_Sans_Condensed
+	  sudo mv Fira_Code/ttf /usr/share/fonts/truetype/Fira_Code
+	  rm -rf Fira*
+	  #
       break
       ;;
 	"Salir")
