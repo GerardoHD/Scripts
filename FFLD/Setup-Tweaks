@@ -205,6 +205,26 @@ do
 	  #./install.sh
 	  #cd ..
 	  #
+	  echo Descargando iconos para Xfce weather plugin
+	  git clone https://github.com/kevin-hanselman/xfce4-weather-mono-icons.git
+	  cd xfce4-weather-mono-icons/
+	  #
+	  rm -rf /usr/share/xfce4/weather/icons/WSky*
+	  sudo cp -a WSky /usr/share/xfce4/weather/icons
+	  sudo cp -a WSky-Light /usr/share/xfce4/weather/icons
+	  cd ..
+	  #
+	  cd ~
+	  #
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/
+	  unzip "Clima-20190419213247.zip" -d Clima
+	  #
+	  rm -rf /usr/share/xfce4/weather/icons/Clima*
+	  sudo mv Clima/20190419/Clima /usr/share/xfce4/weather/icons
+	  sudo mv Clima/20190419/Clima-B /usr/share/xfce4/weather/icons
+	  sudo mv Clima/20190419/Clima-W /usr/share/xfce4/weather/icons
+	  sudo rm -rf Clima*
+	  #
       #Blender Icons para GIMP
       #sudo mkdir -p /usr/share/gimp/2.0/icons/
       #wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
@@ -232,7 +252,7 @@ do
       #
       echo Instalando Papirus Icon Theme
       wget -qO- https://git.io/papirus-icon-theme-install | sh
-      #
+	  #
 	  echo Descargando Fira Fonts
 	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.106.zip -O "Fira_Sans_4.106_&_Mono_3.206.zip"
 	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.202.zip -O "Fira_Sans_Condensed_4.202.zip"
