@@ -157,11 +157,11 @@ do
       sudo rm -rf adw-gtk3*
       #
       #Firefox GNOME Theme
-      git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-      cd firefox-gnome-theme
-      git pull
-      ./scripts/install.sh
-      cd ..
+      #git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
+      #cd firefox-gnome-theme
+      #git pull
+      #./scripts/install.sh
+      #cd ..
       #
       #adw-gtk2
       git clone https://github.com/molotov-dmitry/adw-gtk2.git
