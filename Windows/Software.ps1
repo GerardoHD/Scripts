@@ -106,5 +106,6 @@ winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
 #-winget install Ubisoft.Connect
 #winget install Valve.Steam
+winget install voidtools.Everything
 #-winget install Zoom.Zoom
 #
