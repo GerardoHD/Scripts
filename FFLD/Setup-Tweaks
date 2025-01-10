@@ -150,8 +150,8 @@ do
       cd Git
 	  #
 	  #adw-gtk3
-      wget -c  https://github.com/lassekongo83/adw-gtk3/releases/latest/download/adw-gtk3v5.3.tar.xz
-      tar -xf adw-gtk3v5.3.tar.xz
+	  wget -c  https://github.com/lassekongo83/adw-gtk3/releases/download/v5.6/adw-gtk3v5.6.tar.xz
+      tar -xf adw-gtk3v5.6.tar.xz
       sudo cp -rf adw-gtk3 /usr/share/themes/
       sudo cp -rf adw-gtk3-dark /usr/share/themes/
       sudo rm -rf adw-gtk3*
