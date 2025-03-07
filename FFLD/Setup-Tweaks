@@ -16,21 +16,21 @@ select opt in "${options[@]}"
 do
     case $opt in
 	"Aplicar modificaciones a gsettings")
-	  echo Reconfigurando Cantarell como tipografia de las aplicaciones
-	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
-	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
-	  echo Configurando botones de la barra de título
-	  gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
-	  echo Configurando Tema GTK
-	  gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-	  echo Configurando tap-to-click en GNOME Shell
-	  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-	  echo Configurando el botón de Apagado a interactivo
-	  gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
-	  echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
-	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
+	  #echo Reconfigurando Cantarell como tipografia de las aplicaciones
+	  #gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+	  #gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+	  #gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
+	  #gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
+	  #echo Configurando botones de la barra de título
+	  #gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
+	  #echo Configurando Tema GTK
+	  #gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+	  #echo Configurando tap-to-click en GNOME Shell
+	  #gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+	  #echo Configurando el botón de Apagado a interactivo
+	  #gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+	  #echo Configurando Alt+Tab para que cambie solo entre aplicaciones de la misma area de trabajo
+	  #gsettings set org.gnome.shell.app-switcher current-workspace-only true
 	  break
 	  ;;
 	"Actualizar carpetas de usuario")
@@ -147,7 +147,7 @@ do
       #
 	  echo Creando carpeta Git
 	  mkdir Git
-      cd Git
+	  cd Git
 	  #
 	  #adw-gtk3
 	  wget -c  https://github.com/lassekongo83/adw-gtk3/releases/download/v5.6/adw-gtk3v5.6.tar.xz
@@ -172,11 +172,11 @@ do
       cd ..
       #
       #adw-xfwm4
-      git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
-      cd adw-xfwm4
-      git pull
-      sudo cp -rf themes/* /usr/share/themes/
-      cd ..
+      #git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
+      #cd adw-xfwm4
+      #git pull
+      #sudo cp -rf themes/* /usr/share/themes/
+      #cd ..
       #
       #KvLibadwaita GabePoel --Original
       #git clone https://github.com/GabePoel/KvLibadwaita.git
@@ -185,45 +185,45 @@ do
       #cd ..
       #
       #KvLibadwaita BigLinux --fork
-      git clone https://github.com/biglinux/KvLibadwaita.git
-      cd KvLibadwaita
-      git pull
-      sudo ./install.sh
-      cd ..
+      #git clone https://github.com/biglinux/KvLibadwaita.git
+      #cd KvLibadwaita
+      #git pull
+      #sudo ./install.sh
+      #cd ..
       #
       #Adwaita-for-Steam
-      git clone https://github.com/tkashkin/Adwaita-for-Steam
-      cd Adwaita-for-Steam
-      git pull
-      ./install.py
-      cd ..
+      #git clone https://github.com/tkashkin/Adwaita-for-Steam
+      #cd Adwaita-for-Steam
+      #git pull
+      #./install.py
+      #cd ..
       #
-	  #MoreWaita Icons
-	  #git clone https://github.com/somepaulo/MoreWaita.git
-	  #cd Morewaita
-	  #git pull
-	  #./install.sh
-	  #cd ..
-	  #
-	  echo Descargando iconos para Xfce weather plugin
-	  git clone https://github.com/kevin-hanselman/xfce4-weather-mono-icons.git
-	  cd xfce4-weather-mono-icons/
-	  #
-	  rm -rf /usr/share/xfce4/weather/icons/WSky*
-	  sudo cp -a WSky /usr/share/xfce4/weather/icons
-	  sudo cp -a WSky-Light /usr/share/xfce4/weather/icons
+	#MoreWaita Icons
+	  git clone https://github.com/somepaulo/MoreWaita.git
+	  cd MoreWaita
+	  git pull
+	  ./install.sh
 	  cd ..
+	  #
+	  #echo Descargando iconos para Xfce weather plugin
+	  #git clone https://github.com/kevin-hanselman/xfce4-weather-mono-icons.git
+	  #cd xfce4-weather-mono-icons/
+	  #
+	  #rm -rf /usr/share/xfce4/weather/icons/WSky*
+	  #sudo cp -a WSky /usr/share/xfce4/weather/icons
+	  #sudo cp -a WSky-Light /usr/share/xfce4/weather/icons
+	  #cd ..
 	  #
 	  cd ~
 	  #
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/Clima-20190419213247.zip
-	  unzip "Clima-20190419213247.zip" -d Clima
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/icons/Clima-20190419213247.zip
+	  #unzip "Clima-20190419213247.zip" -d Clima
 	  #
-	  rm -rf /usr/share/xfce4/weather/icons/Clima*
-	  sudo mv Clima/20190419/Clima /usr/share/xfce4/weather/icons
-	  sudo mv Clima/20190419/Clima-B /usr/share/xfce4/weather/icons
-	  sudo mv Clima/20190419/Clima-W /usr/share/xfce4/weather/icons
-	  sudo rm -rf Clima*
+	  #rm -rf /usr/share/xfce4/weather/icons/Clima*
+	  #sudo mv Clima/20190419/Clima /usr/share/xfce4/weather/icons
+	  #sudo mv Clima/20190419/Clima-B /usr/share/xfce4/weather/icons
+	  #sudo mv Clima/20190419/Clima-W /usr/share/xfce4/weather/icons
+	  #sudo rm -rf Clima*
 	  #
       #Blender Icons para GIMP
       #sudo mkdir -p /usr/share/gimp/2.0/icons/
@@ -262,11 +262,24 @@ do
 	  unzip "Fira_Sans_Condensed_4.202.zip" -d Fira_Sans_Condensed
 	  unzip "Fira_Code_v6.2.zip" -d Fira_Code
 	  #
-	  sudo rm -rf /usr/share/fonts/truetype/Fira*
-	  sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/truetype/Fira_Sans
-	  sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/truetype/Fira_Sans_Condensed
-	  sudo mv Fira_Code/ttf /usr/share/fonts/truetype/Fira_Code
+	  #sudo rm -rf /usr/share/fonts/truetype/Fira*
+	  #sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/truetype/Fira_Sans
+	  #sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/truetype/Fira_Sans_Condensed
+	  #sudo mv Fira_Code/ttf /usr/share/fonts/truetype/Fira_Code
+	  #
+	  sudo rm -rf /usr/share/fonts/Fira*
+          sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/Fira_Sans
+          sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/Fira_Sans_Condensed
+          sudo mv Fira_Code/ttf /usr/share/fonts/Fira_Code
 	  rm -rf Fira*
+	  #
+          echo Descargando Adwaita Fonts
+	  wget -c https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.0.tar.xz
+	  mkdir Adwaita_Fonts
+	  tar -xvf adwaita-fonts-48.0.tar.xz -C Adwaita_Fonts
+	  sudo mv Adwaita_Fonts /usr/share/fonts/Adwaita_Fonts
+	  gsettings set org.gnome.desktop.interface font-name "Adwaita Sans 11"
+	  gsettings set org.gnome.desktop.interface monospace-font-name "Adwaita Mono 11"
 	  #
       break
       ;;
