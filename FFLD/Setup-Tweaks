@@ -267,19 +267,19 @@ do
 	  #sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/truetype/Fira_Sans_Condensed
 	  #sudo mv Fira_Code/ttf /usr/share/fonts/truetype/Fira_Code
 	  #
-	  sudo rm -rf /usr/share/fonts/Fira*
-          sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/Fira_Sans
-          sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/Fira_Sans_Condensed
-          sudo mv Fira_Code/ttf /usr/share/fonts/Fira_Code
-	  rm -rf Fira*
+	  #sudo rm -rf /usr/share/fonts/Fira*
+          #sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/Fira_Sans
+          #sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/Fira_Sans_Condensed
+          #sudo mv Fira_Code/ttf /usr/share/fonts/Fira_Code
+	  #rm -rf Fira*
 	  #
-          echo Descargando Adwaita Fonts
-	  wget -c https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.0.tar.xz
-	  mkdir Adwaita_Fonts
-	  tar -xvf adwaita-fonts-48.0.tar.xz -C Adwaita_Fonts
-	  sudo mv Adwaita_Fonts /usr/share/fonts/Adwaita_Fonts
-	  gsettings set org.gnome.desktop.interface font-name "Adwaita Sans 11"
-	  gsettings set org.gnome.desktop.interface monospace-font-name "Adwaita Mono 11"
+          #echo Descargando Adwaita Fonts
+	  #wget -c https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.0.tar.xz
+	  #mkdir Adwaita_Fonts
+	  #tar -xvf adwaita-fonts-48.0.tar.xz -C Adwaita_Fonts
+	  #sudo mv Adwaita_Fonts /usr/share/fonts/Adwaita_Fonts
+	  #gsettings set org.gnome.desktop.interface font-name "Adwaita Sans 11"
+	  #gsettings set org.gnome.desktop.interface monospace-font-name "Adwaita Mono 11"
 	  #
       break
       ;;
