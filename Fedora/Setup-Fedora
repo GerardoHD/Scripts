@@ -52,8 +52,8 @@ do
 	   sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 	   #
 	   sudo dnf install -y lzip minizip unace arj ncompress p7zip libunrar unrar unarj
-	   sudo dnf install -y openssl sshfs fastetch
-	   sudo dnf install -y android-tools
+	   sudo dnf install -y openssl sshfs fastfetch
+	   sudo dnf install -y android-tools pmbootstrap
 	   sudo dnf install -y pv vboot-utils
 	   sudo dnf install -y man-pages-es
 	   #sudo dnf install -y epson-inkjet-printer-escpr
@@ -126,8 +126,8 @@ do
 	  gsettings set org.gnome.shell.app-switcher current-workspace-only true
 	  echo Configurando GNOME Software para que prefiera paquetes nativos
 	  gsettings set org.gnome.software packaging-format-preference "['RPM', 'flatpak']"
-	  echo Desactivando Validacion de version de extensiones
-	  gsettings set org.gnome.shell disable-extension-version-validation "true"
+	  #echo Desactivando Validacion de version de extensiones
+	  #gsettings set org.gnome.shell disable-extension-version-validation "true"
 	  echo Desactivando Fecha en el reloj
 	  gsettings set org.gnome.desktop.interface clock-show-date "false"
 	  #
