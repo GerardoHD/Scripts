@@ -78,6 +78,9 @@ fi
 	  #sudo rm -rf Setup-GRUB-Default
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GRUB-Default
 	  #sudo chmod +x Setup-GRUB-Default
+	  sudo rm -rf Setup-Scripts
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Scripts
+	  sudo chmod +x Setup-Scripts
 	  sudo rm -rf Setup-Tweaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Tweaks
 	  sudo chmod +x Setup-Tweaks

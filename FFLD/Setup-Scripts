@@ -1,0 +1,4 @@
+#!/bin/bash
+echo	------==Script Creado por GerardoHD==------
+#
+curl -L https://bit.ly/ghdscripts | bash
