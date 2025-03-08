@@ -16,11 +16,6 @@ select opt in "${options[@]}"
 do
     case $opt in
 	"Aplicar modificaciones a gsettings")
-	  #echo Reconfigurando Cantarell como tipografia de las aplicaciones
-	  #gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-	  #gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-	  #gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
-	  #gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
 	  #echo Configurando botones de la barra de título
 	  #gsettings set org.gnome.desktop.wm.preferences button-layout ':close'
 	  #echo Configurando Tema GTK
