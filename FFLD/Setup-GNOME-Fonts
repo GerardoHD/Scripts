@@ -7,13 +7,13 @@ options=("Cantarell" "Fira Sans" "IBM Plex" "Noto Sans" "Roboto" "Ubuntu" "Salir
 select opt in "${options[@]}"
 do
     case $opt in
-    	"Cantarell")
-	  echo Reconfigurando Cantarell como tipografia en GNOME Shell
-	  gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-	  gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-	  gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono Regular 12'
-	  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Cantarell Bold 11'
-	  gsettings set org.gnome.totem subtitle-font 'Noto Sans Regular 12'
+    "Cantarell")
+	  echo Reconfigurando tipografia predeterminada en GNOME Shell
+	  gsettings reset org.gnome.desktop.interface font-name
+	  gsettings reset org.gnome.desktop.interface document-font-name
+	  gsettings reset org.gnome.desktop.interface monospace-font-name
+	  gsettings reset org.gnome.desktop.wm.preferences titlebar-font
+	  gsettings reset org.gnome.totem subtitle-font
 	  break
 	  ;;
 	"Fira Sans")
