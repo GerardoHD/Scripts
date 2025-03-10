@@ -42,6 +42,7 @@ PS3='Quieres instalar software desde Flatpak? '
         flatpak install flathub org.localsend.localsend_app -y
         flatpak install flathub dev.alextren.Spot -y
 		flatpak install de.schmidhuberj.tubefeeder -y
+		flatpak install org.gnome.Lollypop -y
 		break
 	  	;;
 	  	#
