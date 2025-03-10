@@ -34,13 +34,14 @@ PS3='Quieres instalar software desde Flatpak? '
 		#flatpak install io.github.giantpinkrobots.flatsweep -y
 		#flatpak install flathub io.gitlab.adhami3310.Impression -y
 		flatpak install io.gitlab.zehkira.Monophony -y
-                flatpak install com.github.johnfactotum.Foliate -y
-                flatpak install de.haeckerfelix.Fragments -y
-                flatpak install io.github.flattool.Warehouse -y
+        flatpak install com.github.johnfactotum.Foliate -y
+        flatpak install de.haeckerfelix.Fragments -y
+        flatpak install io.github.flattool.Warehouse -y
 		#flatpak install com.google.Chrome -y
 		flatpak install flathub it.mijorus.gearlever -y
-                flatpak install flathub org.localsend.localsend_app
-                flatpak install flathub dev.alextren.Spot
+        flatpak install flathub org.localsend.localsend_app -y
+        flatpak install flathub dev.alextren.Spot -y
+		flatpak install de.schmidhuberj.tubefeeder -y
 		break
 	  	;;
 	  	#
