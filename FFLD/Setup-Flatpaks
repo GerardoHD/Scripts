@@ -23,7 +23,7 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install de.haeckerfelix.Shortwave -y
 		#flatpak install org.nickvision.tubeconverter -y
 		flatpak install com.github.hugolabe.Wike -y
-		#flatpak install io.bassi.Amberol -y
+		flatpak install io.bassi.Amberol -y
 		#flatpak install com.github.huluti.Curtail -y
 		#flatpak install org.gnome.gitlab.YaLTeR.Identity -y
 		#flatpak install celluloid -y
@@ -31,8 +31,8 @@ PS3='Quieres instalar software desde Flatpak? '
 		#flatpak install org.nickvision.tagger -y
 		#flatpak install io.github.realmazharhusain.GdmSettings -y
 		#flatpak install com.github.GradienceTeam.Gradience -y
-		#flatpak install io.github.giantpinkrobots.flatsweep -y
-		#flatpak install flathub io.gitlab.adhami3310.Impression -y
+		flatpak install io.github.giantpinkrobots.flatsweep -y
+		flatpak install flathub io.gitlab.adhami3310.Impression -y
 		flatpak install io.gitlab.zehkira.Monophony -y
         flatpak install com.github.johnfactotum.Foliate -y
         flatpak install de.haeckerfelix.Fragments -y
@@ -44,6 +44,9 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install de.schmidhuberj.tubefeeder -y
 		flatpak install org.gnome.Lollypop -y
 		flatpak install org.gnome.gThumb -y
+		flatpak install org.gnome.Podcasts -y
+		flatpak install flathub io.github.tfuxu.floodit
+		flatpak install re.sonny.Junction -y
 		break
 	  	;;
 	  	#
