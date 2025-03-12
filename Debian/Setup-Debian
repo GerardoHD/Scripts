@@ -101,12 +101,6 @@ echo  -=Software Grafico=-
           sudo apt install gnome-system-tools -y
           sudo apt purge --remove goldendict -y
 		  #
-		  mkdir ~/AppImages
-		  cd ~/AppImages
-		  wget -c  https://download.beeper.com/linux/appImage/x64 -O Beeper.appimage
-		  chmod +x Beeper.appimage
-		  cd ~/
-		  #
 		  echo Modificando configuraciones de GRUB
 		  sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 		  sudo sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT=saved/g' /etc/default/grub

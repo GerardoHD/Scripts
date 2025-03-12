@@ -11,7 +11,7 @@ exit
 fi
 #
 PS3='Elige la accion a realizar: '
-options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Descargar iconos en .png" "Descargar customizaciones" "Salir")
+options=("Aplicar modificaciones a gsettings" "Actualizar carpetas de usuario" "Esconder entradas .desktop" "Descargar iconos en .png" "Descargar customizaciones" "Descargar AppImages" "Salir")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -193,7 +193,7 @@ do
       #./install.py
       #cd ..
       #
-	#MoreWaita Icons
+	  #MoreWaita Icons
 	  git clone https://github.com/somepaulo/MoreWaita.git
 	  cd MoreWaita
 	  git pull
@@ -222,14 +222,16 @@ do
 	  #
       #Blender Icons para GIMP
       #sudo mkdir -p /usr/share/gimp/2.0/icons/
-      #wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
-      #unzip BlenderIcons-1-0-2.zip
+      wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderIcons-1-0-2.zip
+      unzip BlenderIcons-1-0-2.zip
       #sudo mv BlenderIcons /usr/share/gimp/2.0/icons/
-      #
-      #wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
-      #unzip BlenderSymbolic-1-0-2.zip
+      sudo mv BlenderIcons /usr/share/gimp/3.0/icons/
+	  #
+      wget -c https://github.com/Uzugijin/GIMP-IconThemes/releases/download/v1.0.2/BlenderSymbolic-1-0-2.zip
+      unzip BlenderSymbolic-1-0-2.zip
       #sudo mv BlenderSymbolic /usr/share/gimp/2.0/icons/
-      #rm -rf Blender*
+	  sudo mv BlenderSymbolic /usr/share/gimp/3.0/icons/
+      rm -rf Blender*
       #
       echo Instalando Bibata Cursors
       wget -c  https://github.com/ful1e5/Bibata_Cursor/releases/latest/download/Bibata-Modern-Classic.tar.xz
@@ -263,12 +265,12 @@ do
 	  #sudo mv Fira_Code/ttf /usr/share/fonts/truetype/Fira_Code
 	  #
 	  #sudo rm -rf /usr/share/fonts/Fira*
-          #sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/Fira_Sans
-          #sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/Fira_Sans_Condensed
-          #sudo mv Fira_Code/ttf /usr/share/fonts/Fira_Code
+      #sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/Fira_Sans
+      #sudo mv Fira_Sans_Condensed/Fira-4.202/ttf/ /usr/share/fonts/Fira_Sans_Condensed
+      #sudo mv Fira_Code/ttf /usr/share/fonts/Fira_Code
 	  #rm -rf Fira*
 	  #
-          #echo Descargando Adwaita Fonts
+      #echo Descargando Adwaita Fonts
 	  #wget -c https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.0.tar.xz
 	  #mkdir Adwaita_Fonts
 	  #tar -xvf adwaita-fonts-48.0.tar.xz -C Adwaita_Fonts
@@ -278,6 +280,14 @@ do
 	  #
       break
       ;;
+    "Descargar AppImages")
+	  mkdir ~/AppImages
+	  cd ~/AppImages
+	  wget -c  https://download.beeper.com/linux/appImage/x64 -O Beeper.appimage
+	  chmod +x Beeper.appimage
+	  cd ~/
+	  break
+	  ;;
 	"Salir")
 	  break
 	  ;;
