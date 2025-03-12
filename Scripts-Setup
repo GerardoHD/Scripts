@@ -88,9 +88,9 @@ fi
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Update-Distros
 	  sudo chmod +x Update-Distros
 	  #
-	  sudo rm -rf Scripts-Setup
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
-	  sudo chmod +x Scripts-Setup
+	  #sudo rm -rf Scripts-Setup
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
+	  #sudo chmod +x Scripts-Setup
 	  #
 	  sudo rm -rf screenfetch-dev
 	  sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch-dev
