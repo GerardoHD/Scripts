@@ -21,7 +21,7 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install com.github.neithern.g4music -y
 		flatpak install com.github.tchx84.Flatseal -y
 		flatpak install de.haeckerfelix.Shortwave -y
-		#flatpak install org.nickvision.tubeconverter -y
+		flatpak install org.nickvision.tubeconverter -y
 		flatpak install com.github.hugolabe.Wike -y
 		flatpak install io.bassi.Amberol -y
 		#flatpak install com.github.huluti.Curtail -y
@@ -33,7 +33,7 @@ PS3='Quieres instalar software desde Flatpak? '
 		#flatpak install com.github.GradienceTeam.Gradience -y
 		flatpak install io.github.giantpinkrobots.flatsweep -y
 		flatpak install flathub io.gitlab.adhami3310.Impression -y
-		flatpak install io.gitlab.zehkira.Monophony -y
+		#flatpak install io.gitlab.zehkira.Monophony -y
         flatpak install com.github.johnfactotum.Foliate -y
         flatpak install de.haeckerfelix.Fragments -y
         flatpak install io.github.flattool.Warehouse -y
