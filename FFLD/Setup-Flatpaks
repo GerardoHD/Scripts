@@ -45,6 +45,8 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install org.gnome.Lollypop -y
 		flatpak install org.gnome.gThumb -y
 		flatpak install org.gnome.Podcasts -y
+		flatpak install org.gnome.World.PikaBackup -y
+		flatpak install org.gnome.Firmware -y
 		flatpak install flathub io.github.tfuxu.floodit
 		flatpak install re.sonny.Junction -y
 		break
