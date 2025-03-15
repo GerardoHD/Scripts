@@ -75,9 +75,11 @@ do
 	   #
 	   sudo dnf install -y file-roller
 	   sudo dnf install -y dconf-editor
-	   #sudo dnf install -y bubblemail
-	   #sudo dnf install -y stellarium
-	     echo  -=Visual Studio Code y PowerShell=-
+	   #
+	   echo Desactivando repositorio de flatpaks de fedora
+	   flatpak remote-modify --disable fedora
+	   #
+	    echo  -=Visual Studio Code y PowerShell=-
 		PS3='Quieres instalar Visual Studio Code y PowerShell? '
 		options=("Si" "No")
 		select opt in "${options[@]}"

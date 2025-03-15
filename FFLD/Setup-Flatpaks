@@ -14,41 +14,45 @@ PS3='Quieres instalar software desde Flatpak? '
 	      case $opt in
 	  	"Si")
 		#flatpak install com.mattjakeman.ExtensionManager -y
-		#flatpak install re.sonny.Commit -y
-		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
-		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
-		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
-		flatpak install com.github.neithern.g4music -y
-		flatpak install com.github.tchx84.Flatseal -y
-		flatpak install de.haeckerfelix.Shortwave -y
-		flatpak install org.nickvision.tubeconverter -y
-		flatpak install com.github.hugolabe.Wike -y
-		flatpak install io.bassi.Amberol -y
-		#flatpak install com.github.huluti.Curtail -y
-		#flatpak install org.gnome.gitlab.YaLTeR.Identity -y
-		#flatpak install celluloid -y
-		#flatpak install im.bernard.Nostalgia -y
-		#flatpak install org.nickvision.tagger -y
-		#flatpak install io.github.realmazharhusain.GdmSettings -y
-		#flatpak install com.github.GradienceTeam.Gradience -y
-		flatpak install io.github.giantpinkrobots.flatsweep -y
-		flatpak install flathub io.gitlab.adhami3310.Impression -y
-		#flatpak install io.gitlab.zehkira.Monophony -y
-        flatpak install com.github.johnfactotum.Foliate -y
-        flatpak install de.haeckerfelix.Fragments -y
-        flatpak install io.github.flattool.Warehouse -y
-		#flatpak install com.google.Chrome -y
-		flatpak install flathub it.mijorus.gearlever -y
-        flatpak install flathub org.localsend.localsend_app -y
-        flatpak install flathub dev.alextren.Spot -y
-		flatpak install de.schmidhuberj.tubefeeder -y
+		flatpak install org.gnome.gitlab.YaLTeR.Identity -y
 		flatpak install org.gnome.Lollypop -y
 		flatpak install org.gnome.gThumb -y
 		flatpak install org.gnome.Podcasts -y
 		flatpak install org.gnome.World.PikaBackup -y
 		flatpak install org.gnome.Firmware -y
-		flatpak install flathub io.github.tfuxu.floodit
+		flatpak install org.gnome.Fractal -y
+		#flatpak install com.google.Chrome -y
+		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
+		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
+		flatpak install de.haeckerfelix.Shortwave -y
+        flatpak install de.haeckerfelix.Fragments -y
+		flatpak install org.nickvision.tubeconverter -y
+		flatpak install org.nickvision.tagger -y
+		flatpak install com.github.neithern.g4music -y
+		flatpak install com.github.tchx84.Flatseal -y
+		flatpak install com.github.hugolabe.Wike -y
+		flatpak install io.bassi.Amberol -y
+		flatpak install com.github.huluti.Curtail -y
+		flatpak install io.github.celluloid_player.Celluloid -y
+		flatpak install io.github.giantpinkrobots.flatsweep -y
+		flatpak install io.gitlab.adhami3310.Impression -y		
+        flatpak install com.github.johnfactotum.Foliate -y
+        flatpak install io.github.flattool.Warehouse -y
+		flatpak install it.mijorus.gearlever -y
+        flatpak install org.localsend.localsend_app -y
+        flatpak install dev.alextren.Spot -y
+		flatpak install de.schmidhuberj.tubefeeder -y
+		flatpak install io.github.tfuxu.floodit
 		flatpak install re.sonny.Junction -y
+		flatpak install dev.geopjr.Tuba -y
+		flatpak install io.github.dzheremi2.lrcmake-gtk -y
+		flatpak install io.github.fabrialberio.pinapp  -y
+		flatpak install io.github.halfmexican.Mingle -y
+		flatpak install io.github.swordpuffin.hunt -y
+		flatpak install io.gitlab.news_flash.NewsFlash -y
+		#flatpak install im.bernard.Nostalgia -y
+		#flatpak install re.sonny.Commit -y
+		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 		break
 	  	;;
 	  	#
