@@ -145,8 +145,8 @@ do
 	  cd Git
 	  #
 	  #adw-gtk3
-	  wget -c  https://github.com/lassekongo83/adw-gtk3/releases/download/v5.6/adw-gtk3v5.6.tar.xz
-      tar -xf adw-gtk3v5.6.tar.xz
+	  wget -c https://github.com/lassekongo83/adw-gtk3/releases/download/v5.7/adw-gtk3v5.7.tar.xz
+      tar -xf adw-gtk3v5.7.tar.xz
       sudo cp -rf adw-gtk3 /usr/share/themes/
       sudo cp -rf adw-gtk3-dark /usr/share/themes/
       sudo rm -rf adw-gtk3*
@@ -197,8 +197,14 @@ do
 	  git clone https://github.com/somepaulo/MoreWaita.git
 	  cd MoreWaita
 	  git pull
-	  ./install.sh
+	  sudo ./install.sh
 	  cd ..
+	  #
+	  #Adawita colors
+	  git clone https://github.com/dpejoh/Adwaita-colors
+	  cd Adwaita-colors
+	  sudo cp -r ./Adwaita-colors/* /usr/share/icons/
+	  #wget -O MoreWaita.sh https://raw.githubusercontent.com/dpejoh/Adwaita-colors/main/MoreWaita.sh && chmod +x MoreWaita.sh && sudo ./MoreWaita.sh
 	  #
 	  #echo Descargando iconos para Xfce weather plugin
 	  #git clone https://github.com/kevin-hanselman/xfce4-weather-mono-icons.git
