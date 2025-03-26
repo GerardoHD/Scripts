@@ -47,6 +47,7 @@ do
 	  #sudo rm /var/lib/dnf/history
 	  #
 	fi
+	flatpak repair
     flatpak update -y
 	;;
 	2) #Actualizador de sistema operativo
@@ -70,16 +71,16 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
-	  dnf clean all
-	  fwupdmgr get-updates
-	  fwupdmgr update
-	  flatpak repair
-	  flatpak --system update -y --noninteractive
-	  pkcon refresh force
-	  pkcon update --only-download
-	  pkcon offline-get-prepared
-	  pkcon offline-trigger
-	  #sudo dnf upgrade --refresh
+	  #dnf clean all
+	  #fwupdmgr get-updates
+	  #fwupdmgr update
+	  #flatpak repair
+	  #flatpak --system update -y --noninteractive
+	  #pkcon refresh force
+	  #pkcon update --only-download
+	  #pkcon offline-get-prepared
+	  #pkcon offline-trigger
+	  sudo dnf upgrade --refresh
 	  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 	  #
 	fi
@@ -137,16 +138,16 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y reiniciando el sistema=-
-	  dnf clean all
-	  fwupdmgr get-updates
-	  fwupdmgr update
-	  flatpak repair
-	  flatpak --system update -y --noninteractive
-	  pkcon refresh force
-	  pkcon update --only-download
-	  pkcon offline-get-prepared
-	  pkcon offline-trigger
-	  #sudo dnf upgrade --refresh
+	  #dnf clean all
+	  #fwupdmgr get-updates
+	  #fwupdmgr update
+	  #flatpak repair
+	  #flatpak --system update -y --noninteractive
+	  #pkcon refresh force
+	  #pkcon update --only-download
+	  #pkcon offline-get-prepared
+	  #pkcon offline-trigger
+	  sudo dnf upgrade --refresh
 	  #
 	fi
     flatpak update -y
@@ -175,16 +176,16 @@ do
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION y apagando el sistema=-
-	  dnf clean all
-	  fwupdmgr get-updates
-	  fwupdmgr update
-	  flatpak repair
-	  flatpak --system update -y --noninteractive
-	  pkcon refresh force
-	  pkcon update --only-download
-	  pkcon offline-get-prepared
-	  pkcon offline-trigger
-	  #sudo dnf upgrade --refresh
+	  #dnf clean all
+	  #fwupdmgr get-updates
+	  #fwupdmgr update
+	  #flatpak repair
+	  #flatpak --system update -y --noninteractive
+	  #pkcon refresh force
+	  #pkcon update --only-download
+	  #pkcon offline-get-prepared
+	  #pkcon offline-trigger
+	  sudo dnf upgrade --refresh
 	  #
 	fi
     flatpak update -y
