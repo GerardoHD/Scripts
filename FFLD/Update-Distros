@@ -48,7 +48,7 @@ do
 	  #
 	fi
 	flatpak repair
-    flatpak update -y
+	flatpak update -y
 	;;
 	2) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -76,10 +76,10 @@ do
 	  #fwupdmgr update
 	  #flatpak repair
 	  #flatpak --system update -y --noninteractive
-	  #pkcon refresh force
-	  #pkcon update --only-download
-	  #pkcon offline-get-prepared
-	  #pkcon offline-trigger
+	  #sudo pkcon refresh force
+	  #sudo pkcon update --only-download
+	  #sudo pkcon offline-get-prepared
+	  #sudo pkcon offline-trigger
 	  sudo dnf upgrade --refresh
 	  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 	  #
@@ -109,11 +109,11 @@ do
 	  sudo rm -rf /var/tmp/flatpak-cache*
 	  sudo rm -rf /var/cache/abrt-di/*
 	  rm -rf $HOME/.cache/debuginfod_client/*
-      abrt-cli rm /var/spool/abrt/*
+	  abrt-cli rm /var/spool/abrt/*
 	  pmbootstrap zap
 	  #
 	fi
-    flatpak uninstall --unused
+	flatpak uninstall --unused
 	;;
 	4) #Actualizador de sistema operativo
 	if [ `which pacman` ]; then
@@ -143,14 +143,14 @@ do
 	  #fwupdmgr update
 	  #flatpak repair
 	  #flatpak --system update -y --noninteractive
-	  #pkcon refresh force
-	  #pkcon update --only-download
-	  #pkcon offline-get-prepared
-	  #pkcon offline-trigger
+	  #sudo pkcon refresh force
+	  #sudo pkcon update --only-download
+	  #sudo pkcon offline-get-prepared
+	  #sudo pkcon offline-trigger
 	  sudo dnf upgrade --refresh
 	  #
 	fi
-    flatpak update -y
+	flatpak update -y
 	sudo reboot
 	;;
 	5) #Actualizador de sistema operativo
@@ -181,18 +181,19 @@ do
 	  #fwupdmgr update
 	  #flatpak repair
 	  #flatpak --system update -y --noninteractive
-	  #pkcon refresh force
-	  #pkcon update --only-download
-	  #pkcon offline-get-prepared
-	  #pkcon offline-trigger
+	  #sudo pkcon refresh force
+	  #sudo pkcon update --only-download
+	  #sudo pkcon offline-get-prepared
+	  #sudo pkcon offline-trigger
 	  sudo dnf upgrade --refresh
 	  #
 	fi
-    flatpak update -y
+	flatpak update -y
 	sudo poweroff
     ;;
     esac
 done
 #
 fastfetch
+df -hT
 #
