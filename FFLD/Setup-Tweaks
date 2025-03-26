@@ -152,11 +152,11 @@ do
       sudo rm -rf adw-gtk3*
       #
       #Firefox GNOME Theme
-      #git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
-      #cd firefox-gnome-theme
-      #git pull
-      #./scripts/install.sh
-      #cd ..
+      git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
+      cd firefox-gnome-theme
+      git pull
+      ./scripts/install.sh
+      cd ..
       #
       #adw-gtk2
       git clone https://github.com/molotov-dmitry/adw-gtk2.git
@@ -166,11 +166,18 @@ do
       sudo cp -rf adw-gtk3-dark /usr/share/themes/
       cd ..
       #
+      #adw-gimp3
+      git clone https://github.com/dp0sk/adw-gimp3.git
+      cd adw-gimp3/
+      git pull
+      sudo cp -r adw-gimp3/ /usr/share/gimp/3.0/themes
+      cd ..
+      #
       #adw-xfwm4
       #git clone https://github.com/FabianOvrWrt/adw-xfwm4.git
       #cd adw-xfwm4
       #git pull
-      #sudo cp -rf themes/* /usr/share/themes/
+      #sudo cp -r themes/* /usr/share/themes/
       #cd ..
       #
       #KvLibadwaita GabePoel --Original
@@ -200,10 +207,10 @@ do
 	  sudo ./install.sh
 	  cd ..
 	  #
-	  #Adawita colors
-	  git clone https://github.com/dpejoh/Adwaita-colors
-	  cd Adwaita-colors
-	  sudo cp -r ./Adwaita-colors/* /usr/share/icons/
+	  #Adwaita colors
+	  #git clone https://github.com/dpejoh/Adwaita-colors
+	  #cd Adwaita-colors
+	  #sudo cp -r ./Adwaita-colors/* /usr/share/icons/
 	  #wget -O MoreWaita.sh https://raw.githubusercontent.com/dpejoh/Adwaita-colors/main/MoreWaita.sh && chmod +x MoreWaita.sh && sudo ./MoreWaita.sh
 	  #
 	  #echo Descargando iconos para Xfce weather plugin
