@@ -13,7 +13,6 @@ PS3='Quieres instalar software desde Flatpak? '
 	  do
 	      case $opt in
 	  	"Si")
-		#flatpak install com.mattjakeman.ExtensionManager -y
 		flatpak install org.gnome.gitlab.YaLTeR.Identity -y
 		flatpak install org.gnome.Lollypop -y
 		flatpak install org.gnome.gThumb -y
@@ -21,9 +20,11 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install org.gnome.World.PikaBackup -y
 		flatpak install org.gnome.Firmware -y
 		flatpak install org.gnome.Fractal -y
-		#flatpak install com.google.Chrome -y
+		flatpak install flathub org.gnome.World.Iotas -y
+		flatpak install com.mattjakeman.ExtensionManager -y
 		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
 		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
+		#flatpak install com.google.Chrome -y
 		flatpak install de.haeckerfelix.Shortwave -y
 		flatpak install de.haeckerfelix.Fragments -y
 		flatpak install org.nickvision.tubeconverter -y
@@ -33,14 +34,14 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install com.github.hugolabe.Wike -y
 		flatpak install io.bassi.Amberol -y
 		flatpak install com.github.huluti.Curtail -y
-		flatpak install io.github.celluloid_player.Celluloid -y
+		#flatpak install io.github.celluloid_player.Celluloid -y
 		flatpak install io.github.giantpinkrobots.flatsweep -y
 		flatpak install io.gitlab.adhami3310.Impression -y		
-        flatpak install com.github.johnfactotum.Foliate -y
-        flatpak install io.github.flattool.Warehouse -y
+        	flatpak install com.github.johnfactotum.Foliate -y
+        	flatpak install io.github.flattool.Warehouse -y
 		flatpak install it.mijorus.gearlever -y
-        flatpak install org.localsend.localsend_app -y
-        flatpak install dev.alextren.Spot -y
+        	flatpak install org.localsend.localsend_app -y
+		flatpak install dev.alextren.Spot -y
 		flatpak install de.schmidhuberj.tubefeeder -y
 		flatpak install io.github.tfuxu.floodit
 		flatpak install re.sonny.Junction -y
@@ -50,12 +51,12 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install io.github.halfmexican.Mingle -y
 		flatpak install io.github.swordpuffin.hunt -y
 		flatpak install io.gitlab.news_flash.NewsFlash -y
-		flatpak install flathub io.github.revisto.drum-machine
-		flatpak install flathub dev.bragefuglseth.Keypunch
-		flatpak install flathub xyz.safeworlds.hiit
-		flatpak install flathub org.gnome.World.Iotas
-		flatpak install flathub de.swsnr.pictureoftheday
-		flatpak install flathub app.drey.KeyRack
+		flatpak install flathub io.github.revisto.drum-machine -y
+		flatpak install flathub dev.bragefuglseth.Keypunch -y
+		flatpak install flathub xyz.safeworlds.hiit -y
+		flatpak install flathub de.swsnr.pictureoftheday -y
+		flatpak install flathub app.drey.KeyRack -y
+		flatpak install com.belmoussaoui.Decoder -y
 		#flatpak install im.bernard.Nostalgia -y
 		#flatpak install re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
