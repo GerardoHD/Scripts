@@ -37,10 +37,10 @@ PS3='Quieres instalar software desde Flatpak? '
 		#flatpak install io.github.celluloid_player.Celluloid -y
 		flatpak install io.github.giantpinkrobots.flatsweep -y
 		flatpak install io.gitlab.adhami3310.Impression -y		
-        	flatpak install com.github.johnfactotum.Foliate -y
-        	flatpak install io.github.flattool.Warehouse -y
+        flatpak install com.github.johnfactotum.Foliate -y
+        flatpak install io.github.flattool.Warehouse -y
 		flatpak install it.mijorus.gearlever -y
-        	flatpak install org.localsend.localsend_app -y
+        flatpak install org.localsend.localsend_app -y
 		flatpak install dev.alextren.Spot -y
 		flatpak install de.schmidhuberj.tubefeeder -y
 		flatpak install io.github.tfuxu.floodit
@@ -56,7 +56,12 @@ PS3='Quieres instalar software desde Flatpak? '
 		flatpak install flathub xyz.safeworlds.hiit -y
 		flatpak install flathub de.swsnr.pictureoftheday -y
 		flatpak install flathub app.drey.KeyRack -y
-		flatpak install com.belmoussaoui.Decoder -y
+		flatpak install flathub com.belmoussaoui.Decoder -y
+		flatpak install flathub re.sonny.Eloquent -y
+		flatpak install flathub dev.geopjr.Calligraphy -y
+		flatpak install flathub com.icons8.Lunacy -y
+		flatpak install flathub com.spotify.Client -y
+		flatpak install flathub net.nokyan.Resources -y
 		#flatpak install im.bernard.Nostalgia -y
 		#flatpak install re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
