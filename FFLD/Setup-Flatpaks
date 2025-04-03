@@ -37,17 +37,17 @@ PS3='Quieres instalar software desde Flatpak? '
 		#flatpak install io.github.celluloid_player.Celluloid -y
 		flatpak install io.github.giantpinkrobots.flatsweep -y
 		flatpak install io.gitlab.adhami3310.Impression -y		
-        flatpak install com.github.johnfactotum.Foliate -y
-        flatpak install io.github.flattool.Warehouse -y
+        	flatpak install com.github.johnfactotum.Foliate -y
+        	flatpak install io.github.flattool.Warehouse -y
 		flatpak install it.mijorus.gearlever -y
-        flatpak install org.localsend.localsend_app -y
+        	flatpak install org.localsend.localsend_app -y
 		flatpak install dev.alextren.Spot -y
 		flatpak install de.schmidhuberj.tubefeeder -y
 		flatpak install io.github.tfuxu.floodit
-		flatpak install re.sonny.Junction -y
+		#flatpak install re.sonny.Junction -y
 		flatpak install dev.geopjr.Tuba -y
 		flatpak install io.github.dzheremi2.lrcmake-gtk -y
-		flatpak install io.github.fabrialberio.pinapp  -y
+		flatpak install io.github.fabrialberio.pinapp -y
 		flatpak install io.github.halfmexican.Mingle -y
 		flatpak install io.github.swordpuffin.hunt -y
 		flatpak install io.gitlab.news_flash.NewsFlash -y

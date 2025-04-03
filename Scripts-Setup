@@ -72,6 +72,9 @@ fi
 	  sudo rm -rf Setup-Flatpaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Flatpaks
 	  sudo chmod +x Setup-Flatpaks
+  	  sudo rm -rf Setup-Flatpaks-2
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Flatpaks-2
+	  sudo chmod +x Setup-Flatpaks-2
 	  sudo rm -rf Setup-GNOME-Fonts
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GNOME-Fonts
 	  sudo chmod +x Setup-GNOME-Fonts
