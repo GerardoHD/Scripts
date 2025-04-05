@@ -263,14 +263,14 @@ do
       echo Instalando Papirus Icon Theme
       wget -qO- https://git.io/papirus-icon-theme-install | sh
 	  #
-	  echo Descargando Fira Fonts
-	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.106.zip -O "Fira_Sans_4.106_&_Mono_3.206.zip"
-	  wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.202.zip -O "Fira_Sans_Condensed_4.202.zip"
-	  wget -c https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip -O "Fira_Code_v6.2.zip"
+	  #echo Descargando Fira Fonts
+	  #wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.106.zip -O "Fira_Sans_4.106_&_Mono_3.206.zip"
+	  #wget -c https://github.com/mozilla/Fira/archive/refs/tags/4.202.zip -O "Fira_Sans_Condensed_4.202.zip"
+	  #wget -c https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip -O "Fira_Code_v6.2.zip"
 	  #
-	  unzip "Fira_Sans_4.106_&_Mono_3.206.zip" -d Fira_Sans
-	  unzip "Fira_Sans_Condensed_4.202.zip" -d Fira_Sans_Condensed
-	  unzip "Fira_Code_v6.2.zip" -d Fira_Code
+	  #unzip "Fira_Sans_4.106_&_Mono_3.206.zip" -d Fira_Sans
+	  #unzip "Fira_Sans_Condensed_4.202.zip" -d Fira_Sans_Condensed
+	  #unzip "Fira_Code_v6.2.zip" -d Fira_Code
 	  #
 	  #sudo rm -rf /usr/share/fonts/truetype/Fira*
 	  #sudo mv Fira_Sans/Fira-4.106/ttf /usr/share/fonts/truetype/Fira_Sans
