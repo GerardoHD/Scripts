@@ -65,7 +65,7 @@ do
 	   #
 	   sudo dnf install -y libreoffice-langpack-es
 	   sudo dnf install -y menulibre
-	   sudo dnf install -y gnome-epub-thumbnailer calibre
+	   sudo dnf install -y gnome-epub-thumbnailer calibre gnome-backgrounds-extras
 	   sudo dnf install -y gedit-plugins geary epiphany
 	   sudo dnf install -y gparted
 	   sudo dnf install -y gnome-tweaks
@@ -77,7 +77,7 @@ do
 	   sudo dnf install -y dconf-editor
 	   #
 	   echo Desactivando repositorio de flatpaks de fedora
-	   flatpak remote-modify --disable fedora
+	   #flatpak remote-modify --disable fedora
 	   #
 	    echo  -=Visual Studio Code y PowerShell=-
 		PS3='Quieres instalar Visual Studio Code y PowerShell? '

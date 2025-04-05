@@ -7,63 +7,68 @@ echo Script creado para instalar flatpaks en $NAME
 echo Se distribuye con la esperanza de que sea util, pero sin ninguna garantia
 sleep 3s
 #
-PS3='Quieres instalar software desde Flatpak? '
+echo Instalando flatpaks adaptativos
+flatpak install flathub org.gnome.gitlab.YaLTeR.Identity -y
+flatpak install flathub org.gnome.Lollypop -y
+flatpak install flathub org.gnome.Podcasts -y
+flatpak install flathub org.gnome.World.PikaBackup -y
+flatpak install flathub org.gnome.Fractal -y
+flatpak install flathub org.gnome.World.Iotas -y
+flatpak install flathub de.haeckerfelix.Shortwave -y
+flatpak install flathub de.haeckerfelix.Fragments -y
+#flatpak install flathub org.nickvision.tubeconverter -y
+flatpak install flathub org.nickvision.tagger -y
+flatpak install flathub com.github.neithern.g4music -y
+flatpak install flathub io.bassi.Amberol -y
+flatpak install flathub io.github.flattool.Warehouse -y
+flatpak install flathub dev.alextren.Spot -y
+flatpak install flathub de.schmidhuberj.tubefeeder -y
+flatpak install flathub io.github.tfuxu.floodit
+#flatpak install flathub re.sonny.Junction -y
+flatpak install flathub dev.geopjr.Tuba -y
+flatpak install flathub io.github.dzheremi2.lrcmake-gtk -y
+flatpak install flathub io.github.fabrialberio.pinapp -y
+flatpak install flathub io.github.swordpuffin.hunt -y
+flatpak install flathub io.gitlab.news_flash.NewsFlash -y
+flatpak install flathub io.github.revisto.drum-machine -y
+flatpak install flathub dev.bragefuglseth.Keypunch -y
+flatpak install flathub xyz.safeworlds.hiit -y
+flatpak install flathub de.swsnr.pictureoftheday -y
+flatpak install flathub app.drey.KeyRack -y
+flatpak install flathub com.belmoussaoui.Decoder -y
+flatpak install flathub dev.geopjr.Calligraphy -y
+flatpak install flathub net.nokyan.Resources -y
+flatpak install flathub info.febvre.Komikku -y
+flatpak install flathub im.bernard.Nostalgia -y
+flatpak install flathub io.github.ronniedroid.concessio -y
+#
+PS3='Quieres instalar flatpaks de escritorio? '
 	  options=("Si" "No")
 	  select opt in "${options[@]}"
 	  do
 	      case $opt in
 	  	"Si")
-		flatpak install org.gnome.gitlab.YaLTeR.Identity -y
-		flatpak install org.gnome.Lollypop -y
-		flatpak install org.gnome.gThumb -y
-		flatpak install org.gnome.Podcasts -y
-		flatpak install org.gnome.World.PikaBackup -y
-		flatpak install org.gnome.Firmware -y
-		flatpak install org.gnome.Fractal -y
-		flatpak install flathub org.gnome.World.Iotas -y
-		flatpak install com.mattjakeman.ExtensionManager -y
-		flatpak install org.gtk.Gtk3theme.adw-gtk3 -y
-		flatpak install org.gtk.Gtk3theme.adw-gtk3-dark -y
-		#flatpak install com.google.Chrome -y
-		flatpak install de.haeckerfelix.Shortwave -y
-		flatpak install de.haeckerfelix.Fragments -y
-		flatpak install org.nickvision.tubeconverter -y
-		flatpak install org.nickvision.tagger -y
-		flatpak install com.github.neithern.g4music -y
-		flatpak install com.github.tchx84.Flatseal -y
-		flatpak install com.github.hugolabe.Wike -y
-		flatpak install io.bassi.Amberol -y
-		flatpak install com.github.huluti.Curtail -y
-		#flatpak install io.github.celluloid_player.Celluloid -y
-		flatpak install io.github.giantpinkrobots.flatsweep -y
-		flatpak install io.gitlab.adhami3310.Impression -y		
-        	flatpak install com.github.johnfactotum.Foliate -y
-        	flatpak install io.github.flattool.Warehouse -y
-		flatpak install it.mijorus.gearlever -y
-        	flatpak install org.localsend.localsend_app -y
-		flatpak install dev.alextren.Spot -y
-		flatpak install de.schmidhuberj.tubefeeder -y
-		flatpak install io.github.tfuxu.floodit
-		#flatpak install re.sonny.Junction -y
-		flatpak install dev.geopjr.Tuba -y
-		flatpak install io.github.dzheremi2.lrcmake-gtk -y
-		flatpak install io.github.fabrialberio.pinapp -y
-		flatpak install io.github.halfmexican.Mingle -y
-		flatpak install io.github.swordpuffin.hunt -y
-		flatpak install io.gitlab.news_flash.NewsFlash -y
-		flatpak install flathub io.github.revisto.drum-machine -y
-		flatpak install flathub dev.bragefuglseth.Keypunch -y
-		flatpak install flathub xyz.safeworlds.hiit -y
-		flatpak install flathub de.swsnr.pictureoftheday -y
-		flatpak install flathub app.drey.KeyRack -y
-		flatpak install flathub com.belmoussaoui.Decoder -y
-		flatpak install flathub re.sonny.Eloquent -y
-		flatpak install flathub dev.geopjr.Calligraphy -y
-		flatpak install flathub com.icons8.Lunacy -y
+	  	echo Instalando flatpaks para escritorios Linux
+		flatpak install flathub com.mattjakeman.ExtensionManager -y
+		flatpak install flathub org.gnome.gThumb -y
+		flatpak install flathub org.gnome.Firmware -y
+		flatpak install flathub org.gtk.Gtk3theme.adw-gtk3 -y
+		flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark -y
+		#flatpak install flathub com.google.Chrome -y
+		flatpak install flathub com.github.tchx84.Flatseal -y
+		flatpak install flathub com.github.hugolabe.Wike -y
+		flatpak install flathub com.github.huluti.Curtail -y
+		flatpak install flathub io.github.celluloid_player.Celluloid -y
+		flatpak install flathub io.github.giantpinkrobots.flatsweep -y
+		flatpak install flathub io.gitlab.adhami3310.Impression -y
+		flatpak install flathub com.github.johnfactotum.Foliate -y
+		flatpak install flathub it.mijorus.gearlever -y
+		flatpak install flathub org.localsend.localsend_app -y
+		flatpak install flathub io.github.halfmexican.Mingle -y
+		#flatpak install flathub re.sonny.Eloquent -y
+		#flatpak install flathub com.icons8.Lunacy -y
 		flatpak install flathub com.spotify.Client -y
-		flatpak install flathub net.nokyan.Resources -y
-		#flatpak install im.bernard.Nostalgia -y
-		#flatpak install re.sonny.Commit -y
+		#flatpak install flathub re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 		break
 	  	;;
@@ -77,3 +82,7 @@ PS3='Quieres instalar software desde Flatpak? '
 	  done
 	  #
 #
+echo Listando flatpaks instalados
+sleep 3s
+flatpak list
+echo Instalacion de flatpaks terminada
