@@ -33,7 +33,7 @@ do
 	   #Repositorios adicionales
 	   sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 	   sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-	   sudo dnf groupupdate core
+	   sudo dnf group install core
 	   sudo dnf install -y rpmfusion-free-release-tainted
 	   sudo dnf install -y rpmfusion-nonfree-release-tainted
 	   sudo dnf install -y dnf-plugins-core
@@ -44,7 +44,7 @@ do
 	   sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 	   sudo dnf install -y flac 
 	   sudo dnf install -y lame\* --exclude=lame-devel
-	   sudo dnf group upgrade --with-optional Multimedia
+	   #sudo dnf group upgrade --with-optional Multimedia
 	   #
 	   sudo dnf install -y linux-libertine-fonts
 	   sudo dnf install -y google-noto-sans-mono-fonts ibm-plex-fonts-all mozilla-fira* fira-code-fonts
