@@ -91,11 +91,11 @@ winget install Google.QuickShare
 #winget install Google.PlatformTools  #El binario de adb no sirve
 winget install Intel.IntelDriverAndSupportAssistant
 #winget install JackieLiu.NotepadsApp
-#-winget install Lenovo.SystemUpdate
+#winget install Lenovo.SystemUpdate
 #winget install Levitsky.FontBase
 winget install LocalSend.LocalSend
 #winget install Mega.MEGASync
-#-winget install Microsoft.Powertoys
+winget install Microsoft.Powertoys
 winget install Microsoft.VisualStudioCode
 winget install Mozilla.Firefox
 winget install MusicBee.MusicBee
@@ -104,8 +104,8 @@ winget install RevoUninstaller.RevoUninstaller
 winget install Synthesia.Synthesia
 winget install SomePythonThings.WingetUIStore
 winget install TheDocumentFoundation.LibreOffice
-#-winget install Ubisoft.Connect
-#winget install Valve.Steam
+#winget install Ubisoft.Connect
+winget install Valve.Steam
 winget install voidtools.Everything
-#-winget install Zoom.Zoom
+#winget install Zoom.Zoom
 #
