@@ -9,7 +9,7 @@ sleep 3s
 #
 echo Instalando flatpaks adaptativos
 flatpak install flathub org.gnome.gitlab.YaLTeR.Identity -y
-flatpak install flathub org.gnome.Lollypop -y
+#flatpak install flathub org.gnome.Lollypop -y
 flatpak install flathub org.gnome.Podcasts -y
 flatpak install flathub org.gnome.World.PikaBackup -y
 flatpak install flathub org.gnome.Fractal -y
@@ -17,7 +17,7 @@ flatpak install flathub org.gnome.World.Iotas -y
 flatpak install flathub de.haeckerfelix.Shortwave -y
 flatpak install flathub de.haeckerfelix.Fragments -y
 #flatpak install flathub org.nickvision.tubeconverter -y
-flatpak install flathub org.nickvision.tagger -y
+#flatpak install flathub org.nickvision.tagger -y
 flatpak install flathub com.github.neithern.g4music -y
 flatpak install flathub io.bassi.Amberol -y
 flatpak install flathub io.github.flattool.Warehouse -y
@@ -68,6 +68,11 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		#flatpak install flathub re.sonny.Eloquent -y
 		#flatpak install flathub com.icons8.Lunacy -y
 		flatpak install flathub com.spotify.Client -y
+		flatpak install flathub io.github.Foldex.AdwSteamGtk -y
+		flatpak install flathub com.usebottles.bottles -y
+		flatpak install flathub dev.qwery.AddWater -y
+		flatpak install flathub io.github.fragglet.sdl_sopwith -y
+		flatpak install flathub org.kde.kalzium -y
 		#flatpak install flathub re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 		break

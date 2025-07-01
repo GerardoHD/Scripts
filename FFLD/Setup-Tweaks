@@ -145,11 +145,11 @@ do
 	  cd Git
 	  #
 	  #adw-gtk3
-	  wget -c https://github.com/lassekongo83/adw-gtk3/releases/download/v5.7/adw-gtk3v5.7.tar.xz
-      tar -xf adw-gtk3v5.7.tar.xz
-      sudo cp -rf adw-gtk3 /usr/share/themes/
-      sudo cp -rf adw-gtk3-dark /usr/share/themes/
-      sudo rm -rf adw-gtk3*
+	  #wget -c https://github.com/lassekongo83/adw-gtk3/releases/download/v5.7/adw-gtk3v5.7.tar.xz
+      #tar -xf adw-gtk3v5.7.tar.xz
+      #sudo cp -rf adw-gtk3 /usr/share/themes/
+      #sudo cp -rf adw-gtk3-dark /usr/share/themes/
+      #sudo rm -rf adw-gtk3*
       #
       #Firefox GNOME Theme
       git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git
@@ -296,7 +296,7 @@ do
     "Descargar AppImages")
 	  mkdir ~/AppImages
 	  cd ~/AppImages
-	  wget -c  https://download.beeper.com/linux/appImage/x64 -O Beeper.appimage
+	  wget -c  https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop -O Beeper.appimage
 	  chmod +x Beeper.appimage
 	  cd ~/
 	  break
