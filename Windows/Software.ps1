@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
+#reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
 #
 #reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowSecondsInSystemClock /d 1 /t REG_DWORD /f
 #
 #powercfg -h off
 #
-New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+#New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 #
-stop-process -name explorer –force
+#stop-process -name explorer –force
 #
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/corbindavenport/nexus-tools/master/install.ps1'))
 #
@@ -75,8 +75,8 @@ winget install Microsoft.VCRedist.2015+.x64
 #-winget install AdrienAllard.FileConverter
 winget install Amazon.Kindle
 #winget install Armin2208.WindowsAutoNightMode
-winget install Bitwarden.Bitwarden
-winget install Beeper.Beeper
+#winget install Bitwarden.Bitwarden
+#winget install Beeper.Beeper
 #winget install Box.Box
 winget install calibre.calibre
 #winget install clsid2.mpc-hc
@@ -87,7 +87,7 @@ winget install GIMP.GIMP
 winget install Git.Git
 winget install Google.Chrome
 winget install Google.GoogleDrive
-winget install Google.QuickShare
+#winget install Google.QuickShare
 #winget install Google.PlatformTools  #El binario de adb no sirve
 winget install Intel.IntelDriverAndSupportAssistant
 #winget install JackieLiu.NotepadsApp
@@ -95,15 +95,15 @@ winget install Intel.IntelDriverAndSupportAssistant
 #winget install Levitsky.FontBase
 winget install LocalSend.LocalSend
 #winget install Mega.MEGASync
-winget install Microsoft.Powertoys
+#winget install Microsoft.Powertoys
 winget install Microsoft.VisualStudioCode
 winget install Mozilla.Firefox
 winget install MusicBee.MusicBee
 winget install Oracle.JavaRuntimeEnvironment
 winget install RevoUninstaller.RevoUninstaller
 winget install Synthesia.Synthesia
-winget install SomePythonThings.WingetUIStore
-winget install TheDocumentFoundation.LibreOffice
+#winget install SomePythonThings.WingetUIStore
+#winget install TheDocumentFoundation.LibreOffice
 #winget install Ubisoft.Connect
 winget install Valve.Steam
 winget install voidtools.Everything
