@@ -85,6 +85,7 @@ winget install calibre.calibre
 winget install fastfetch
 winget install GIMP.GIMP.3
 winget install Git.Git
+winget install --id GitHub.cli
 winget install Google.Chrome
 winget install Google.GoogleDrive
 #winget install Google.QuickShare
@@ -94,6 +95,7 @@ winget install Intel.IntelDriverAndSupportAssistant
 #winget install Lenovo.SystemUpdate
 #winget install Levitsky.FontBase
 winget install LocalSend.LocalSend
+#winget install --exact --id MartiCliment.UniGetUI --source winget
 #winget install Mega.MEGASync
 #winget install Microsoft.Powertoys
 winget install Microsoft.VisualStudioCode
