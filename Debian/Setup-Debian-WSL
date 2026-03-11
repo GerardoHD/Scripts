@@ -16,6 +16,16 @@ echo Respaldando sources.list
 sudo cp /etc/apt/sources.list /etc/apt/sources-default.list.bak
 Setup-Debian-Repos
 #
+#Modificación grupos
+sudo groupadd storage
+sudo groupadd power
+sudo groupadd lp
+sudo groupadd wheel
+sudo usermod -aG storage gerardohd
+sudo usermod -aG power gerardohd
+sudo usermod -aG lp gerardohd
+sudo usermod -aG wheel gerardohd
+#
 sudo apt install curl gpg wget git -y
 sudo apt install cmake dos2unix -y
 sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
@@ -31,7 +41,7 @@ sudo apt install ffmpegthumbnailer exiv2 -y
 #Soporte Flatpak
 sudo apt install flatpak xdg-desktop-portal-xapp -y
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak update --appstream
 #
 #Motores de temas
@@ -69,7 +79,7 @@ sudo apt install markdown -y
 #
 #echo  -=Software Grafico=-
 #sudo apt install gparted -y
-#sudo apt install gnome-software gnome-software-plugin* -y
+sudo apt install gnome-software gnome-software-plugin* nautilus -y
 #sudo apt install gdisk -y
 #sudo apt install thunar thunar-archive-plugin xarchiver xfce4-settings -y
 #Setup-Flatpaks
