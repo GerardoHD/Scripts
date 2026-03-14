@@ -50,6 +50,7 @@ do
 		#Soporte de Snap
 		sudo apt install snapd apparmor-utils apparmor-profiles* -y
 		sudo snap install snapd
+		sudo snap login
 		#
 		#Soporte de sudo sin contraseña usando WSL-Hello-sudo
 		mkdir Git
