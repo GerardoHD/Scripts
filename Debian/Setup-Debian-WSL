@@ -12,7 +12,7 @@ env | grep LANG
 export LANG=es_ES.UTF-8
 dpkg-reconfigure locales
 #
-sudo apt install bash-completion manpages-es dialog -y
+sudo apt install bash-completion man-db manpages-es dialog -y
 sudo apt install apt-listbugs apt-listchanges apt-utils apt-transport-https -y
 sudo apt install curl gpg wget git -y
 sudo apt install cmatrix cmatrix-xfont fastfetch -y
