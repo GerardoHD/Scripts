@@ -29,7 +29,7 @@ do
 	  break
 	  ;;
 	"Actualizar carpetas de usuario")
-	  xdg-user-dirs-update
+	  xdg-user-dirs-update --force
 	  break
 	  ;;
 	"Esconder entradas .desktop")
