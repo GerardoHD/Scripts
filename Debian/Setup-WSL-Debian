@@ -49,6 +49,7 @@ do
 		#
 		#Soporte de Snap
 		sudo apt install snapd apparmor-utils apparmor-profiles* -y
+		sudo snap install snapd
 		#
 		#Soporte de sudo sin contraseña usando WSL-Hello-sudo
 		mkdir Git
@@ -70,7 +71,7 @@ do
 		xdg-user-dirs-update --force
 		#
 		#Utilidades de sistema
-		sudo apt install bash-completion man-db manpages-es dialog -y
+		sudo apt install bash-completion man-db manpages-es dialog pkexec-y
 		sudo apt install cmatrix cmatrix-xfont fastfetch -y
 		sudo apt install cmake dos2unix -y
 		sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools psmisc -y
