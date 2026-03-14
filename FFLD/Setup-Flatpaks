@@ -23,7 +23,7 @@ flatpak install flathub com.github.neithern.g4music -y
 flatpak install flathub io.github.flattool.Warehouse -y
 #flatpak install flathub dev.alextren.Spot -y
 #flatpak install flathub de.schmidhuberj.tubefeeder -y
-flatpak install flathub io.github.tfuxu.floodit
+flatpak install flathub io.github.tfuxu.floodit -y
 #flatpak install flathub re.sonny.Junction -y
 #flatpak install flathub dev.geopjr.Tuba -y
 #flatpak install flathub io.github.dzheremi2.lrcmake-gtk -y
@@ -81,7 +81,7 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		#flatpak install flathub io.github.fragglet.sdl_sopwith -y
 		#flatpak install flathub org.kde.kalzium -y
 		flatpak install gnome-nightly org.gnome.FileRoller -y
-		flatpak install gnome-nightly org.gnome.Papers.Devel -y
+		flatpak install flatfhub org.gnome.Papers -y
 		flatpak install flathub io.github.kolunmi.Bazaar -y
 		#flatpak install flathub re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
