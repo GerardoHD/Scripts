@@ -34,7 +34,7 @@ sudo usermod -aG wheel gerardohd
 #
 sudo apt install cmake dos2unix -y
 sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
-sudo apt install gvfs* fuse fuse-overlayfs fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
+#sudo apt install gvfs* fuse fuse-overlayfs fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
 sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip xz-utils -y
 sudo apt install pv tar cgpt vboot-utils -y
 #sudo apt install apt-config-icons-hidpi ffmpegthumbnailer -y
