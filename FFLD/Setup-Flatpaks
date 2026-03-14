@@ -61,8 +61,8 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		flatpak install flathub com.mattjakeman.ExtensionManager -y
 		flatpak install flathub org.gnome.gThumb -y
 		flatpak install flathub org.gnome.Firmware -y
-		flatpak install flathub org.gtk.Gtk3theme.adw-gtk3 -y
-		flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark -y
+		#flatpak install flathub org.gtk.Gtk3theme.adw-gtk3 -y
+		#flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark -y
 		#flatpak install flathub com.google.Chrome -y
 		flatpak install flathub com.github.tchx84.Flatseal -y
 		#flatpak install flathub com.github.hugolabe.Wike -y
