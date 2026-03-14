@@ -31,24 +31,18 @@ if [ `which pacman` ]; then
 	  #
 elif [ `which apt` ]; then
 	  echo Descargando scripts adecuados para $NAME
-	  sudo rm -rf Setup-Debian
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian
-	  sudo chmod +x Setup-Debian
-	  sudo rm -rf Setup-Debian-Crostini
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-Crostini
-	  sudo chmod +x Setup-Debian-Crostini
+	  #sudo rm -rf Setup-Debian
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian
+	  #sudo chmod +x Setup-Debian
+	  #sudo rm -rf Setup-Crostini-Debian
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Crostini-Debian
+	  #sudo chmod +x Setup-Crostini-Debian
 	  sudo rm -rf Setup-Debian-Repos
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-Repos
 	  sudo chmod +x Setup-Debian-Repos
-	  sudo rm -rf Setup-Debian-WSL
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-WSL
-	  sudo chmod +x Setup-Debian-WSL
-	  sudo rm -rf Setup-Debian-WSL2
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-WSL2
-	  sudo chmod +x Setup-Debian-WSL2
-	  sudo rm -rf Setup-Debian-WSL3
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-Debian-WSL3
-	  sudo chmod +x Setup-Debian-WSL3
+	  sudo rm -rf Setup-WSL-Debian
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/Setup-WSL-Debian
+	  sudo chmod +x Setup-WSL-Debian
 	  #
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-testing.list -O /etc/apt/sources-testing.list.bak
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Debian/sources-unstable-experimental.list -O /etc/apt/sources-unstable-experimental.list.bak
@@ -78,9 +72,9 @@ fi
 	  sudo rm -rf Setup-Flatpaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Flatpaks
 	  sudo chmod +x Setup-Flatpaks
-	  sudo rm -rf Setup-GNOME-Fonts
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GNOME-Fonts
-	  sudo chmod +x Setup-GNOME-Fonts
+	  #sudo rm -rf Setup-GNOME-Fonts
+	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GNOME-Fonts
+	  #sudo chmod +x Setup-GNOME-Fonts
 	  #sudo rm -rf Setup-GRUB-Default
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-GRUB-Default
 	  #sudo chmod +x Setup-GRUB-Default
