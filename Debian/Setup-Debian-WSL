@@ -33,7 +33,7 @@ sudo usermod -aG lp gerardohd
 sudo usermod -aG wheel gerardohd
 #
 sudo apt install cmake dos2unix -y
-sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools -y
+sudo apt install btrfs-progs f2fs-tools reiserfsprogs xfsprogs ntfs-3g jfsutils xfsdump nilfs-tools psmisc -y
 #sudo apt install gvfs* fuse fuse-overlayfs fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
 sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip xz-utils -y
 sudo apt install pv tar cgpt vboot-utils -y
@@ -44,7 +44,7 @@ sudo apt install openssh-server sshfs -y
 sudo apt install exiv2 -y
 #
 #Soporte Flatpak
-sudo apt install flatpak xdg-desktop-portal-xapp -y
+sudo apt install flatpak xdg-desktop-portal-xapp flatpak-xdg-utils -y
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 #flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
