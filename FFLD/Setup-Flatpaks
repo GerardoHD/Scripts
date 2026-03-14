@@ -47,8 +47,9 @@ flatpak install flathub page.codeberg.lo_vely.Nucleus -y
 flatpak install gnome-nightly org.gnome.Nautilus.Devel -y
 flatpak install gnome-nightly org.gnome.NautilusPreviewerDevel -y
 #flatpak install flathub page.codeberg.libre_menu_editor.LibreMenuEditor -y
-flatpak install gnome-nightly org.gnome.Epiphany.Devel -y
 flatpak install flathub ca.desrt.dconf-editor -y
+flatpak install flathub org.gnome.Epiphany -y
+#flatpak install flathub com.microsoft.Edge -y
 #
 PS3='Quieres instalar flatpaks de escritorio? '
 	  options=("Si" "No")
@@ -80,6 +81,7 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		#flatpak install flathub io.github.fragglet.sdl_sopwith -y
 		#flatpak install flathub org.kde.kalzium -y
 		flatpak install gnome-nightly org.gnome.FileRoller -y
+		flatpak install gnome-nightly org.gnome.Papers.Devel -y
 		flatpak install flathub io.github.kolunmi.Bazaar -y
 		#flatpak install flathub re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
