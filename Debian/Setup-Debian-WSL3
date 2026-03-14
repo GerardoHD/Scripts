@@ -106,7 +106,7 @@ do
 		#sudo apt install tcc -y
 		#sudo apt install cmake cmake-extras -y
 		#sudo apt install php -y
-		#sudo apt install python3-pip -y 
+		#sudo apt install python3-pip -y
 		#sudo apt install javascript-common -y
 		#sudo apt install markdown -y
 		#
