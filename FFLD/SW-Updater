@@ -67,7 +67,9 @@ do
 	  echo  -=Actualizando $NAME $VERSION=-
 	  sudo apt update
 	  sudo apt upgrade -y
-	  #sudo apt full-upgrade
+	  sudo apt full-upgrade
+	  #Actualizar scripts
+	  Setup-Scripts
 	  #
 	elif [ `which dnf` ]; then
 	  echo  -=Actualizando $NAME $VERSION=-
@@ -83,6 +85,8 @@ do
 	  sudo dnf upgrade --refresh
 	  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 	  #
+	  #Actualizar scripts
+	  Setup-Scripts
 	fi
     flatpak update -y
 	;;

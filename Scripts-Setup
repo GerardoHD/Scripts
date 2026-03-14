@@ -90,21 +90,21 @@ fi
 	  sudo rm -rf Setup-Tweaks
 	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Setup-Tweaks
 	  sudo chmod +x Setup-Tweaks
-	  sudo rm -rf Update-Distros
-	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/Update-Distros
-	  sudo chmod +x Update-Distros
+	  sudo rm -rf SW-Updater
+	  sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/FFLD/SW-Updater
+	  sudo chmod +x SW-Updater
 	  #
 	  #sudo rm -rf Scripts-Setup
 	  #sudo wget -c https://raw.githubusercontent.com/GerardoHD/Scripts/main/Scripts-Setup
 	  #sudo chmod +x Scripts-Setup
 	  #
-	  sudo rm -rf screenfetch-dev
-	  sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch-dev
-	  sudo chmod +x screenfetch-dev
+	  #sudo rm -rf screenfetch-dev
+	  #sudo wget -c https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev -O screenfetch-dev
+	  #sudo chmod +x screenfetch-dev
 #
 cd ~/
 sleep 1s
-screenfetch-dev
+#screenfetch-dev
 echo Se aconseja revisar los scripts ubicados en /usr/local/bin/
 ls /usr/local/bin/
 echo Ejecuta el script elegido
