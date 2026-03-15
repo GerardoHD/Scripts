@@ -82,7 +82,7 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		#flatpak install flathub org.kde.kalzium -y
 		flatpak install flathub org.gnome.FileRoller -y
 		flatpak install flathub org.gnome.Papers -y
-		flatpak install flathub io.github.kolunmi.Bazaar -y
+		#flatpak install flathub io.github.kolunmi.Bazaar -y
 		#flatpak install flathub re.sonny.Commit -y
 		#git config --global core.editor "flatpak run --file-forwarding re.sonny.Commit @@"
 		break

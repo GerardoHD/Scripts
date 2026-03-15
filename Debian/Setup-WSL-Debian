@@ -44,6 +44,7 @@ do
 		sudo apt install flatpak xdg-desktop-portal-xapp flatpak-xdg-utils -y
 		sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 		sudo flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+		sudo flatpak remote-add --if-not-exists appcenter https://flatpak.elementary.io/repo.flatpakrepo
 		#flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 		sudo flatpak update --appstream
 		#
@@ -79,7 +80,7 @@ do
 		#sudo apt install gvfs* fuse fuse-overlayfs fuse2fs exfat-fuse fusefat fuseiso* -y #desactivado porque hay conflicto de fuse con fuse3
 		sudo apt install lzip minizip unace arj ncompress p7zip-full unrar-free lrzip zip squashfs-tools lzop rzip xz-utils -y
 		sudo apt install pv tar cgpt vboot-utils -y
-		#sudo apt install apt-config-icons-hidpi ffmpegthumbnailer -y
+		#sudo apt install ffmpegthumbnailer -y
 		sudo apt install sbsigntool -y
 		sudo apt install adb fastboot -y
 		sudo apt install openssh-server sshfs -y
@@ -114,10 +115,10 @@ do
 		#
 		echo  -=Software Grafico=-
 		#sudo apt install gparted -y
-		#sudo apt install nautilus gnome-software gnome-software-plugin* -y
+		sudo apt install gnome-software gnome-software-plugin* apt-config-icons-hidpi -y
 		#sudo apt install gdisk -y
+		#sudo apt install nautilus -y
 		Setup-Flatpaks
-		#gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3' && gsettings set org.gnome.desktop.interface color-scheme 'default'
 		#
 		echo  -=Actualizando y limpiando $NAME $VERSION=-
 		sudo apt update
