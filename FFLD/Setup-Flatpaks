@@ -80,7 +80,7 @@ PS3='Quieres instalar flatpaks de escritorio? '
 		#flatpak install flathub dev.qwery.AddWater -y
 		#flatpak install flathub io.github.fragglet.sdl_sopwith -y
 		#flatpak install flathub org.kde.kalzium -y
-		flatpak install gnome-nightly org.gnome.FileRoller -y
+		flatpak install flathub org.gnome.FileRoller -y
 		flatpak install flathub org.gnome.Papers -y
 		flatpak install flathub io.github.kolunmi.Bazaar -y
 		#flatpak install flathub re.sonny.Commit -y
