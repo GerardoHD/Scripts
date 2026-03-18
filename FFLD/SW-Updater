@@ -202,5 +202,5 @@ do
 done
 #
 fastfetch
-df -hT
+#df -hT
 #
