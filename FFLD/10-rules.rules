@@ -1,6 +1,6 @@
 //  /etc/polkit-1/rules.d/10-rules.rules
-//  PolKit rules to allow mounting, rebooting and network management without password.
-//  User needs to be in storage, power and users groups.
+//  PolKit rules to allow managing software, mounting, rebooting and network management without password.
+//  User needs to be in lp, wheel, storage, power and users groups.
 
 polkit.addRule(function(action, subject) {
     if (action.id.match("org.freedesktop.packagekit.") && subject.isInGroup("wheel")) {
@@ -10,6 +10,12 @@ polkit.addRule(function(action, subject) {
 
 polkit.addRule(function(action, subject) {
     if (action.id.match("org.freedesktop.Flatpak.") && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});
+
+polkit.addRule(function(action, subject) {
+    if (action.id.match("io.snapcraft.snapd.") && subject.isInGroup("wheel")) {
         return polkit.Result.YES;
     }
 });
